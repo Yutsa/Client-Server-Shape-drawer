@@ -1,0 +1,100 @@
+@startuml
+package Client {
+    abstract class Shape {
+        +{abstract} dessiner()
+        +{abstract} accept(ShapeVisitor* v)
+        +{abstract} toString() : String
+    }
+    class Cercle {
+        +dessiner()
+        +accept(ShapeVisitor* v)
+        +toString() : String
+    }
+    class Segment {
+        +dessiner()
+        +accept(ShapeVisitor* v)
+        +toString() : String
+    }
+    class Triangle {
+        +dessiner()
+        +accept(ShapeVisitor* v)
+        +toString() : String
+    }
+    class Polygone {
+        +dessiner()
+        +accept(ShapeVisitor* v)
+        +toString() : String
+    }
+    class Socket << Singleton >> {
+        -instance: Socket
+        -Socket()
+        +getInstance() : Socket
+        +connectToServer()
+    }
+
+    abstract class ShapeVisitor {
+        +{abstract} visit(Cercle *s)
+        +{abstract} visit(Segment *s)
+        +{abstract} visit(Triangle *s)
+        +{abstract} visit(Polygone *s)
+    }
+}
+
+package Serveur {
+    class Thread
+    class DrawingServer {
+        +main()
+    }
+    class DrawingThread {
+        +run()
+    }
+
+    class ShapeDrawer {
+        +{abstract}draw(String request)
+    }
+
+    note "Peut être pas utile" as N1
+
+    ShapeDrawer..N1
+
+    class ShapeDrawerLink {
+        +ShapeDrawerLink(ShapeDrawerLink next)
+        +{abstract} drawShape(String request)
+        +draw(String request)
+    }
+
+    class SegmentDrawer {
+        +SegmentDrawer(ShapeDrawerLink next)
+        +drawShape(String request)
+    }
+
+    class TriangleDrawer {
+        +TriangleDrawer(ShapeDrawerLink next)
+        +drawShape(String request)
+    }
+
+    class CircleDrawer {
+        +CircleDrawer(ShapeDrawerLink next)
+        +drawShape(String request)
+    }
+
+    class PolygoneDrawer {
+        +PolygoneDrawer(ShapeDrawerLink next)
+        +drawShape(String request)
+    }
+
+}
+Shape <|-- Cercle
+Shape <|-- Segment
+Shape <|-- Triangle
+Shape <|-- Polygone
+DrawingServer *-- "0,N" DrawingThread
+Thread <|-- DrawingThread
+ShapeDrawer <|-- ShapeDrawerLink
+ShapeDrawerLink o-- "0, 1" ShapeDrawerLink
+ShapeDrawerLink <|-- SegmentDrawer
+ShapeDrawerLink <|-- TriangleDrawer
+ShapeDrawerLink <|-- CircleDrawer
+ShapeDrawerLink <|-- PolygoneDrawer
+DrawingThread *-- "1" ShapeDrawer
+@enduml
