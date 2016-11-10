@@ -1,29 +1,66 @@
 @startuml
 package Client {
     abstract class Shape {
-        +{abstract} dessiner()
+        +{abstract} draw()
         +{abstract} accept(ShapeVisitor* v)
         +{abstract} toString() : String
+        +{abstract} save()
+        +{abstract} translation()
+        +{abstract} homothétie()
+        +{abstract} rotation()
+        +{abstract} getArea()
     }
-    class Cercle {
-        +dessiner()
+
+    abstract class ComposedShape {
+        +draw()
         +accept(ShapeVisitor* v)
         +toString() : String
+        +save()
+        +translation()
+        +homothétie()
+        +rotation()
+        +getArea()
+    }
+
+    class Cercle {
+        +draw()
+        +accept(ShapeVisitor* v)
+        +toString() : String
+        +save()
+        +translation()
+        +homothétie()
+        +rotation()
+        +getArea()
     }
     class Segment {
-        +dessiner()
+        +draw()
         +accept(ShapeVisitor* v)
         +toString() : String
+        +save()
+        +translation()
+        +homothétie()
+        +rotation()
+        +getArea()
     }
     class Triangle {
-        +dessiner()
+        +draw()
         +accept(ShapeVisitor* v)
         +toString() : String
+        +save()
+        +translation()
+        +homothétie()
+        +rotation()
+        +getArea()
     }
     class Polygone {
-        +dessiner()
+        +draw()
         +accept(ShapeVisitor* v)
         +toString() : String
+        +save()
+        +translation()
+        +homothétie()
+        +rotation()
+        +getArea()
     }
     class Socket << Singleton >> {
         -instance: Socket
@@ -33,10 +70,10 @@ package Client {
     }
 
     abstract class ShapeVisitor {
-        +{abstract} visit(Cercle *s)
-        +{abstract} visit(Segment *s)
-        +{abstract} visit(Triangle *s)
-        +{abstract} visit(Polygone *s)
+        +{abstract} draw(Cercle *s)
+        +{abstract} draw(Segment *s)
+        +{abstract} draw(Triangle *s)
+        +{abstract} draw(Polygone *s)
     }
 }
 
@@ -97,4 +134,6 @@ ShapeDrawerLink <|-- TriangleDrawer
 ShapeDrawerLink <|-- CircleDrawer
 ShapeDrawerLink <|-- PolygoneDrawer
 DrawingThread *-- "1" ShapeDrawer
+ComposedShape o-- "1, N" Shape
+Shape <|-- ComposedShape
 @enduml
