@@ -1,10 +1,9 @@
 @startuml
 package Client {
     abstract class Shape {
-        +{abstract} draw()
-        +{abstract} accept(ShapeVisitor* v)
+        +{abstract} draw(DrawingVisitor* visitor)
         +{abstract} toString() : String
-        +{abstract} save()
+        +{abstract} save(SaveVisitor* saveVisitor)
         +{abstract} translation()
         +{abstract} homothétie()
         +{abstract} rotation()
@@ -12,10 +11,9 @@ package Client {
     }
 
     abstract class ComposedShape {
-        +draw()
-        +accept(ShapeVisitor* v)
+        +draw(DrawingVisitor* visitor)
         +toString() : String
-        +save()
+        +save(SaveVisitor* saveVisitor)
         +translation()
         +homothétie()
         +rotation()
@@ -23,40 +21,36 @@ package Client {
     }
 
     class Cercle {
-        +draw()
-        +accept(ShapeVisitor* v)
+        +draw(DrawingVisitor* visitor)
         +toString() : String
-        +save()
+        +save(SaveVisitor* saveVisitor)
         +translation()
         +homothétie()
         +rotation()
         +getArea()
     }
     class Segment {
-        +draw()
-        +accept(ShapeVisitor* v)
+        +draw(DrawingVisitor* visitor)
         +toString() : String
-        +save()
+        +save(SaveVisitor* saveVisitor)
         +translation()
         +homothétie()
         +rotation()
         +getArea()
     }
     class Triangle {
-        +draw()
-        +accept(ShapeVisitor* v)
+        +draw(DrawingVisitor* visitor)
         +toString() : String
-        +save()
+        +save(SaveVisitor* saveVisitor)
         +translation()
         +homothétie()
         +rotation()
         +getArea()
     }
     class Polygone {
-        +draw()
-        +accept(ShapeVisitor* v)
+        +draw(DrawingVisitor* visitor)
         +toString() : String
-        +save()
+        +save(SaveVisitor* saveVisitor)
         +translation()
         +homothétie()
         +rotation()
@@ -69,11 +63,62 @@ package Client {
         +connectToServer()
     }
 
-    abstract class ShapeVisitor {
+    abstract class DrawingVisitor {
         +{abstract} draw(Cercle *s)
         +{abstract} draw(Segment *s)
         +{abstract} draw(Triangle *s)
         +{abstract} draw(Polygone *s)
+    }
+
+    abstract class SaveVisitor {
+        +{abstract} save(Cercle *s)
+        +{abstract} save(Segment *s)
+        +{abstract} save(Triangle *s)
+        +{abstract} save(Polygone *s)
+    }
+
+    class ServerDrawer {
+        +draw(Cercle *s)
+        +draw(Segment *s)
+        +draw(Triangle *s)
+        +draw(Polygone *s)
+    }
+
+    class SaveXMLVisitor {
+        +save(Cercle *s)
+        +save(Segment *s)
+        +save(Triangle *s)
+        +save(Polygone *s)
+    }
+
+    abstract class ShapeLoader {
+        +{abstract} load()
+    }
+
+    class ShapeLoaderCOR {
+        +ShapeLoaderCOR(ShapeLoaderCOR* next)
+        +load()
+        +{abstract}loadShape()
+    }
+
+    class ShapeLoaderText {
+        +ShapeLoaderText(ShapeLoaderCOR* next)
+        +loadShape()
+    }
+
+    class ShapeLoaderXML {
+        +ShapeLoaderXML(ShapeLoaderCOR* next)
+        +loadShape()
+    }
+
+    class Vector2D {
+        -double x
+        -double y
+        +operator+()
+        +operator*()
+        +operator-()
+        +string()
+        +operator<<()
     }
 }
 
@@ -119,8 +164,8 @@ package Serveur {
         +PolygoneDrawer(ShapeDrawerLink next)
         +drawShape(String request)
     }
-
 }
+
 Shape <|-- Cercle
 Shape <|-- Segment
 Shape <|-- Triangle
@@ -136,4 +181,14 @@ ShapeDrawerLink <|-- PolygoneDrawer
 DrawingThread *-- "1" ShapeDrawer
 ComposedShape o-- "1, N" Shape
 Shape <|-- ComposedShape
+SaveVisitor <|-- SaveXMLVisitor
+DrawingVisitor <|-- ServerDrawer
+ShapeLoader <|-- ShapeLoaderCOR
+ShapeLoaderCOR o-- "0, N" ShapeLoaderCOR
+ShapeLoaderCOR <|-- ShapeLoaderText
+ShapeLoaderCOR <|-- ShapeLoaderXML
+Cercle o--> "1" Vector2D
+Segment o--> "2" Vector2D
+Triangle o--> "3" Vector2D
+Polygone o--> "3, N" Vector2D
 @enduml
