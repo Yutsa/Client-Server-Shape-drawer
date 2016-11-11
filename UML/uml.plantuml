@@ -124,45 +124,46 @@ package Client {
 
 package Serveur {
     class Thread
-    class DrawingServer {
-        +main()
-    }
-    class DrawingThread {
-        +run()
-    }
 
-    class ShapeDrawer {
-        +{abstract}draw(String request)
-    }
-
-    note "Peut être pas utile" as N1
-
-    ShapeDrawer..N1
-
-    class ShapeDrawerLink {
-        +ShapeDrawerLink(ShapeDrawerLink next)
-        +{abstract} drawShape(String request)
-        +draw(String request)
+    package DrawingServer {
+        class DrawingServer {
+            +main()
+        }
+        class DrawingThread {
+            +run()
+        }
     }
 
-    class SegmentDrawer {
-        +SegmentDrawer(ShapeDrawerLink next)
-        +drawShape(String request)
-    }
+    package ShapeDrawer {
+        class ShapeDrawer {
+            +{abstract}draw(String request)
+        }
 
-    class TriangleDrawer {
-        +TriangleDrawer(ShapeDrawerLink next)
-        +drawShape(String request)
-    }
+        class ShapeDrawerLink {
+            +ShapeDrawerLink(ShapeDrawerLink next)
+            +{abstract} drawShape(String request)
+            +draw(String request)
+        }
 
-    class CircleDrawer {
-        +CircleDrawer(ShapeDrawerLink next)
-        +drawShape(String request)
-    }
+        class SegmentDrawer {
+            +SegmentDrawer(ShapeDrawerLink next)
+            +drawShape(String request)
+        }
 
-    class PolygoneDrawer {
-        +PolygoneDrawer(ShapeDrawerLink next)
-        +drawShape(String request)
+        class TriangleDrawer {
+            +TriangleDrawer(ShapeDrawerLink next)
+            +drawShape(String request)
+        }
+
+        class CircleDrawer {
+            +CircleDrawer(ShapeDrawerLink next)
+            +drawShape(String request)
+        }
+
+        class PolygoneDrawer {
+            +PolygoneDrawer(ShapeDrawerLink next)
+            +drawShape(String request)
+        }
     }
 }
 
