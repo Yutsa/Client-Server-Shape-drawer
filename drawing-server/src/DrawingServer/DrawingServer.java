@@ -1,5 +1,8 @@
 package DrawingServer;
 
+import ShapeDrawer.ShapeDrawer;
+import ShapeDrawer.ShapeDrawerLink;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -59,8 +62,10 @@ public class DrawingServer
             try
             {
                 newClientSocket = server.accept();
-                System.out.println("Conneciton successful.");
-                drawingThread = new DrawingThread(newClientSocket, threadGroup, nbConnection);
+                System.out.println("Connection successful.");
+                /* Creating a ShapeDrawer for the drawing thread */
+                ShapeDrawer shapeDrawer = new ShapeDrawerLink();
+                drawingThread = new DrawingThread(newClientSocket, threadGroup, shapeDrawer);
                 drawingThread.start();
             }
             catch (IOException e)
