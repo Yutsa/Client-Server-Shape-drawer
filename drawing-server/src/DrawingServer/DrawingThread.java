@@ -8,19 +8,27 @@ import java.net.Socket;
 /**
  * The Thread that will draw the shape sent by the client.
  * It will use a ShapeDrawer to be able to draw it.
- * @author Édouard WILLISSECK
  */
 public class DrawingThread extends Thread
 {
+    /**
+     * The input stream coming from the client.
+     */
     private BufferedReader inputStream;
+    /**
+     * The output stream to communicate with the client.
+     */
     private OutputStream outputStream;
+    /**
+     * The class that will draw the shape requested.
+     */
     private ShapeDrawer shapeDrawer;
 
     /**
      * Minimal constructor for the DrawingThread.
-     * @param socket The @Socket used by the client to communicate.
-     * @param threadGroup The @ThreadGroup of this @Thread.
-     * @param shapeDrawer The @ShapeDrawer that will be used to draw the shape.
+     * @param socket The {@link java.net.Socket} used by the client to communicate.
+     * @param threadGroup The {@link java.lang.ThreadGroup} of this {@link java.lang.Thread}.
+     * @param shapeDrawer The {@link ShapeDrawer} that will be used to draw the shape.
      * @throws IOException
      */
     public DrawingThread(Socket socket, ThreadGroup threadGroup, ShapeDrawer shapeDrawer)

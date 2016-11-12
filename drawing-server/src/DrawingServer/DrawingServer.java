@@ -9,8 +9,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 /**
- * @author Édouard WILLISSECK
- * This class will be have the ServerSocket and create Threads
+ * This class will have the ServerSocket and create Threads
  * for each connection by a client.
  */
 public class DrawingServer
@@ -36,10 +35,12 @@ public class DrawingServer
         catch (UnknownHostException e)
         {
             System.err.println("The local host InetAddress couldn't be retrieved.");
+            System.exit(-1);
         }
         catch (IOException e)
         {
             System.err.println("Error when creating the ServerSocket.");
+            System.exit(-1);
         }
 
         /* Printing the InetAddress and Port of the server on stdout */
@@ -63,7 +64,8 @@ public class DrawingServer
                 newClientSocket = server.accept();
                 System.out.println("Connection successful.");
                 /* Creating a ShapeDrawer for the drawing thread */
-                ShapeDrawer shapeDrawer = new CircleDrawer();
+                //TODO: Create the chain of responsibility
+                ShapeDrawer shapeDrawer = new CircleDrawer(null);
                 drawingThread = new DrawingThread(newClientSocket, threadGroup, shapeDrawer);
                 drawingThread.start();
             }
