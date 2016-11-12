@@ -135,7 +135,7 @@ package Serveur {
     }
 
     package ShapeDrawer {
-        class ShapeDrawer {
+        interface ShapeDrawer {
             +{abstract}draw(String request)
         }
 

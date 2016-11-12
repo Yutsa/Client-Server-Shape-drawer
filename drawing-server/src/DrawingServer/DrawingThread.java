@@ -1,6 +1,6 @@
 package DrawingServer;
 
-import ShapeDrawer.ShapeDrawer;
+import ShapeDrawer.*;
 
 import java.io.*;
 import java.net.Socket;
@@ -13,7 +13,7 @@ import java.net.Socket;
 public class DrawingThread extends Thread
 {
     private BufferedReader inputStream;
-    //private OutputStream outputStream;
+    private OutputStream outputStream;
     private ShapeDrawer shapeDrawer;
 
     /**
@@ -29,7 +29,7 @@ public class DrawingThread extends Thread
         super(threadGroup, "DrawingThread");
         this.shapeDrawer = shapeDrawer;
         inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        //outputStream = new PrintStream(socket.getOutputStream());
+        outputStream = new PrintStream(socket.getOutputStream());
     }
 
     /**
@@ -48,6 +48,11 @@ public class DrawingThread extends Thread
         {
             System.err.println("Couldn't get the request from the input stream.");
             e.printStackTrace();
+        }
+        catch (ShapeNotRecognizedException e)
+        {
+            System.err.println(e.getMessage());
+            //TODO: Send the error to the client using the socket output stream.
         }
     }
 }
