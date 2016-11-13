@@ -164,6 +164,8 @@ package Serveur {
             +PolygoneDrawer(ShapeDrawerLink next)
             +drawShape(String request)
         }
+
+        class ShapeNotRecognizedException
     }
 }
 
@@ -192,4 +194,5 @@ Cercle o--> "1" Vector2D
 Segment o--> "2" Vector2D
 Triangle o--> "3" Vector2D
 Polygone o--> "3, N" Vector2D
+ShapeDrawer .. ShapeNotRecognizedException : << Throws >>
 @enduml
