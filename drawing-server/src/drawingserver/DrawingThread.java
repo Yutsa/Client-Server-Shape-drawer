@@ -1,8 +1,11 @@
 package drawingserver;
 
-import shapedrawer.*;
+import shapedrawer.ShapeDrawer;
+import shapedrawer.ShapeNotRecognizedException;
 
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.*;
 import java.net.Socket;
 
@@ -44,7 +47,24 @@ public class DrawingThread extends Thread
         this.shapeDrawer = shapeDrawer;
         inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         outputStream = new PrintStream(socket.getOutputStream());
-        //TODO: Create frame
+        createFrame();
+    }
+
+    private void createFrame()
+    {
+        _frame = new Frame("Fenêtre de dessin");
+        //TODO: Don't hardcode the size of the frame.
+        _frame.setBounds(0, 0, 500, 500);
+        _frame.setVisible(true);
+        _frame.addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                super.windowClosing(e);
+                _frame.dispose();
+            }
+        });
     }
 
     /**
