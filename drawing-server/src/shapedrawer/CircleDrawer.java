@@ -2,9 +2,7 @@ package shapedrawer;
 
 import java.awt.*;
 
-/**
- * @author Édouard WILLISSECK
- */
+
 public class CircleDrawer extends ShapeDrawerLink
 {
 
