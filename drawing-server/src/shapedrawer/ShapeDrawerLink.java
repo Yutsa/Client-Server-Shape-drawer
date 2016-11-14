@@ -1,4 +1,6 @@
-package ShapeDrawer;
+package shapedrawer;
+
+import java.awt.*;
 
 /**
  * The implementation of a link in the chain of responsibility that will
@@ -10,7 +12,7 @@ public abstract class ShapeDrawerLink implements ShapeDrawer
 
     /**
      * Creates a ShapeDrawerLink by declaring the next link in the chain of responsibility.
-     * @param next The next link of the ShapeDrawer chain of responsibility.
+     * @param next The next link of the shapedrawer chain of responsibility.
      */
     public ShapeDrawerLink(ShapeDrawerLink next)
     {
@@ -22,22 +24,23 @@ public abstract class ShapeDrawerLink implements ShapeDrawer
      * it checks if it has a next link a calls its draw method. Otherwise it
      * throws a {@link ShapeNotRecognizedException}.
      * @param request String representing the shape to draw.
+     * @param frame The frame to draw in.
      * @throws ShapeNotRecognizedException If no links in the chain of
      * responsibility could draw the shape it throws this Exception.
      */
     @Override
-    public void draw(String request) throws ShapeNotRecognizedException
+    public void draw(String request, Frame frame) throws ShapeNotRecognizedException
     {
         // Implementation
         try
         {
-            this.drawShape(request);
+            this.drawShape(request, frame);
         }
         catch (ShapeNotRecognizedException e)
         {
             if (_next != null)
             {
-                _next.draw(request);
+                _next.draw(request, frame);
             }
             else
             {
@@ -50,7 +53,8 @@ public abstract class ShapeDrawerLink implements ShapeDrawer
      * Check if it can draw the shape requested, if it can it draws it
      * otherwise it throws a {@link ShapeNotRecognizedException}
      * @param request The request of the shape to draw.
+     * @param frame The frame to draw in.
      * @throws ShapeNotRecognizedException Thrown if this link couldn't draw the shape.
      */
-    public abstract void drawShape(String request) throws ShapeNotRecognizedException;
+    public abstract void drawShape(String request, Frame frame) throws ShapeNotRecognizedException;
 }

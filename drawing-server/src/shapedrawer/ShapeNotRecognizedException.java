@@ -1,4 +1,4 @@
-package ShapeDrawer;
+package shapedrawer;
 
 /**
  * The exception thrown when a drawer couldn't draw what is had to.

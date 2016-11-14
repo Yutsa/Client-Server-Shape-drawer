@@ -141,28 +141,28 @@ package Serveur {
 
         class ShapeDrawerLink {
             +ShapeDrawerLink(ShapeDrawerLink next)
-            +{abstract} drawShape(String request)
+            +{abstract} drawShape(String request, Frame frame)
             +draw(String request)
         }
 
         class SegmentDrawer {
             +SegmentDrawer(ShapeDrawerLink next)
-            +drawShape(String request)
+            +drawShape(String request, Frame frame)
         }
 
         class TriangleDrawer {
             +TriangleDrawer(ShapeDrawerLink next)
-            +drawShape(String request)
+            +drawShape(String request, Frame frame)
         }
 
         class CircleDrawer {
             +CircleDrawer(ShapeDrawerLink next)
-            +drawShape(String request)
+            +drawShape(String request, Frame frame)
         }
 
         class PolygoneDrawer {
             +PolygoneDrawer(ShapeDrawerLink next)
-            +drawShape(String request)
+            +drawShape(String request, Frame frame)
         }
 
         class ShapeNotRecognizedException

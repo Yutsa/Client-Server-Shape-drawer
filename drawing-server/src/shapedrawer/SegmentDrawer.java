@@ -1,4 +1,4 @@
-package ShapeDrawer;
+package shapedrawer;
 
 /**
  * @author Édouard WILLISSECK

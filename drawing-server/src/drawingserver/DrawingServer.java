@@ -1,6 +1,6 @@
-package DrawingServer;
+package drawingserver;
 
-import ShapeDrawer.*;
+import shapedrawer.*;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -51,7 +51,7 @@ public class DrawingServer
         threadGroup = new ThreadGroup("drawingThreads");
 
         /*
-         * The loop that will wait for a connection, then create a DrawingServer.DrawingThread
+         * The loop that will wait for a connection, then create a DrawingThread
          * with for the client that connected.
          */
         while (true)
@@ -63,7 +63,7 @@ public class DrawingServer
             {
                 newClientSocket = server.accept();
                 System.out.println("Connection successful.");
-                /* Creating a ShapeDrawer for the drawing thread */
+                /* Creating a shapedrawer for the drawing thread */
                 //TODO: Create the chain of responsibility
                 ShapeDrawer shapeDrawer = new CircleDrawer(null);
                 drawingThread = new DrawingThread(newClientSocket, threadGroup, shapeDrawer);

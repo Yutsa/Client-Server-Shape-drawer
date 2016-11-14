@@ -1,13 +1,14 @@
-package DrawingServer;
+package drawingserver;
 
-import ShapeDrawer.*;
+import shapedrawer.*;
 
+import java.awt.*;
 import java.io.*;
 import java.net.Socket;
 
 /**
  * The Thread that will draw the shape sent by the client.
- * It will use a ShapeDrawer to be able to draw it.
+ * It will use a shapedrawer to be able to draw it.
  */
 public class DrawingThread extends Thread
 {
@@ -25,6 +26,11 @@ public class DrawingThread extends Thread
     private ShapeDrawer shapeDrawer;
 
     /**
+     * The Frame in which the shape will be drawn.
+     */
+    private Frame _frame;
+
+    /**
      * Minimal constructor for the DrawingThread.
      * @param socket The {@link java.net.Socket} used by the client to communicate.
      * @param threadGroup The {@link java.lang.ThreadGroup} of this {@link java.lang.Thread}.
@@ -38,6 +44,7 @@ public class DrawingThread extends Thread
         this.shapeDrawer = shapeDrawer;
         inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         outputStream = new PrintStream(socket.getOutputStream());
+        //TODO: Create frame
     }
 
     /**
@@ -50,7 +57,7 @@ public class DrawingThread extends Thread
         try
         {
             request = inputStream.readLine();
-            shapeDrawer.draw(request);
+            shapeDrawer.draw(request, _frame);
         }
         catch (IOException e)
         {
