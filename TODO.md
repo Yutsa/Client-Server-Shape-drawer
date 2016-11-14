@@ -85,3 +85,14 @@ futures versions.
 
 CoR pour le traitement des différents cas lors du chargement d'un
 fichier.
+
+8 - Implémentation CoR serveur
+===============================
+
+Une instance de la chaine par Thread ou une instance pour tous les Threads ?
+
+### Une instance par Thread
+
+**Pour :**
+
+*
