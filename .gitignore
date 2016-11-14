@@ -10,3 +10,6 @@ drawing-server/out
 RemoteSystemsTempFiles/
 drawing-server/.DS_Store
 drawing-server/src/.DS_Store	
+.idea
+*iml
+out

@@ -3,9 +3,7 @@ package shapedrawer;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
-/**
- * @author Édouard WILLISSECK
- */
+
 public class CircleDrawer extends ShapeDrawerLink
 {
 
