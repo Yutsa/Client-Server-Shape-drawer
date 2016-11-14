@@ -1,5 +1,6 @@
 package shapedrawer;
 import java.awt.*;
+import java.awt.image.BufferStrategy;
 
 public class SegmentDrawer extends ShapeDrawerLink
 {
@@ -7,12 +8,12 @@ public class SegmentDrawer extends ShapeDrawerLink
     {
         super(next);
     }
-    public void drawShape(String request, Frame frame) throws ShapeNotRecognizedException
+    public void drawShape(String request, Frame frame, Graphics graphics, BufferStrategy bufferStrategy) throws ShapeNotRecognizedException
     {
         String[] arguments = request.split(",");
         String shape = arguments[0];
         if(!shape.toLowerCase().equals("segment")){
-            throw new ShapeNotRecognizedException("Shape Not Recognized")
+            throw new ShapeNotRecognizedException("Shape Not Recognized");
         }
         String color = arguments[1];
         int coordXA = Integer.parseInt(arguments[2]);
@@ -20,8 +21,10 @@ public class SegmentDrawer extends ShapeDrawerLink
         int coordXB = Integer.parseInt(arguments[4]);
         int coordYB = Integer.parseInt(arguments[5]);
 
-        Graphics graphics = getGraphics(frame);
+        //TODO : Mettre la couleur
         graphics.drawLine(coordXA,coordYA,coordXB,coordYB);
+
+        bufferStrategy.show();
 
     }
 }
