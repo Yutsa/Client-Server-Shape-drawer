@@ -1,6 +1,7 @@
 package drawingserver;
 
-import shapedrawer.*;
+import shapedrawer.CircleDrawer;
+import shapedrawer.ShapeDrawer;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -59,13 +60,15 @@ public class DrawingServer
             Socket newClientSocket;
             DrawingThread drawingThread;
 
+            //TODO: Create the chain of responsibility
+            ShapeDrawer shapeDrawer = new CircleDrawer(null);
+
+
             try
             {
                 newClientSocket = server.accept();
                 System.out.println("Connection successful.");
                 /* Creating a shapedrawer for the drawing thread */
-                //TODO: Create the chain of responsibility
-                ShapeDrawer shapeDrawer = new CircleDrawer(null);
                 drawingThread = new DrawingThread(newClientSocket, threadGroup, shapeDrawer);
                 drawingThread.start();
             }

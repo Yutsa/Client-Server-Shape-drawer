@@ -1,6 +1,7 @@
 package shapedrawer;
 
 import java.awt.*;
+import java.awt.image.BufferStrategy;
 
 /**
  * The implementation of a link in the chain of responsibility that will
@@ -47,6 +48,31 @@ public abstract class ShapeDrawerLink implements ShapeDrawer
                 throw new ShapeNotRecognizedException("Couldn't find the drawer for this shape.");
             }
         }
+    }
+
+    /**
+     * Returns the buffer strategy of the frame passed as parameter.
+     *
+     * @param frame The frame for which you want the parameter.
+     * @return Graphics The graphics of the Frame
+     */
+    public Graphics getGraphics(Frame frame)
+    {
+        int nbBuffers = 1;
+        frame.createBufferStrategy(nbBuffers);
+
+        try
+        {
+            Thread.sleep(150);
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+
+        BufferStrategy strategy = frame.getBufferStrategy();
+
+        return strategy.getDrawGraphics();
     }
 
     /**
