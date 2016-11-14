@@ -1,7 +1,10 @@
 package drawingserver;
 
 import shapedrawer.CircleDrawer;
+import shapedrawer.PolygonDrawer;
 import shapedrawer.ShapeDrawer;
+import shapedrawer.ShapeDrawerLink;
+import sun.security.provider.SHA;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -61,7 +64,8 @@ public class DrawingServer
             DrawingThread drawingThread;
 
             //TODO: Create the chain of responsibility
-            ShapeDrawer shapeDrawer = new CircleDrawer(null);
+            ShapeDrawerLink shapeDrawer = new CircleDrawer(null);
+            ShapeDrawerLink circleDrawer = new CircleDrawer(shapeDrawer);
 
 
             try

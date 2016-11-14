@@ -9,7 +9,6 @@ import java.awt.image.BufferStrategy;
  */
 public class PolygonDrawer extends ShapeDrawerLink
 {
-	
 	public PolygonDrawer(ShapeDrawerLink next) {
 		super(next);
 	}
@@ -41,5 +40,4 @@ public class PolygonDrawer extends ShapeDrawerLink
         graphics.fillPolygon(pX, pY, nbPoint);
         
 	}
-	
 }
