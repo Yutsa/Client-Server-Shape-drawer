@@ -31,8 +31,9 @@ public class CircleDrawer extends ShapeDrawerLink
 
 
         /* Draw the circle */
-
+        //TODO: Change the color
         graphics.fillOval(coordX, coordY, diametre, diametre);
+        bufferStrategy.show();
 
 
     }
