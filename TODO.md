@@ -13,6 +13,9 @@ Itérations de développement
 Ce protocole doit permettre de faire passer la couleur de la forme
 ainsi que les informations permettant de la tracer.
 
+Il faut aussi savoir si l'on doit ouvrir une nouvelle fenêtre (nouvelle forme)
+ou bien si on doit garder la même fenêtre (rotation, homothétie etc).
+
 Les différentes formes simples à tracer sont :
 
 * Segment
@@ -27,9 +30,10 @@ a lu toutes les informations.
 
 Un premier exemple de protocole simple pourrait être le suivant :
 
-`couleur,nomForme,coord1,coord2,coord3,coord4,coord5,coord6,END`
+`couleur,nomForme,nvlle_fenetre,coord1,coord2,coord3,coord4,coord5,coord6`
 
-ce qui donnerait par exemple : `black,triangle,30,40,23,98,78,56,END`
+ce qui donnerait par exemple : `black,triangle,yes,30,40,23,98,78,56`
+pour dessiner un triangle dans une nouvelle fenêtre.
 
 2 - Création du serveur, DP chain of responsability
 =========================================================
