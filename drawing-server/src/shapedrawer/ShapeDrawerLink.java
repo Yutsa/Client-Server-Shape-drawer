@@ -32,32 +32,7 @@ public abstract class ShapeDrawerLink implements ShapeDrawer
     @Override
     public void draw(String request, Frame frame) throws ShapeNotRecognizedException
     {
-        // Implementation
-        try
-        {
-            this.drawShape(request, frame);
-        }
-        catch (ShapeNotRecognizedException e)
-        {
-            if (_next != null)
-            {
-                _next.draw(request, frame);
-            }
-            else
-            {
-                throw new ShapeNotRecognizedException("Couldn't find the drawer for this shape.");
-            }
-        }
-    }
-
-    /**
-     * Returns the buffer strategy of the frame passed as parameter.
-     *
-     * @param frame The frame for which you want the parameter.
-     * @return Graphics The graphics of the Frame
-     */
-    public Graphics getGraphics(Frame frame)
-    {
+        Graphics graphics;
         int nbBuffers = 1;
         frame.createBufferStrategy(nbBuffers);
 
@@ -72,15 +47,34 @@ public abstract class ShapeDrawerLink implements ShapeDrawer
 
         BufferStrategy strategy = frame.getBufferStrategy();
 
-        return strategy.getDrawGraphics();
+        graphics = strategy.getDrawGraphics();
+
+        try
+        {
+            this.drawShape(request, frame, graphics, strategy);
+        }
+        catch (ShapeNotRecognizedException e)
+        {
+            if (_next != null)
+            {
+                _next.draw(request, frame);
+            }
+            else
+            {
+                throw new ShapeNotRecognizedException("Couldn't find the drawer for this shape.");
+            }
+        }
     }
+
 
     /**
      * Check if it can draw the shape requested, if it can it draws it
      * otherwise it throws a {@link ShapeNotRecognizedException}
      * @param request The request of the shape to draw.
      * @param frame The frame to draw in.
+     * @param graphics The frame's graphics.
+     * @param bufferStrategy The frame's {@link BufferStrategy}
      * @throws ShapeNotRecognizedException Thrown if this link couldn't draw the shape.
      */
-    public abstract void drawShape(String request, Frame frame) throws ShapeNotRecognizedException;
+    public abstract void drawShape(String request, Frame frame, Graphics graphics, BufferStrategy bufferStrategy) throws ShapeNotRecognizedException;
 }
