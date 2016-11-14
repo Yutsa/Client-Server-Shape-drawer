@@ -143,6 +143,7 @@ package Serveur {
             +ShapeDrawerLink(ShapeDrawerLink next)
             +{abstract} drawShape(String request, Frame frame)
             +draw(String request)
+            +getGraphics(Frame frame)
         }
 
         class SegmentDrawer {
