@@ -4,7 +4,8 @@ all: client
 
 client:
 
-circle.o: circle.cpp shape.h
+vector2d.o : Vector2D.cpp
+	g++ -o ../bin/vector2d.o -c Vector2D.cpp $(CFLAGS)
 
 clean:
 	rm -rf ../bin/*.o

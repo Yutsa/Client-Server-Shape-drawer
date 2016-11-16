@@ -7,12 +7,7 @@ class Vector2D
 private:
     double _x;
     double _y;
-    const Vector2D & add(const Vector2D & lhv,
-        const Vector2D & rhv);
-    const Vector2D & multiply(const Vector2D & lhv,
-        const Vector2D & rhv);
-    const Vector2D & substract(const Vector2D & lhv,
-        const Vector2D & rhv);
+
 public:
     Vector2D(double x, double y);
     virtual ~Vector2D();

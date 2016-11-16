@@ -13,4 +13,4 @@ public:
     virtual void homothety() = 0;
     virtual void rotation() = 0;
     virtual double getArea() const = 0;
-}
+};

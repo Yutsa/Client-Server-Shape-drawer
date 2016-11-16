@@ -12,7 +12,7 @@ Vector2D::~Vector2D()
     // Destructor
 }
 
-const Vector2D & add(const Vector2D & lhv, const Vector2D & rhv)
+const Vector2D operator+ (const Vector2D & lhv, const Vector2D & rhv)
 {
     return Vector2D(lhv.getX() + rhv.getX(), lhv.getY() + rhv.getY());
 }

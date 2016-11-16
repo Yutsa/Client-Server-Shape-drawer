@@ -12,4 +12,4 @@ public:
     virtual void save(Segment* segment) = 0;
     virtual void save(Triangle* triangle) = 0;
     virtual void save(Polygon* polygon) = 0;
-}
+};

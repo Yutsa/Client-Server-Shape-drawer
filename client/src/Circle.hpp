@@ -17,4 +17,4 @@ public:
     virtual void homothety();
     virtual void rotation();
     virtual double getArea() const;
-}
+};

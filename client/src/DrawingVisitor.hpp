@@ -12,4 +12,4 @@ public:
     virtual void draw(Segment* segment) = 0;
     virtual void draw(Triangle* triangle) = 0;
     virtual void draw(Polygon* polygon) = 0;
-}
+};
