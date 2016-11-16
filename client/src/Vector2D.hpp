@@ -1,6 +1,7 @@
 #include <iostream>
 
 using std::string;
+using std::ostream;
 
 class Vector2D
 {
