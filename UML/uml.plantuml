@@ -1,9 +1,9 @@
 @startuml
 package Client {
     abstract class Shape {
-        +{abstract} draw(DrawingVisitor* visitor)
+        +{abstract} draw(const DrawingVisitor* visitor)
         +{abstract} toString() : String
-        +{abstract} save(SaveVisitor* saveVisitor)
+        +{abstract} save(const SaveVisitor* saveVisitor)
         +{abstract} translation()
         +{abstract} homothétie()
         +{abstract} rotation()
@@ -61,6 +61,8 @@ package Client {
         -Socket()
         +getInstance() : Socket
         +connectToServer()
+        +static getAddress() : sockaddr_in
+        +void sendDate(String data)
     }
 
     abstract class DrawingVisitor {
@@ -151,11 +153,6 @@ package Serveur {
             +drawShape(String request, Frame frame)
         }
 
-        class TriangleDrawer {
-            +TriangleDrawer(ShapeDrawerLink next)
-            +drawShape(String request, Frame frame)
-        }
-
         class CircleDrawer {
             +CircleDrawer(ShapeDrawerLink next)
             +drawShape(String request, Frame frame)
@@ -167,6 +164,7 @@ package Serveur {
         }
 
         class ShapeNotRecognizedException
+
     }
 }
 
@@ -179,7 +177,6 @@ Thread <|-- DrawingThread
 ShapeDrawer <|-- ShapeDrawerLink
 ShapeDrawerLink o-- "0, 1" ShapeDrawerLink
 ShapeDrawerLink <|-- SegmentDrawer
-ShapeDrawerLink <|-- TriangleDrawer
 ShapeDrawerLink <|-- CircleDrawer
 ShapeDrawerLink <|-- PolygoneDrawer
 DrawingThread *-- "1" ShapeDrawer

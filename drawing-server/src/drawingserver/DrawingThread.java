@@ -22,7 +22,7 @@ public class DrawingThread extends Thread
     /**
      * The output stream to communicate with the client.
      */
-    private OutputStream outputStream;
+    private PrintStream outputStream;
     /**
      * The class that will draw the shape requested.
      */
@@ -87,7 +87,9 @@ public class DrawingThread extends Thread
         catch (ShapeNotRecognizedException e)
         {
             System.err.println(e.getMessage());
-            //TODO: Send the error to the client using the socket output stream.
+            /* Sends the error to the client using the socket output stream. */
+            //TODO: Ask teacher how to get the error from the client.
+            outputStream.println(e.getMessage());
         }
     }
 }

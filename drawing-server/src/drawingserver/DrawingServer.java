@@ -1,9 +1,6 @@
 package drawingserver;
 
-import shapedrawer.CircleDrawer;
-import shapedrawer.PolygonDrawer;
-import shapedrawer.ShapeDrawer;
-import shapedrawer.ShapeDrawerLink;
+import shapedrawer.*;
 import sun.security.provider.SHA;
 
 import java.io.IOException;
@@ -63,9 +60,10 @@ public class DrawingServer
             Socket newClientSocket;
             DrawingThread drawingThread;
 
-            //TODO: Create the chain of responsibility
-            ShapeDrawerLink shapeDrawer = new CircleDrawer(null);
-            ShapeDrawerLink circleDrawer = new CircleDrawer(shapeDrawer);
+            ShapeDrawerLink circleDrawer = new CircleDrawer(null);
+            ShapeDrawerLink segmentDrawer = new SegmentDrawer(circleDrawer);
+            ShapeDrawerLink polygonDrawer = new PolygonDrawer(segmentDrawer);
+            ShapeDrawer shapeDrawer = polygonDrawer;
 
 
             try
