@@ -1,12 +1,12 @@
 CFLAGS = -Wall -ansi
 
-all: main
+all: test-vector2D
 
-main: main.o vector2d.o
-	g++ -o ../bin/client ../bin/main.o ../bin/vector2d.o $(CFLAGS)
+test-vector2D: test-vector2D.o vector2d.o
+	g++ -o ../bin/test-vector2D ../bin/test-vector2D.o ../bin/vector2d.o $(CFLAGS)
 
-main.o: main.cpp Vector2D.hpp
-	g++ -o ../bin/main.o -c main.cpp $(CFLAGS)
+test-vector2D.o: test-vector2D.cpp Vector2D.hpp
+	g++ -o ../bin/test-vector2D.o -c test-vector2D.cpp $(CFLAGS)
 
 vector2d.o : Vector2D.cpp
 	g++ -o ../bin/vector2d.o -c Vector2D.cpp $(CFLAGS)
