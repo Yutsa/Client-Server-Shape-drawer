@@ -5,7 +5,7 @@ using std::ostringstream;
 
 Vector2D::Vector2D(const double & x, const double & y) : _x(x), _y(y)
 {
-    //TODO: Check if x and y can be < 0 or not.
+    
 }
 
 Vector2D::~Vector2D()
