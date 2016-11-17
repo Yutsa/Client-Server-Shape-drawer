@@ -43,7 +43,7 @@ public:
     * @param homothetyRatio The ratio of the homothety.
     */
     virtual void homothety(const Vector2D & invariantPoint,
-        double homothetyRatio) = 0;
+        const double & homothetyRatio) = 0;
 
     /**
     * Rotates the shape.

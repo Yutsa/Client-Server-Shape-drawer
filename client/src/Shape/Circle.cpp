@@ -2,9 +2,10 @@
 #include "../Geometry/Vector2D.hpp"
 #include <cmath>
 
-Circle::Circle(double x, double y, double diameter)
+Circle::Circle(Vector2D center, double diameter)
 {
-    
+    _center.setX(center.getX());
+    _center.setY(center.getY());
     _diameter=diameter;
 }
 
@@ -25,14 +26,16 @@ virtual void Circle::save(const SaveVisitor* saveVisitor) const
 
 virtual void Circle::translation(const Vector2D & translationVector)
 {
-    _x = _x+translationVector.getX();
-    _y = _y+translationVector.getY();
+    _center.setX(translationVector.getX()+_center.getX())
+    _center.setY(translationVector.getY()+_center.getY())
 }
 
 virtual void Circle::homothety(const Vector2D & invariantPoint,
-    double homothetyRatio)
+    const double & homothetyRatio)
 {
+    _center.homothety(invariantPoint,homothetyRatio);
 
+    _diameter *= homothetyRatio;
 }
 
 virtual void Circle::rotation(const Vector2D & rotationCenter,

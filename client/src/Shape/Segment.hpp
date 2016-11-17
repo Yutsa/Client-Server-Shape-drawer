@@ -5,55 +5,55 @@ using std::string;
 
 class Vector2D;
 /**
-*   Represent a Circle
+*   Represent a Segment
 *   It's a Shape
 **/
-class Circle : public Shape
+class Segment : public Shape
 {
 private:
     /**
-    *   The center of the Circle
+    *   The first point of the Segment
     **/
-    Vector2D _center;
+    Vector2D _fistPoint;
     /**
-    *   The diamater of the Circle
+    *   The second point of the Segment
     **/
-    double _diamater;
+    Vector2D _secondPoint;
 public:
     /**
-    *   Circle constructors
-    *   @param center The center point of the Circle
-    *   @param diameter The diameter of the Circle
+    *   Segment constructors
+    *   @param firstPoint the firstPoint of the Segment
+    *   @param secondPoint the secondPoint of the Segment
     **/
-    Circle(Vector2D center, double diameter);
+    Segment(Vector2D firstPoint, Vector2D secondPoint);
 
     /**
-    * Draws the Circle using a DrawingVisitor.
-    * @param visitor The DrawingVisitor to use to draw the Circle.
+    * Draws the Segment using a DrawingVisitor.
+    * @param visitor The DrawingVisitor to use to draw the Segment.
     */
     virtual void draw(const DrawingVisitor* visitor) const;
 
     /**
-    * Returns a string that represents the Circle.
-    * @return The string representing the Circle.
+    * Returns a string that represents the Segment.
+    * @return The string representing the Segment.
     */
     virtual operator string() const;
 
     /**
-    * Saves the Circle.
-    * @param saveVisitor The SaveVisitor to use to save the Circle.
+    * Saves the Segment.
+    * @param saveVisitor The SaveVisitor to use to save the Segment.
     */
     virtual void save(const SaveVisitor* saveVisitor) const;
 
     /**
-    * Translate the Circle using a translation vector.
+    * Translate the Segment using a translation vector.
     * @param translationVector The translation vector to use for the
     *  translation.
     */
     virtual void translation(const Vector2D & translationVector);
 
     /**
-    * Apply an homothety on the Circle.
+    * Apply an homothety on the Segment.
     * @param invariantPoint The center of the homothety.
     * @param homothetyRatio The ratio of the homothety.
     */
@@ -61,7 +61,7 @@ public:
         const double & homothetyRatio);
 
     /**
-    * Rotates the Circle.
+    * Rotates the Segment.
     * @param rotationCenter The center of the rotation.
     * @param rotationAngle The angle of the rotation.
     */
@@ -69,8 +69,8 @@ public:
         const RadianAngle & rotationAngle);
 
     /**
-    * Returns the area of the Circle.
-    * @return The area of the Circle.
+    * Returns the area of the Segment.
+    * @return The area of the Segment.
     */
     virtual double getArea() const;
 };

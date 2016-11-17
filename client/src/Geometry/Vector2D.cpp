@@ -5,7 +5,7 @@ using std::ostringstream;
 
 Vector2D::Vector2D(const double & x, const double & y) : _x(x), _y(y)
 {
-    
+
 }
 
 Vector2D::~Vector2D()
@@ -44,4 +44,18 @@ ostream & operator<<(ostream & os, const Vector2D & vector)
 {
     os << (string) vector;
     return os;
+}
+
+Vector2D::homothety(const Vector2D & invariantPoint,
+    const double & homothetyRatio)
+{
+    //Creation of the homothety Vector
+    Vector2D homothetyVector;
+    homothetyVector = Vector2D(_x-invariantPoint.getX(),
+        _y-invariantPoint.getY());
+
+    //homothety application
+    _x = _x+(homothetyVector.getX()*homothetyRatio);
+    _y = _y+(homothetyVector.getY()*homothetyRatio);
+
 }
