@@ -2,9 +2,14 @@
 #define SOCKET_H
 
 #include <iostream>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <netdb.h>
 
 using std::string;
-using std::sockaddr_in;
 
 class Socket
 {
