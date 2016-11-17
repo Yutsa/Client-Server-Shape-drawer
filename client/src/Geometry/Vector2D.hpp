@@ -1,4 +1,9 @@
+#ifndef VECTOR2D_H
+#define VECTOR2D_H
+
 #include <iostream>
+
+#include "RadianAngle.hpp"
 
 using std::string;
 using std::ostream;
@@ -55,6 +60,8 @@ public:
     * @return Vector2D which is the result of addition
     */
     const Vector2D operator+ (const Vector2D & rhv) const;
+    
+    const Vector2D & operator+= (const Vector2D & rhs);
 
     /**
     * Allows to multiply a vector by a constant
@@ -62,29 +69,39 @@ public:
     * @return Vector2D which is the result of product
     */
     const Vector2D operator* (const double & a) const;
+    
+    const Vector2D & operator*= (const double & a);
 
     /**
     * Gets the opposite of a vector
     * @return Vector2D
     */
     const Vector2D operator- () const;
+    
+    /**
+    * Allows to substract two vectors
+    * @param rhv vector to sub
+    * @return Vector2D which is the result of substraction
+    */
+    const Vector2D operator- (const Vector2D & rhv) const;
+    
+    const Vector2D & operator-= (const Vector2D & rhs);
 
     /**
-    *   Gets the Vector2D after the homothety
+    * Make homothety of a vector2D
+    * @param invariantPoint
+    * @param homothetyRatio
     **/
     void homothety(const Vector2D & invariantPoint,
-        const double & homothetyRatio);
-
+                    const double & homothetyRatio);
+    
     /**
-    *   Gets the Vector2D after rotation
+    * Make rotation of a vector2D
+    * @param rotationCenter
+    * @param rotationAngle
     **/
     void rotation(const Vector2D & rotationCenter,
-        const RadianAngle & rotationAngle);
-
-    /**
-    *   Gets the Vector2D after translation
-    **/
-    void translation(const Vector2D & translationVector);
+                    const RadianAngle & rotationAngle);
 
     /**
     * Sends a string of vector to a stream
@@ -98,3 +115,5 @@ public:
 // To be able to write u * a and a * u
 extern const Vector2D operator*(const double & a, const Vector2D & vector);
 extern ostream & operator<<(ostream & os, const Vector2D & vector);
+
+#endif

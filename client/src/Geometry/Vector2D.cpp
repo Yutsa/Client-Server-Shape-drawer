@@ -18,14 +18,43 @@ const Vector2D Vector2D::operator+ (const Vector2D & rhv) const
     return Vector2D(_x + rhv.getX(), _y + rhv.getY());
 }
 
+const Vector2D & Vector2D::operator+= (const Vector2D & rhs)
+{
+    _x += rhs.getX();
+    _y += rhs.getY();
+    
+    return *this;
+}
+
 const Vector2D Vector2D::operator* (const double & a) const
 {
     return Vector2D(_x * a, _y * a);
 }
 
+const Vector2D & Vector2D::operator*= (const double & a)
+{
+    _x *= a;
+    _y *= a;
+    
+    return *this;
+}
+
 const Vector2D Vector2D::operator- () const
 {
     return Vector2D(- _x, - _y);
+}
+
+const Vector2D Vector2D::operator- (const Vector2D & rhv) const
+{
+    return Vector2D(_x - rhv.getX(), _y - rhv.getY());
+}
+
+const Vector2D & Vector2D::operator-= (const Vector2D & rhs)
+{
+    _x -= rhs.getX();
+    _y -= rhs.getY();
+    
+    return *this;
 }
 
 const Vector2D operator*(const double & a, const Vector2D & vector)
@@ -46,7 +75,7 @@ ostream & operator<<(ostream & os, const Vector2D & vector)
     return os;
 }
 
-Vector2D::homothety(const Vector2D & invariantPoint,
+void Vector2D::homothety(const Vector2D & invariantPoint,
     const double & homothetyRatio)
 {
     //Creation of the homothety Vector
