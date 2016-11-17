@@ -9,6 +9,8 @@ using std::string;
 
 class Shape
 {
+
+//TODO: Must implement the shape color.
 public:
     /**
     * Draws the Shape using a DrawingVisitor.
