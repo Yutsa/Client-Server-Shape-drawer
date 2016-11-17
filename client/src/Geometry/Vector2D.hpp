@@ -39,6 +39,8 @@ public:
     * Gets $_y (ordonate)
     */
     double getY() const { return _y;}
+    void setX(double x) { _x = x;}
+    void setY(double y) { _y = y;}
 
     // Operators
     
