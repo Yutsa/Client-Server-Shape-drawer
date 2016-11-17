@@ -4,7 +4,7 @@ package Client {
         +{abstract} draw(const DrawingVisitor* visitor)
         +{abstract} toString() : String
         +{abstract} save(const SaveVisitor* saveVisitor)
-        +{abstract} translation()
+        +{abstract} translation(Vector2D translationVector)
         +{abstract} homothétie()
         +{abstract} rotation()
         +{abstract} getArea()
@@ -14,7 +14,7 @@ package Client {
         +draw(DrawingVisitor* visitor)
         +toString() : String
         +save(SaveVisitor* saveVisitor)
-        +translation()
+        +translation(Vector2D translationVector)
         +homothétie()
         +rotation()
         +getArea()
@@ -24,7 +24,7 @@ package Client {
         +draw(DrawingVisitor* visitor)
         +toString() : String
         +save(SaveVisitor* saveVisitor)
-        +translation()
+        +translation(Vector2D translationVector)
         +homothétie()
         +rotation()
         +getArea()
@@ -33,7 +33,7 @@ package Client {
         +draw(DrawingVisitor* visitor)
         +toString() : String
         +save(SaveVisitor* saveVisitor)
-        +translation()
+        +translation(Vector2D translationVector)
         +homothétie()
         +rotation()
         +getArea()
@@ -42,7 +42,7 @@ package Client {
         +draw(DrawingVisitor* visitor)
         +toString() : String
         +save(SaveVisitor* saveVisitor)
-        +translation()
+        +translation(Vector2D translationVector)
         +homothétie()
         +rotation()
         +getArea()
@@ -51,7 +51,7 @@ package Client {
         +draw(DrawingVisitor* visitor)
         +toString() : String
         +save(SaveVisitor* saveVisitor)
-        +translation()
+        +translation(Vector2D translationVector)
         +homothétie()
         +rotation()
         +getArea()
