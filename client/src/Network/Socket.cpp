@@ -1,10 +1,15 @@
 #include "Socket.hpp"
+#include "NetworkException.hpp"
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <netdb.h>
+
+using std::cout;
+using std::cin;
+using std::endl;
 
 const Socket* Socket::getInstance()
 {
@@ -15,7 +20,7 @@ const Socket* Socket::getInstance()
     return _instance;
 }
 
-void createConnexion()
+void Socket::createConnexion()
 {
     cout << "Tapez l'adresse IP du serveur de dessin : " << endl;
     cin >> _serverAddress;
@@ -26,7 +31,6 @@ void createConnexion()
     _sock = socket(AF_INET, SOCK_STREAM, 0);
     if (_sock == -1)
     {
-        perror("socket()");
-        exit(errno);
+        throw NetworkException("Erreur création socket.");
     }
 }

@@ -3,7 +3,8 @@
 
 #include <iostream>
 
-using std::string
+using std::string;
+using std::sockaddr_in;
 
 class Socket
 {

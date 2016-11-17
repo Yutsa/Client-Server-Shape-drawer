@@ -14,6 +14,12 @@ vector2d.o: Geometry/Vector2D.cpp Geometry/Vector2D.hpp
 geometryexception.o: Geometry/GeometryException.cpp Geometry/GeometryException.hpp
 	g++ -o ../bin/geometryexception.o -c Geometry/GeometryException.cpp $(CFLAGS)
 
+networkexception.o: Network/NetworkException.cpp Network/NetworkException.hpp
+	g++ -o ../bin/networkexception.o -c Network/NetworkException.cpp $(CFLAGS)
+
+socket.o: Network/Socket.cpp Network/Socket.hpp Network/NetworkException.hpp
+	g++ -o ../bin/socket.o -c Network/Socket.cpp $(CFLAGS)
+
 radianangle.o: Geometry/RadianAngle.cpp Geometry/RadianAngle.hpp Geometry/GeometryException.hpp
 	g++ -o ../bin/radianangle.o -c Geometry/RadianAngle.cpp $(CFLAGS)
 
