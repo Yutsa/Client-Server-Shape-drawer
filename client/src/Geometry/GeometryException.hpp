@@ -11,5 +11,7 @@ private:
 public:
     GeometryException(const string & message);
     
-    ostream & operator<<(ostream & os);
+    friend ostream & operator<<(ostream & os, const GeometryException & geometryException);
 };
+
+extern ostream & operator<<(ostream & os, const GeometryException & geometryException);

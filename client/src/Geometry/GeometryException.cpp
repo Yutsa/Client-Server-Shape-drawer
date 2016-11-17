@@ -5,8 +5,8 @@ GeometryException::GeometryException(const string & message)
     _message = message;
 }
 
-ostream & GeometryException::operator<<(ostream & os)
+extern ostream & operator<<(ostream & os, const GeometryException & geometryException)
 {
-    os << "GeometryException => " << _message;
+    os << "GeometryException => " << geometryException._message;
     return os;
 }
