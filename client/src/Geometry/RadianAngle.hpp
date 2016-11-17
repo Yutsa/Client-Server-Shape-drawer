@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include "GeometryException.hpp"
 
 using std::string;
