@@ -82,6 +82,11 @@ public:
         const RadianAngle & rotationAngle);
 
     /**
+    *   Gets the Vector2D after translation
+    **/
+    void translation(const Vector2D & translationVector);
+
+    /**
     * Sends a string of vector to a stream
     * @param os ostream
     * @param vector vector have to print

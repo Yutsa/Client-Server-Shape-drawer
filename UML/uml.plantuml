@@ -5,8 +5,10 @@ package Client {
         +{abstract} toString() : String
         +{abstract} save(const SaveVisitor* saveVisitor)
         +{abstract} translation(Vector2D translationVector)
-        +{abstract} homothétie()
-        +{abstract} rotation()
+        +{abstract} homothétie(const Vector2D & invariantPoint,
+            const double & homothetyRatio)
+        +{abstract} rotation(const Vector2D & rotationCenter,
+            const RadianAngle & rotationAngle)
         +{abstract} getArea()
     }
 
@@ -15,8 +17,10 @@ package Client {
         +toString() : String
         +save(SaveVisitor* saveVisitor)
         +translation(Vector2D translationVector)
-        +homothétie()
-        +rotation()
+        +homothétie(const Vector2D & invariantPoint,
+            const double & homothetyRatio)
+        +rotation(const Vector2D & rotationCenter,
+            const RadianAngle & rotationAngle)
         +getArea()
     }
 
@@ -25,8 +29,10 @@ package Client {
         +toString() : String
         +save(SaveVisitor* saveVisitor)
         +translation(Vector2D translationVector)
-        +homothétie()
-        +rotation()
+        +homothétie(const Vector2D & invariantPoint,
+            const double & homothetyRatio)
+        +rotation(const Vector2D & rotationCenter,
+            const RadianAngle & rotationAngle)
         +getArea()
     }
     class Segment {
@@ -34,8 +40,10 @@ package Client {
         +toString() : String
         +save(SaveVisitor* saveVisitor)
         +translation(Vector2D translationVector)
-        +homothétie()
-        +rotation()
+        +homothétie(const Vector2D & invariantPoint,
+            const double & homothetyRatio)
+        +rotation(const Vector2D & rotationCenter,
+            const RadianAngle & rotationAngle)
         +getArea()
     }
     class Triangle {
@@ -43,8 +51,10 @@ package Client {
         +toString() : String
         +save(SaveVisitor* saveVisitor)
         +translation(Vector2D translationVector)
-        +homothétie()
-        +rotation()
+        +homothétie(const Vector2D & invariantPoint,
+            const double & homothetyRatio)
+        +rotation(const Vector2D & rotationCenter,
+            const RadianAngle & rotationAngle)
         +getArea()
     }
     class Polygone {
@@ -52,8 +62,10 @@ package Client {
         +toString() : String
         +save(SaveVisitor* saveVisitor)
         +translation(Vector2D translationVector)
-        +homothétie()
-        +rotation()
+        +homothétie(const Vector2D & invariantPoint,
+            const double & homothetyRatio)
+        +rotation(const Vector2D & rotationCenter,
+            const RadianAngle & rotationAngle)
         +getArea()
     }
     class Socket << Singleton >> {
@@ -121,6 +133,10 @@ package Client {
         +operator-()
         +string()
         +operator<<()
+        +rotation(const Vector2D & rotationCenter,
+            const RadianAngle & rotationAngle)
+        +homothety(const Vector2D & invariantPoint,
+            const double & homothetyRatio)
     }
 }
 

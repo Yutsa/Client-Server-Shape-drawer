@@ -65,3 +65,8 @@ void rotation(const Vector2D & rotationCenter,
 {
     //TODO
 }
+
+void translation(const Vector2D & translationVector)
+{
+    //TODO
+}
