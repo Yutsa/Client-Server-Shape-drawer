@@ -7,7 +7,7 @@ RadianAngle::RadianAngle(const double & value)
 
 void RadianAngle::setValue(const double & value)
 {
-    if (value < 0 || value > 2*3.14)
+    if (value < 0 || value > 2*M_PI)
     {
         throw new GeometryException("Angle invalide");
     }
