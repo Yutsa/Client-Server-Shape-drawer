@@ -5,11 +5,17 @@ all: test-vector2D
 test-vector2D: test-vector2D.o vector2d.o
 	g++ -o ../bin/test-vector2D ../bin/test-vector2D.o ../bin/vector2d.o $(CFLAGS)
 
-test-vector2D.o: test-vector2D.cpp Geometry/Vector2D.hpp
-	g++ -o ../bin/test-vector2D.o -c test-vector2D.cpp $(CFLAGS)
+test-vector2D.o: Tests/test-vector2D.cpp Geometry/Vector2D.hpp
+	g++ -o ../bin/test-vector2D.o -c Tests/test-vector2D.cpp $(CFLAGS)
 
-vector2d.o : Geometry/Vector2D.cpp
+vector2d.o: Geometry/Vector2D.cpp Geometry/Vector2D.hpp
 	g++ -o ../bin/vector2d.o -c Geometry/Vector2D.cpp $(CFLAGS)
+
+geometryexception.o: Geometry/GeometryException.cpp Geometry/GeometryException.hpp
+	g++ -o ../bin/geometryexception.o -c Geometry/GeometryException.cpp $(CFLAGS)
+
+radianangle.o: Geometry/RadianAngle.cpp Geometry/RadianAngle.hpp Geometry/GeometryException.hpp
+	g++ -o ../bin/radianangle.o -c Geometry/RadianAngle.cpp $(CFLAGS)
 
 clean:
 	rm -rf ../bin/*.o

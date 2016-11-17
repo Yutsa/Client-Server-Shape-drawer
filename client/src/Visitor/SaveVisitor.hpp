@@ -1,3 +1,6 @@
+#ifndef SAVE_VISITOR_H
+#define SAVE_VISITOR_H
+
 #include <iostream>
 
 class Circle;
@@ -33,3 +36,5 @@ public:
     */
     virtual void save(Polygon* polygon) = 0;
 };
+
+#endif
