@@ -7,7 +7,7 @@ Circle(double x, double y, double diameter)
 
 virtual void draw(const DrawingVisitor* visitor) const
 {
-  
+
 }
 
 virtual operator string() const
