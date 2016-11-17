@@ -1,41 +1,48 @@
 #include "Circle.hpp"
+#include "../Geometry/Vector2D.hpp"
+#include <cmath>
 
-Circle(double x, double y, double diameter)
+Circle::Circle(double x, double y, double diameter)
+{
+    
+    _diameter=diameter;
+}
+
+virtual void Circle::draw(const DrawingVisitor* visitor) const
+{
+    visitor.draw(this);
+}
+
+virtual operator Circle::string() const
 {
 
 }
 
-virtual void draw(const DrawingVisitor* visitor) const
+virtual void Circle::save(const SaveVisitor* saveVisitor) const
+{
+    saveVisitor.save(this);
+}
+
+virtual void Circle::translation(const Vector2D & translationVector)
+{
+    _x = _x+translationVector.getX();
+    _y = _y+translationVector.getY();
+}
+
+virtual void Circle::homothety(const Vector2D & invariantPoint,
+    double homothetyRatio)
 {
 
 }
 
-virtual operator string() const
+virtual void Circle::rotation(const Vector2D & rotationCenter,
+    const RadianAngle & rotationAngle)
 {
 
 }
 
-virtual void save(const SaveVisitor* saveVisitor) const
+virtual double Circle::getArea() const
 {
-
-}
-
-virtual void translation()
-{
-
-}
-
-virtual void homothety()
-{
-
-}
-
-virtual void rotation()
-{
-
-}
-
-virtual double getArea() const
-{
-
+    double radius = _diameter/2;
+    return M_PI*radius*radius;
 }
