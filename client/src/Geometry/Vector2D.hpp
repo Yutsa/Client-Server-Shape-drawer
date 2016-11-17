@@ -71,10 +71,15 @@ public:
 
     /**
     *   Gets the Vector2D after the homothety
-    *   @return Vector2D
     **/
-    const Vector2D homothety(const Vector2D & invariantPoint,
+    void homothety(const Vector2D & invariantPoint,
         const double & homothetyRatio);
+
+    /**
+    *   Gets the Vector2D after rotation
+    **/
+    void rotation(const Vector2D & rotationCenter,
+        const RadianAngle & rotationAngle);
 
     /**
     * Sends a string of vector to a stream

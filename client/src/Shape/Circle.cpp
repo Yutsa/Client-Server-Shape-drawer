@@ -41,7 +41,7 @@ virtual void Circle::homothety(const Vector2D & invariantPoint,
 virtual void Circle::rotation(const Vector2D & rotationCenter,
     const RadianAngle & rotationAngle)
 {
-
+    _center.rotation(rotationCenter,rotationAngle);
 }
 
 virtual double Circle::getArea() const

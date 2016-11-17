@@ -59,3 +59,9 @@ Vector2D::homothety(const Vector2D & invariantPoint,
     _y = _y+(homothetyVector.getY()*homothetyRatio);
 
 }
+
+void rotation(const Vector2D & rotationCenter,
+    const RadianAngle & rotationAngle)
+{
+    //TODO
+}

@@ -42,7 +42,8 @@ void Segment::homothety(const Vector2D & invariantPoint,
 void Segment::rotation(const Vector2D & rotationCenter,
     const RadianAngle & rotationAngle)
 {
-
+    _firstPoint.rotation(rotationCenter,rotationAngle);
+    _secondPoint.rotation(rotationCenter,rotationAngle);
 }
 double Segment::getArea() const
 {
