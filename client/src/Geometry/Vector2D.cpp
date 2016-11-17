@@ -78,21 +78,32 @@ ostream & operator<<(ostream & os, const Vector2D & vector)
 void Vector2D::homothety(const Vector2D & invariantPoint,
     const double & homothetyRatio)
 {
-    //Creation of the homothety Vector
+    /* Creation of the homothety Vector */
     Vector2D homothetyVector;
-    homothetyVector = Vector2D(_x-invariantPoint.getX(),
-        _y-invariantPoint.getY());
+    homothetyVector = *this - invariantPoint;
+//    homothetyVector = Vector2D(_x-invariantPoint.getX(),
+//        _y-invariantPoint.getY());
 
-    //homothety application
-    _x = _x+(homothetyVector.getX()*homothetyRatio);
-    _y = _y+(homothetyVector.getY()*homothetyRatio);
-
+    /* Homothety application */
+    *this += homothetyVector*homothetyRatio;
+//    _x += homothetyVector.getX()*homothetyRatio;
+//    _y += homothetyVector.getY()*homothetyRatio;
 }
 
-void rotation(const Vector2D & rotationCenter,
+void Vector2D::rotation(const Vector2D & rotationCenter,
     const RadianAngle & rotationAngle)
 {
     //TODO
+//A'.x = A.x * cos(θ) - A.y * sin(θ)
+//
+//A'.y = A.x * sin(θ) + A.y * cos(θ)
+    double x = ((_x - rotationCenter.getX()) * cos(rotationAngle.getValue())) 
+             - ((_y - rotationCenter.getY()) * sin(rotationAngle.getValue()));
+    double y = ((_x - rotationCenter.getX()) * sin(rotationAngle.getValue())) 
+             + ((_y - rotationCenter.getY()) * cos(rotationAngle.getValue()));
+    
+    _x = x + rotationCenter.getX();
+    _y = y + rotationCenter.getY();
 }
 
 void translation(const Vector2D & translationVector)

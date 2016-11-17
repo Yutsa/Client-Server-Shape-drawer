@@ -16,3 +16,8 @@ void RadianAngle::setValue(const double & value)
         _value = value;
     }
 }
+
+double RadianAngle::getValue() const
+{
+    return _value;
+}

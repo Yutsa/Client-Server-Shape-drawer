@@ -1,3 +1,6 @@
+#ifndef GEOMETRY_EXCEPTION_H
+#define GEOMETRY_EXCEPTION_H
+
 #include <iostream>
 
 using std::string;
@@ -28,3 +31,5 @@ public:
 };
 
 extern ostream & operator<<(ostream & os, const GeometryException & geometryException);
+
+#endif
