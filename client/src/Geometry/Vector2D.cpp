@@ -109,7 +109,7 @@ void Vector2D::rotation(const Vector2D & rotationCenter,
     _y = y + rotationCenter.getY();
 }
 
-void translation(const Vector2D & translationVector)
+void Vector2D::translation(const Vector2D & translationVector)
 {
-    //TODO
+    this += translationVector;
 }

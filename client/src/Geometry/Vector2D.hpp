@@ -88,6 +88,12 @@ public:
     const Vector2D & operator-= (const Vector2D & rhs);
 
     /**
+    * Make translation of a vector2D
+    * @param translationVector
+    **/
+    void translation(const Vector2D & translationVector);  
+        
+    /**
     * Make homothety of a vector2D
     * @param invariantPoint
     * @param homothetyRatio
