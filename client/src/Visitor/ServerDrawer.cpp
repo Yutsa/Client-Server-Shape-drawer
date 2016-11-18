@@ -7,6 +7,11 @@ ServerDrawer::ServerDrawer() : DrawingVisitor()
     Socket::createConnexion();
 }
 
+ServerDrawer::~ServerDrawer()
+{
+    
+}
+
 void ServerDrawer::draw(const Circle* circle) const
 {
     string request = (string) *circle;
@@ -31,7 +36,7 @@ void ServerDrawer::draw(const Triangle* triangle) const
     cout << Socket::receiveData() << endl;
 }
 
-void ServerDrawer::draw(const Polygon* polygon) const
+void ServerDrawer::draw(const Polygone* polygon) const
 {
     string request = (string) *polygon;
     Socket::sendRequest(request);

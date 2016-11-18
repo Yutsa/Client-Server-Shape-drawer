@@ -6,11 +6,8 @@
 #include "../Geometry/Vector2D.hpp"
 #include "../Utils/Color.hpp"
 
-#include "../Visitor/SaveVisitor.hpp"
-#include "../Visitor/ServerDrawer.hpp"
-
-//class SaveVisitor;
-//class DrawingVisitor;
+class SaveVisitor;
+class DrawingVisitor;
 
 using std::string;
 

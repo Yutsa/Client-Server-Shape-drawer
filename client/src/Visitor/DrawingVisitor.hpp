@@ -6,7 +6,11 @@
 class Circle;
 class Segment;
 class Triangle;
-class Polygon;
+class Polygone;
+
+using std::string;
+using std::cout;
+using std::endl;
 
 //#include "../Shape/Circle.hpp"
 //#include "../Shape/Segment.hpp"
@@ -42,7 +46,7 @@ public:
     * Draws the Polygon.
     * @param polygon The Polygon to draw.
     */
-    virtual void draw(const Polygon* polygon) const = 0;
+    virtual void draw(const Polygone* polygon) const = 0;
 };
 
 #endif

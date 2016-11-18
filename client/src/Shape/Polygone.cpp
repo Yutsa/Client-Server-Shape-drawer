@@ -26,7 +26,7 @@ void Polygone::save(const SaveVisitor* saveVisitor) const
     saveVisitor.save(this);
 }
 
-Shape* Polygone::translation(const Vector2D & translationVector)
+Shape* Polygone::translation(const Vector2D & translationVector) const
 {
     Polygone newPolygone(this);
     for(int i=0;i<newPolygone._points.size();i++){
@@ -36,7 +36,7 @@ Shape* Polygone::translation(const Vector2D & translationVector)
 }
 
 void Polygone::homothety(const Vector2D & invariantPoint,
-    const double & homothetyRatio)
+    const double & homothetyRatio) const
 {
     Polygone newPolygone(this);
     for(int i=0;i<newPolygone._points.size();i++){
@@ -46,7 +46,7 @@ void Polygone::homothety(const Vector2D & invariantPoint,
 }
 
 void Polygone::rotation(const Vector2D & rotationCenter,
-    const RadianAngle & rotationAngle)
+    const RadianAngle & rotationAngle) const
 {
     Polygone newPolygone(this);
     for(int i=0;i<newPolygone._points.size();i++){

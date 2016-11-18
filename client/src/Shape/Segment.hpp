@@ -5,6 +5,9 @@
 #include "Shape.hpp"
 #include <cmath>
 
+#include "../Visitor/SaveVisitor.hpp"
+#include "../Visitor/ServerDrawer.hpp"
+
 using std::string;
 
 /**
@@ -54,7 +57,7 @@ public:
     *  translation.
     * @return Shape* the new Segment after the translation
     */
-    virtual Shape* translation(const Vector2D & translationVector);
+    virtual Shape* translation(const Vector2D & translationVector) const;
 
     /**
     * Apply an homothety on the Segment.
@@ -63,7 +66,7 @@ public:
     * @return Shape* the new Segment after the homothety
     */
     virtual Shape* homothety(const Vector2D & invariantPoint,
-        const double & homothetyRatio);
+        const double & homothetyRatio) const;
 
     /**
     * Rotates the Segment.
@@ -72,7 +75,7 @@ public:
     * @return Shape* the new Segment after the rotation
     */
     virtual Shape* rotation(const Vector2D & rotationCenter,
-        const RadianAngle & rotationAngle);
+        const RadianAngle & rotationAngle) const;
 
     /**
     * Returns the area of the Segment.

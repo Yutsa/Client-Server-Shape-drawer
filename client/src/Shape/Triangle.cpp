@@ -22,7 +22,7 @@ void Triangle::save(const SaveVisitor* saveVisitor) const
     saveVisitor.save(this);
 }
 
-Shape* Triangle::translation(const Vector2D & translationVector)
+Shape* Triangle::translation(const Vector2D & translationVector) const
 {
     Triangle newTriangle(this)
     newTriangle._firstPoint.translation(translationVector);
@@ -34,7 +34,7 @@ Shape* Triangle::translation(const Vector2D & translationVector)
 }
 
 Shape* Triangle::homothety(const Vector2D & invariantPoint,
-    const double & homothetyRatio)
+    const double & homothetyRatio) const
 {
     Triangle newTriangle(this);
     newTriangle._firstPoint.homothety(invariantPoint,homothetyRatio);
@@ -44,7 +44,7 @@ Shape* Triangle::homothety(const Vector2D & invariantPoint,
 }
 
 Shape* Triangle::rotation(const Vector2D & rotationCenter,
-    const RadianAngle & rotationAngle)
+    const RadianAngle & rotationAngle) const
 {
     Triangle newTriangle(this);
     newTriangle._firstPoint.rotation(rotationCenter,rotationAngle);
