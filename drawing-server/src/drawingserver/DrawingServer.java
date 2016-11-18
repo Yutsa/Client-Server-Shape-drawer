@@ -8,6 +8,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import shapedrawer.CircleDrawer;
+import shapedrawer.PolygonDrawer;
+import shapedrawer.SegmentDrawer;
+import shapedrawer.ShapeDrawer;
+import shapedrawer.ShapeDrawerLink;
+
 /**
  * This class will have the ServerSocket and create Threads
  * for each connection by a client.
@@ -25,7 +31,8 @@ public class DrawingServer
         int port = 0;
         int nbConnection = 0;
 
-        port = 9111;
+        //port = 9111;
+        port = 9112;
         try
         {
             server = new ServerSocket(port);
@@ -39,6 +46,7 @@ public class DrawingServer
         }
         catch (IOException e)
         {
+        	e.printStackTrace();
             System.err.println("Error when creating the ServerSocket.");
             System.exit(-1);
         }

@@ -53,6 +53,7 @@ public class DrawingThread extends Thread
         this.shapeDrawer = shapeDrawer;
         inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         outputStream = new PrintStream(socket.getOutputStream());
+
         createFrame();
     }
 
@@ -90,8 +91,11 @@ public class DrawingThread extends Thread
 
         try
         {
+        	/* Here is the blocking operation */
             request = inputStream.readLine();
+
             shapeDrawer.draw(request, _frame, _graphics, _strategy);
+
             outputStream.println("Forme dessinée.");
         }
         catch (IOException e)
