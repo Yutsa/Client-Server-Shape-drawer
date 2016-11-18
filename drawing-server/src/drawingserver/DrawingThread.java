@@ -6,6 +6,7 @@ import shapedrawer.ShapeNotRecognizedException;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferStrategy;
 import java.io.*;
 import java.net.Socket;
 
@@ -32,6 +33,8 @@ public class DrawingThread extends Thread
      * The Frame in which the shape will be drawn.
      */
     private Frame _frame;
+    private Graphics _graphics;
+    private BufferStrategy _strategy;
 
     /**
      * Minimal constructor for the DrawingThread.
@@ -65,6 +68,14 @@ public class DrawingThread extends Thread
                 _frame.dispose();
             }
         });
+
+        _frame.setIgnoreRepaint(true);
+
+        int nbBuffers = 1;
+
+        _frame.createBufferStrategy(nbBuffers);
+        _strategy = _frame.getBufferStrategy();
+        _graphics = _strategy.getDrawGraphics();
     }
 
     /**
@@ -77,7 +88,8 @@ public class DrawingThread extends Thread
         try
         {
             request = inputStream.readLine();
-            shapeDrawer.draw(request, _frame);
+            shapeDrawer.draw(request, _frame, _graphics, _strategy);
+            //outputStream.println("Forme dessinée.");
         }
         catch (IOException e)
         {

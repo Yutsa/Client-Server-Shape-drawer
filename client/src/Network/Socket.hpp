@@ -11,20 +11,72 @@
 
 using std::string;
 
+/**
+* The singleton that will encapsulate the socket to communicate with
+* the drawing server.
+*/
 class Socket
 {
 private:
-    static Socket* _instance = NULL;
+    /**
+    * The instance of the Socket singleton.
+    */
+    static Socket* _instance;
+
+    /**
+    * The adress of the drawing server.
+    */
     static string _serverAddress;
+
+    /**
+    * The port of the drawing server.
+    */
     static int _serverPort;
+
+    /**
+    * The socket to the drawing server.
+    */
     static int _sock;
+
+    /**
+    * The IP address of the drawing server
+    */
     static sockaddr_in _socketAddress;
 
+    /*
+    * The private constructor to be sure that there'll be only one
+    * instance of the socket singleton.
+    */
     Socket();
 
 public:
+    /**
+    * Creates the Socket if it hasn't been created yet, otherwise
+    * returns a pointer to the instance of the Socket.
+    * @return Socket* A pointer to the instance of the Socket.
+    */
     static const Socket* getInstance();
+
+    /**
+    * Creates the connexion to the server.
+    */
     static void createConnexion();
+
+    /**
+    * Sends the request to the server.
+    */
+    static void sendRequest(const string & request);
+
+    /**
+    * Receives a message from the server and returns it.
+    * @return string The message received from the server.
+    */
+    static string receiveData();
+
+    /**
+    * Closes the socket
+    */
+    static void closeSocket();
 };
 
 #endif

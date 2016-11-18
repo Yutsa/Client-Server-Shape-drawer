@@ -26,29 +26,14 @@ public abstract class ShapeDrawerLink implements ShapeDrawer
      * throws a {@link ShapeNotRecognizedException}.
      * @param request String representing the shape to draw.
      * @param frame The frame to draw in.
+     * @param graphics
+     * @param strategy
      * @throws ShapeNotRecognizedException If no links in the chain of
      * responsibility could draw the shape it throws this Exception.
      */
     @Override
-    public void draw(String request, Frame frame) throws ShapeNotRecognizedException
+    public void draw(String request, Frame frame, Graphics graphics, BufferStrategy strategy) throws ShapeNotRecognizedException
     {
-        Graphics graphics;
-        int nbBuffers = 1;
-        frame.createBufferStrategy(nbBuffers);
-
-        try
-        {
-            Thread.sleep(150);
-        }
-        catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        }
-
-        BufferStrategy strategy = frame.getBufferStrategy();
-
-        graphics = strategy.getDrawGraphics();
-
         try
         {
             this.drawShape(request, frame, graphics, strategy);
@@ -57,7 +42,7 @@ public abstract class ShapeDrawerLink implements ShapeDrawer
         {
             if (_next != null)
             {
-                _next.draw(request, frame);
+                _next.draw(request, frame, graphics, strategy);
             }
             else
             {

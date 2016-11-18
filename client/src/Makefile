@@ -5,6 +5,9 @@ all: test-vector2D
 test-vector2D: test-vector2D.o vector2d.o radianangle.o geometryexception.o
 	g++ -o ../bin/test-vector2D ../bin/test-vector2D.o ../bin/vector2d.o ../bin/radianangle.o ../bin/geometryexception.o $(CFLAGS)
 
+test-socket: test-socket.o socket.o networkexception.o
+	g++ -o ../bin/test-socket ../bin/test-socket.o ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
+
 test-vector2D.o: Tests/test-vector2D.cpp Geometry/Vector2D.hpp
 	g++ -o ../bin/test-vector2D.o -c Tests/test-vector2D.cpp $(CFLAGS)
 
@@ -22,6 +25,9 @@ socket.o: Network/Socket.cpp Network/Socket.hpp Network/NetworkException.hpp
 
 radianangle.o: Geometry/RadianAngle.cpp Geometry/RadianAngle.hpp Geometry/GeometryException.hpp
 	g++ -o ../bin/radianangle.o -c Geometry/RadianAngle.cpp $(CFLAGS)
+
+test-socket.o: Tests/test-socket.cpp Network/Socket.hpp
+	g++ -o ../bin/test-socket.o -c Tests/test-socket.cpp $(CFLAGS)
 
 clean:
 	rm -rf ../bin/*.o

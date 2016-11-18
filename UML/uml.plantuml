@@ -72,9 +72,9 @@ package Client {
         -instance: Socket
         -Socket()
         +getInstance() : Socket
-        +connectToServer()
-        +static getAddress() : sockaddr_in
-        +void sendDate(String data)
+        +createConnexion()
+        +sendRequest(const string & request)
+        +closeSocket()
     }
 
     abstract class DrawingVisitor {
@@ -92,6 +92,7 @@ package Client {
     }
 
     class ServerDrawer {
+        +ServerDrawer()
         +draw(Cercle *s)
         +draw(Segment *s)
         +draw(Triangle *s)
@@ -209,4 +210,6 @@ Segment o--> "2" Vector2D
 Triangle o--> "3" Vector2D
 Polygone o--> "3, N" Vector2D
 ShapeDrawer .. ShapeNotRecognizedException : << Throws >>
+ServerDrawer o-- "1" Socket
+Socket *-- "1" Socket
 @enduml

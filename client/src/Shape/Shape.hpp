@@ -38,6 +38,13 @@ public:
     virtual void translation(const Vector2D & translationVector) = 0;
 
     /**
+    * Translate the shape using a translation vector.
+    * @param translationVector The translation vector to use for the
+    *  translation.
+    */
+    virtual Shape* translation(const Vector2D & translationVector) const = 0;
+
+    /**
     * Apply an homothety on the shape.
     * @param invariantPoint The center of the homothety.
     * @param homothetyRatio The ratio of the homothety.
