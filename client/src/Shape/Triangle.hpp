@@ -28,6 +28,7 @@ public:
     *   Triangle constructors
     *   @param firstPoint the firstPoint of the Triangle
     *   @param secondPoint the secondPoint of the Triangle
+    *   @param thirdPoint the thirdPoint of the Triangle
     **/
     Triangle(Vector2D firstPoint, Vector2D secondPoint Vector2D thirdPoint);
 
@@ -53,23 +54,26 @@ public:
     * Translate the Triangle using a translation vector.
     * @param translationVector The translation vector to use for the
     *  translation.
+    * @return Shape* the new Triangle after the translation
     */
-    virtual void translation(const Vector2D & translationVector);
+    virtual Shape* translation(const Vector2D & translationVector);
 
     /**
     * Apply an homothety on the Triangle.
     * @param invariantPoint The center of the homothety.
     * @param homothetyRatio The ratio of the homothety.
+    * @return Shape* the new triangle after the homotethy
     */
-    virtual void homothety(const Vector2D & invariantPoint,
+    virtual Shape* homothety(const Vector2D & invariantPoint,
         const double & homothetyRatio);
 
     /**
     * Rotates the Triangle.
     * @param rotationCenter The center of the rotation.
     * @param rotationAngle The angle of the rotation.
+    * @return Shape* the new Triangle after the rotation
     */
-    virtual void rotation(const Vector2D & rotationCenter,
+    virtual Shape* rotation(const Vector2D & rotationCenter,
         const RadianAngle & rotationAngle);
 
     /**

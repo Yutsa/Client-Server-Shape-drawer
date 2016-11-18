@@ -49,23 +49,26 @@ public:
     * Translate the Segment using a translation vector.
     * @param translationVector The translation vector to use for the
     *  translation.
+    * @return Shape* the new Segment after the translation
     */
-    virtual void translation(const Vector2D & translationVector);
+    virtual Shape* translation(const Vector2D & translationVector);
 
     /**
     * Apply an homothety on the Segment.
     * @param invariantPoint The center of the homothety.
     * @param homothetyRatio The ratio of the homothety.
+    * @return Shape* the new Segment after the homothety
     */
-    virtual void homothety(const Vector2D & invariantPoint,
+    virtual Shape* homothety(const Vector2D & invariantPoint,
         const double & homothetyRatio);
 
     /**
     * Rotates the Segment.
     * @param rotationCenter The center of the rotation.
     * @param rotationAngle The angle of the rotation.
+    * @return Shape* the new Segment after the rotation
     */
-    virtual void rotation(const Vector2D & rotationCenter,
+    virtual Shape* rotation(const Vector2D & rotationCenter,
         const RadianAngle & rotationAngle);
 
     /**

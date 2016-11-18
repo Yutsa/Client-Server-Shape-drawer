@@ -24,24 +24,29 @@ virtual void Circle::save(const SaveVisitor* saveVisitor) const
     saveVisitor.save(this);
 }
 
-virtual void Circle::translation(const Vector2D & translationVector)
+virtual Shape* Circle::translation(const Vector2D & translationVector)
 {
-    _center.setX(translationVector.getX()+_center.getX())
-    _center.setY(translationVector.getY()+_center.getY())
+    Circle newCircle(this);
+    newCircle._center.translation(translationVector);
+    return newCircle;
 }
 
 virtual void Circle::homothety(const Vector2D & invariantPoint,
     const double & homothetyRatio)
 {
-    _center.homothety(invariantPoint,homothetyRatio);
+    Circle newCircle(this);
+    newCircle._center.homothety(invariantPoint,homothetyRatio);
+    newCircle._diameter *= homothetyRatio;
+    return newCircle;
 
-    _diameter *= homothetyRatio;
 }
 
 virtual void Circle::rotation(const Vector2D & rotationCenter,
     const RadianAngle & rotationAngle)
 {
-    _center.rotation(rotationCenter,rotationAngle);
+    Circle newCircle(this);
+    newCircle._center.rotation(rotationCenter,rotationAngle);
+    return newCircle;
 }
 
 virtual double Circle::getArea() const

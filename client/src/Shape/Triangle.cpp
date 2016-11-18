@@ -1,4 +1,4 @@
-#include "Circle.hpp"
+#include "Triangle.hpp"
 #include "../Geometry/Vector2D.hpp"
 #include <cmath>
 
@@ -24,31 +24,51 @@ void Triangle::save(const SaveVisitor* saveVisitor) const
     saveVisitor.save(this);
 }
 
-void Triangle::translation(const Vector2D & translationVector)
+Shape* Triangle::translation(const Vector2D & translationVector)
 {
-    _firstPoint.setX(translationVector.getX()+_firstPoint.getX())
-    _firstPoint.setY(translationVector.getY()+_firstPoint.getY())
+    Triangle newTriangle(this)
+    newTriangle._firstPoint.translation(translationVector);
 
-    _secondPoint.setX(translationVector.getX()+_secondPoint.getX())
-    _secondPoint.setY(translationVector.getY()+_secondPoint.getY())
+    newTriangle._secondPoint.translation(translationVector);
+
+    newTriangle._thirdPoint.translation(translationVector);
+    return newTriangle;
 }
 
-void Triangle::homothety(const Vector2D & invariantPoint,
+Shape* Triangle::homothety(const Vector2D & invariantPoint,
     const double & homothetyRatio)
 {
-    _firstPoint.homothety(invariantPoint,homothetyRatio);
-    _secondPoint.homothety(invariantPoint,homothetyRatio);
-    _thirdPoint.homothety(invariantPoint,homothetyRatio);
+    Triangle newTriangle(this);
+    newTriangle._firstPoint.homothety(invariantPoint,homothetyRatio);
+    newTriangle._secondPoint.homothety(invariantPoint,homothetyRatio);
+    newTriangle._thirdPoint.homothety(invariantPoint,homothetyRatio);
+    return newTriangle;
 }
 
-void Triangle::rotation(const Vector2D & rotationCenter,
+Shape* Triangle::rotation(const Vector2D & rotationCenter,
     const RadianAngle & rotationAngle)
 {
-    _firstPoint.rotation(rotationCenter,rotationAngle);
-    _secondPoint.rotation(rotationCenter,rotationAngle);
-    _thirdPoint.rotation(rotationCenter,rotationAngle);
+    Triangle newTriangle(this);
+    newTriangle._firstPoint.rotation(rotationCenter,rotationAngle);
+    newTriangle._secondPoint.rotation(rotationCenter,rotationAngle);
+    newTriangle._thirdPoint.rotation(rotationCenter,rotationAngle);
+    return newTriangle;
 }
 double Triangle::getArea() const
 {
-    //TODO
+    double semi_perimeter;
+    double firstSegment, secondSegment, thirdSegment;
+    firstSegment=sqrt(pow((_secondPoint.getX()-_firstPoint.getX()),2)
+        +pow((_secondPoint.getY()-_firstPoint.getY()),2));
+    secondSegment=sqrt(pow((_thirdPoint.getX()-_secondPoint.getX()),2)
+        +pow((_thirdPoint.getY()-_secondPoint.getY()),2));
+    thirdSegment=sqrt(pow((_firstPoint.getX()-_thirdPoint.getX()),2)
+        +pow((_firstPoint.getY()-_thirdPoint.getY()),2));
+    semi_perimeter = (firstSegment+secondSegment+thirdSegment)/2;
+
+    //Heron Formula
+    return sqrt(semi_perimeter*(semi_perimeter - firstSegment)
+        *(semi_perimeter - secondSegment)*(semi_perimeter - thirdSegment));
+
+
 }
