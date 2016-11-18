@@ -11,7 +11,7 @@ using std::vector;
 
 Socket::Socket()
 {
-    
+
 }
 
 const Socket* Socket::getInstance()

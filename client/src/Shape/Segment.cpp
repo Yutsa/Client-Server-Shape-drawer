@@ -1,4 +1,4 @@
-#include "Circle.hpp"
+#include "Segment.hpp"
 #include "../Geometry/Vector2D.hpp"
 #include <cmath>
 
@@ -23,27 +23,30 @@ void Segment::save(const SaveVisitor* saveVisitor) const
     saveVisitor.save(this);
 }
 
-void Segment::translation(const Vector2D & translationVector)
+Shape* Segment::translation(const Vector2D & translationVector)
 {
-    _firstPoint.setX(translationVector.getX()+_firstPoint.getX())
-    _firstPoint.setY(translationVector.getY()+_firstPoint.getY())
-
-    _secondPoint.setX(translationVector.getX()+_secondPoint.getX())
-    _secondPoint.setY(translationVector.getY()+_secondPoint.getY())
+    Segment newSegment(this);
+    newSegment._firstPoint.translation(translationVector);
+    newSegment._secondPoint.translation(translationVector);
+    return newSegment;
 }
 
 void Segment::homothety(const Vector2D & invariantPoint,
     const double & homothetyRatio)
 {
-    _firstPoint.homothety(invariantPoint,homothetyRatio);
-    _secondPoint.homothety(invariantPoint,homothetyRatio);
+    Segment newSegment(this);
+    newSegment._firstPoint.homothety(invariantPoint,homothetyRatio);
+    newSegment._secondPoint.homothety(invariantPoint,homothetyRatio);
+    return newSegment;
 }
 
 void Segment::rotation(const Vector2D & rotationCenter,
     const RadianAngle & rotationAngle)
 {
-    _firstPoint.rotation(rotationCenter,rotationAngle);
-    _secondPoint.rotation(rotationCenter,rotationAngle);
+    Segment newSegment(this);
+    newSegment._firstPoint.rotation(rotationCenter,rotationAngle);
+    newSegment._secondPoint.rotation(rotationCenter,rotationAngle);
+    return newSegment;
 }
 double Segment::getArea() const
 {

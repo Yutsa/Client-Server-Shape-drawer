@@ -7,7 +7,7 @@ using std::string;
 using std::ostream;
 
 /**
-* Class for hander all geometrique exceptions
+* Class for hander all network exceptions
 */
 class NetworkException
 {

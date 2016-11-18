@@ -111,5 +111,5 @@ void Vector2D::rotation(const Vector2D & rotationCenter,
 
 void Vector2D::translation(const Vector2D & translationVector)
 {
-    this += translationVector;
+    *this += translationVector;
 }

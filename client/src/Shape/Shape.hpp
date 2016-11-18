@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
 
+class DrawingVisitor;
+class SaveVisitor;
+
 using std::string;
 
 /**

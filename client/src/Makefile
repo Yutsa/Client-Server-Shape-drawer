@@ -29,6 +29,10 @@ radianangle.o: Geometry/RadianAngle.cpp Geometry/RadianAngle.hpp Geometry/Geomet
 test-socket.o: Tests/test-socket.cpp Network/Socket.hpp
 	g++ -o ../bin/test-socket.o -c Tests/test-socket.cpp $(CFLAGS)
 
+color.o: Utils/Color.cpp Utils/Color.hpp Utils/UtilsException.hpp
+	g++ -o ../bin/color.o -c Utils/Color.cpp $(CFLAGS)
+
+
 clean:
 	rm -rf ../bin/*.o
 
