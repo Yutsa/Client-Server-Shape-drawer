@@ -21,3 +21,13 @@ double RadianAngle::getValue() const
 {
     return _value;
 }
+
+double cos(const RadianAngle & angle)
+{
+    return cos(angle.getValue());
+}
+
+double sin(const RadianAngle & angle)
+{
+    return sin(angle.getValue());
+}

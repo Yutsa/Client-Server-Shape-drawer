@@ -36,4 +36,7 @@ public:
     double getValue() const;
 };
 
+double cos(const RadianAngle & angle);
+double sin(const RadianAngle & angle);
+
 #endif

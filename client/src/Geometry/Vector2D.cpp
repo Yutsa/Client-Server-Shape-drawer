@@ -97,11 +97,14 @@ void Vector2D::rotation(const Vector2D & rotationCenter,
 //A'.x = A.x * cos(θ) - A.y * sin(θ)
 //
 //A'.y = A.x * sin(θ) + A.y * cos(θ)
-    double x = ((_x - rotationCenter.getX()) * cos(rotationAngle.getValue())) 
-             - ((_y - rotationCenter.getY()) * sin(rotationAngle.getValue()));
-    double y = ((_x - rotationCenter.getX()) * sin(rotationAngle.getValue())) 
-             + ((_y - rotationCenter.getY()) * cos(rotationAngle.getValue()));
     
+    /* Makes rotation of vector2D */
+    double x = ((_x - rotationCenter.getX()) * cos(rotationAngle)) 
+             - ((_y - rotationCenter.getY()) * sin(rotationAngle));
+    double y = ((_x - rotationCenter.getX()) * sin(rotationAngle)) 
+             + ((_y - rotationCenter.getY()) * cos(rotationAngle));
+    
+    /* Translation for set rotation in function of center */
     _x = x + rotationCenter.getX();
     _y = y + rotationCenter.getY();
 }
