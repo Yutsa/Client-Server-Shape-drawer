@@ -4,7 +4,14 @@
 
 using std::ostringstream;
 
-Circle::Circle(Vector2D center, double diameter)
+Circle::Circle(Vector2D center, double diameter, Color color) : Shape(color)
+{
+    _center.setX(center.getX());
+    _center.setY(center.getY());
+    _diameter=diameter;
+}
+
+Circle::Circle(Vector2D center, double diameter) : Shape()
 {
     _center.setX(center.getX());
     _center.setY(center.getY());

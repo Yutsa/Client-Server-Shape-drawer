@@ -1,6 +1,4 @@
 #include "Polygone.hpp"
-#include "../Geometry/Vector2D.hpp"
-#include <cmath>
 
 Polygone()
 {

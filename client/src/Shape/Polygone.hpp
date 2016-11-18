@@ -1,11 +1,13 @@
+#ifndef POLYGON_H
+#define POLYGON_H
+
 #include <iostream>
-#include <Shape.hpp>
+#include "Shape.hpp"
 #include <vector>
+#include <cmath>
 
 using std::string;
 
-
-class Vector2D;
 /**
 *   Represent a Polygone
 *   It's a Shape
@@ -82,3 +84,5 @@ public:
     */
     virtual double getArea() const;
 };
+
+#endif

@@ -1,9 +1,12 @@
+#ifndef TRIANGLE_H
+#define TRIANGLE_H
+
 #include <iostream>
-#include <Shape.hpp>
+#include "Shape.hpp"
+#include <cmath>
 
 using std::string;
 
-class Vector2D;
 /**
 *   Represent a Triangle
 *   It's a Shape
@@ -30,7 +33,7 @@ public:
     *   @param secondPoint the secondPoint of the Triangle
     *   @param thirdPoint the thirdPoint of the Triangle
     **/
-    Triangle(Vector2D firstPoint, Vector2D secondPoint Vector2D thirdPoint);
+    Triangle(Vector2D firstPoint, Vector2D secondPoint, Vector2D thirdPoint);
 
     /**
     * Draws the Triangle using a DrawingVisitor.
@@ -82,3 +85,5 @@ public:
     */
     virtual double getArea() const;
 };
+
+#endif

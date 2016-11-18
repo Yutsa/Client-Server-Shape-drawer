@@ -1,20 +1,44 @@
+#ifndef SHAPE_H
+#define SHAPE_H
+
 #include <iostream>
 #include <string>
 #include "../Geometry/Vector2D.hpp"
-#include "../Visitor/DrawingVisitor.hpp"
+#include "../Utils/Color.hpp"
+
 #include "../Visitor/SaveVisitor.hpp"
+#include "../Visitor/ServerDrawer.hpp"
+
+//class SaveVisitor;
+//class DrawingVisitor;
 
 using std::string;
 
 /**
 * This class is the base class for every Shape.
 */
-
 class Shape
 {
+private:
+    /**
+    * Member _color for color of the shape
+    */
+    Color _color;
 
 //TODO: Must implement the shape color.
 public:
+    /*
+    * Empty contructor 
+    * Sets color to NULL
+    */
+    Shape();
+    
+    /*
+    * Contructor
+    * Sets _color to color value
+    */
+    Shape(Color color);
+    
     /**
     * Draws the Shape using a DrawingVisitor.
     * @param visitor The DrawingVisitor to use to draw the shape.
@@ -69,3 +93,5 @@ public:
     */
     virtual double getArea() const = 0;
 };
+
+#endif

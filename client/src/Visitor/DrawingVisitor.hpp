@@ -8,6 +8,11 @@ class Segment;
 class Triangle;
 class Polygon;
 
+//#include "../Shape/Circle.hpp"
+//#include "../Shape/Segment.hpp"
+//#include "../Shape/Triangle.hpp"
+//#include "../Shape/Polygone.hpp"
+
 /**
 * The abstract base class for all drawers.
 */

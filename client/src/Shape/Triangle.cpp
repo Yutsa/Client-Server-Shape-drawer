@@ -1,6 +1,4 @@
 #include "Triangle.hpp"
-#include "../Geometry/Vector2D.hpp"
-#include <cmath>
 
 Triangle::Triangle(Vector2D firstPoint, Vector2D secondPoint, Vector2D thirdPoint)
 {

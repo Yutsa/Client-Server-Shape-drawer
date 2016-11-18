@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include "../Network/Socket.hpp"
+#include "DrawingVisitor.hpp"
+
+#include "../Shape/Circle.hpp"
 
 class ServerDrawer : public DrawingVisitor
 {

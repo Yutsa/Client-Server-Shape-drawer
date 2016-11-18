@@ -1,6 +1,4 @@
 #include "Segment.hpp"
-#include "../Geometry/Vector2D.hpp"
-#include <cmath>
 
 Segment::Segment(Vector2D firstPoint, Vector2D secondPoint)
 {

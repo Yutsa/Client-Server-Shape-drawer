@@ -1,9 +1,12 @@
+#ifndef SEGMENT_H
+#define SEGMENT_H
+
 #include <iostream>
-#include <Shape.hpp>
+#include "Shape.hpp"
+#include <cmath>
 
 using std::string;
 
-class Vector2D;
 /**
 *   Represent a Segment
 *   It's a Shape
@@ -77,3 +80,5 @@ public:
     */
     virtual double getArea() const;
 };
+
+#endif

@@ -1,6 +1,11 @@
+#ifndef CIRCLE_H
+#define CIRCLE_H
+
 #include <iostream>
 #include "Shape.hpp"
 
+#include "../Visitor/SaveVisitor.hpp"
+#include "../Visitor/ServerDrawer.hpp"
 
 using std::string;
 
@@ -22,9 +27,17 @@ private:
     double _diameter;
 public:
     /**
-    *   Circle constructors
-    *   @param center The center point of the Circle
-    *   @param diameter The diameter of the Circle
+    * Circle constructor with color
+    * @param center The center point of the Circle
+    * @param diameter The diameter of the Circle
+    * @param color The color of the Circle
+    **/
+    Circle(Vector2D center, double diameter, Color color);
+    
+    /**
+    * Circle constructor
+    * @param center The center point of the Circle
+    * @param diameter The diameter of the Circle
     **/
     Circle(Vector2D center, double diameter);
 
@@ -82,3 +95,5 @@ public:
 };
 
 extern ostream & operator<<(ostream & os, const Circle & circle);
+
+#endif
