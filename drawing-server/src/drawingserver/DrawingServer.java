@@ -1,7 +1,6 @@
 package drawingserver;
 
 import shapedrawer.*;
-import sun.security.provider.SHA;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -51,6 +50,11 @@ public class DrawingServer
         /* We create a ThreadGroup for all the DrawingThreads that will be created. */
         threadGroup = new ThreadGroup("drawingThreads");
 
+        ShapeDrawerLink circleDrawer = new CircleDrawer(null);
+        ShapeDrawerLink segmentDrawer = new SegmentDrawer(circleDrawer);
+        ShapeDrawerLink polygonDrawer = new PolygonDrawer(segmentDrawer);
+        ShapeDrawer shapeDrawer = polygonDrawer;
+
         /*
          * The loop that will wait for a connection, then create a DrawingThread
          * with for the client that connected.
@@ -59,12 +63,6 @@ public class DrawingServer
         {
             Socket newClientSocket;
             DrawingThread drawingThread;
-
-            ShapeDrawerLink circleDrawer = new CircleDrawer(null);
-            ShapeDrawerLink segmentDrawer = new SegmentDrawer(circleDrawer);
-            ShapeDrawerLink polygonDrawer = new PolygonDrawer(segmentDrawer);
-            ShapeDrawer shapeDrawer = polygonDrawer;
-
 
             try
             {

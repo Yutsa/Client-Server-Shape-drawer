@@ -7,7 +7,10 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.net.Socket;
 
 /**
@@ -89,7 +92,7 @@ public class DrawingThread extends Thread
         {
             request = inputStream.readLine();
             shapeDrawer.draw(request, _frame, _graphics, _strategy);
-            //outputStream.println("Forme dessinée.");
+            outputStream.println("Forme dessinée.");
         }
         catch (IOException e)
         {
@@ -100,7 +103,6 @@ public class DrawingThread extends Thread
         {
             System.err.println(e.getMessage());
             /* Sends the error to the client using the socket output stream. */
-            //TODO: Ask teacher how to get the error from the client.
             outputStream.println(e.getMessage());
         }
     }

@@ -30,10 +30,11 @@ public class CircleDrawer extends ShapeDrawerLink
 
         /* Draw the circle */
         //TODO: Change the color
-        System.out.println(coordX + ", " + coordY + ", " + diametre);
+        System.out.println("Drawing a Circle");
+        System.out.println(request);
         graphics.fillOval(coordX, coordY, diametre, diametre);
         bufferStrategy.show();
-        System.out.println("drawn");
+        System.out.println("Circle drawn");
 
 
     }
