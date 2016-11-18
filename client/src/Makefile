@@ -23,6 +23,9 @@ socket.o: Network/Socket.cpp Network/Socket.hpp Network/NetworkException.hpp
 radianangle.o: Geometry/RadianAngle.cpp Geometry/RadianAngle.hpp Geometry/GeometryException.hpp
 	g++ -o ../bin/radianangle.o -c Geometry/RadianAngle.cpp $(CFLAGS)
 
+color.o: Utils/Color.cpp Utils/Color.hpp Utils/UtilsException.hpp
+	g++ -o ../bin/color.o -c Utils/Color.cpp $(CFLAGS)
+
 clean:
 	rm -rf ../bin/*.o
 
