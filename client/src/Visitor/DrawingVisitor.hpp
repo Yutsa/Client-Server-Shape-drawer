@@ -19,25 +19,25 @@ public:
     * Draws the Circle.
     * @param circle The Circle to draw.
     */
-    virtual void draw(Circle* circle) = 0;
+    virtual void draw(const Circle* circle) const = 0;
 
     /**
     * Draws the Segment.
     * @param segment The Segment to draw.
     */
-    virtual void draw(Segment* segment) = 0;
+    virtual void draw(const Segment* segment) const = 0;
 
     /**
     * Draws the Triangle.
     * @param triangle The Triangle to draw.
     */
-    virtual void draw(Triangle* triangle) = 0;
+    virtual void draw(const Triangle* triangle) const = 0;
 
     /**
     * Draws the Polygon.
     * @param polygon The Polygon to draw.
     */
-    virtual void draw(Polygon* polygon) = 0;
+    virtual void draw(const Polygon* polygon) const = 0;
 };
 
 #endif

@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
-
-class DrawingVisitor;
-class SaveVisitor;
+#include "../Geometry/Vector2D.hpp"
+#include "../Visitor/DrawingVisitor.hpp"
+#include "../Visitor/SaveVisitor.hpp"
 
 using std::string;
 
@@ -31,14 +31,14 @@ public:
     * Saves the Shape.
     * @param saveVisitor The SaveVisitor to use to save the shape.
     */
-    virtual void save(const SaveVisitor* saveVisitor) const = 0;
+    //virtual void save(const SaveVisitor* saveVisitor) const = 0;
 
     /**
     * Translate the shape using a translation vector.
     * @param translationVector The translation vector to use for the
     *  translation.
     */
-    virtual void translation(const Vector2D & translationVector) = 0;
+    //virtual void translation(const Vector2D & translationVector) = 0;
 
     /**
     * Translate the shape using a translation vector.
@@ -52,16 +52,16 @@ public:
     * @param invariantPoint The center of the homothety.
     * @param homothetyRatio The ratio of the homothety.
     */
-    virtual void homothety(const Vector2D & invariantPoint,
-        const double & homothetyRatio) = 0;
+    virtual Shape* homothety(const Vector2D & invariantPoint,
+        const double & homothetyRatio) const = 0;
 
     /**
     * Rotates the shape.
     * @param rotationCenter The center of the rotation.
     * @param rotationAngle The angle of the rotation.
     */
-    virtual void rotation(const Vector2D & rotationCenter,
-        const RadianAngle & rotationAngle) = 0;
+    virtual Shape* rotation(const Vector2D & rotationCenter,
+        const RadianAngle & rotationAngle) const = 0;
 
     /**
     * Returns the area of the Shape.

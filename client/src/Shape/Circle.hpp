@@ -1,5 +1,6 @@
 #include <iostream>
-#include <Shape.hpp>
+#include "Shape.hpp"
+
 
 using std::string;
 
@@ -16,9 +17,9 @@ private:
     **/
     Vector2D _center;
     /**
-    *   The diamater of the Circle
+    *   The diameter of the Circle
     **/
-    double _diamater;
+    double _diameter;
 public:
     /**
     *   Circle constructors
@@ -43,7 +44,7 @@ public:
     * Saves the Circle.
     * @param saveVisitor The SaveVisitor to use to save the Circle.
     */
-    virtual void save(const SaveVisitor* saveVisitor) const;
+    //virtual void save(const SaveVisitor* saveVisitor) const;
 
     /**
     * Translate the Circle using a translation vector.
@@ -51,7 +52,7 @@ public:
     *  translation.
     * @return Shape* the new circle after Translation
     */
-    virtual Shape* translation(const Vector2D & translationVector);
+    virtual Shape* translation(const Vector2D & translationVector) const;
 
     /**
     * Apply an homothety on the Circle.
@@ -60,7 +61,7 @@ public:
     * @return Shape* the new circle after homothety
     */
     virtual Shape* homothety(const Vector2D & invariantPoint,
-        const double & homothetyRatio);
+        const double & homothetyRatio) const;
 
     /**
     * Rotates the Circle.
@@ -69,11 +70,15 @@ public:
     * @return Shape* the new circle after rotation
     */
     virtual Shape* rotation(const Vector2D & rotationCenter,
-        const RadianAngle & rotationAngle);
+        const RadianAngle & rotationAngle) const;
 
     /**
     * Returns the area of the Circle.
     * @return The area of the Circle.
     */
     virtual double getArea() const;
+    
+    friend ostream & operator<<(ostream & os, const Circle & circle);
 };
+
+extern ostream & operator<<(ostream & os, const Circle & circle);

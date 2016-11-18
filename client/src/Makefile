@@ -8,6 +8,9 @@ test-vector2D: test-vector2D.o vector2d.o radianangle.o geometryexception.o
 test-socket: test-socket.o socket.o networkexception.o
 	g++ -o ../bin/test-socket ../bin/test-socket.o ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
 
+test-shape: test-shape.o circle.o vector2d.o geometryexception.o radianangle.o
+	g++ -o ../bin/test-shape ../bin/test-shape.o  ../bin/circle.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o
+
 test-vector2D.o: Tests/test-vector2D.cpp Geometry/Vector2D.hpp
 	g++ -o ../bin/test-vector2D.o -c Tests/test-vector2D.cpp $(CFLAGS)
 
@@ -29,9 +32,14 @@ radianangle.o: Geometry/RadianAngle.cpp Geometry/RadianAngle.hpp Geometry/Geomet
 test-socket.o: Tests/test-socket.cpp Network/Socket.hpp
 	g++ -o ../bin/test-socket.o -c Tests/test-socket.cpp $(CFLAGS)
 
+test-shape.o: Tests/test-shape.cpp Shape/Circle.hpp
+	g++ -o ../bin/test-shape.o -c Tests/test-shape.cpp $(CFLAGS)
+
 color.o: Utils/Color.cpp Utils/Color.hpp Utils/UtilsException.hpp
 	g++ -o ../bin/color.o -c Utils/Color.cpp $(CFLAGS)
 
+circle.o: Shape/Circle.cpp Geometry/Vector2D.hpp Shape/Shape.hpp
+	g++ -o ../bin/circle.o -c Shape/Circle.cpp $(CFLAGS)
 
 clean:
 	rm -rf ../bin/*.o
