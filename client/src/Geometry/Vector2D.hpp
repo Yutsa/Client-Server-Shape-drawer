@@ -37,11 +37,11 @@ public:
     virtual ~Vector2D();
 
     /**
-    * Gets $_x (abscissa)
+    * Gets _x (abscissa)
     */
     double getX() const { return _x;}
     /**
-    * Gets $_y (ordonate)
+    * Gets _y (ordonate)
     */
     double getY() const { return _y;}
     void setX(double x) { _x = x;}

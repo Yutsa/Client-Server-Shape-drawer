@@ -43,7 +43,6 @@ void Socket::createConnexion()
     }
     else
     {
-        cout << "Connexion au serveur effectuée à l'adresse " << _serverAddress << " et au port : " << _serverPort << endl;;
+        cout << "Connexion au serveur effectuée à l'adresse " << _serverAddress << " et au port : " << _serverPort << endl;
     }
-
 }

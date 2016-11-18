@@ -4,7 +4,7 @@ using std::string;
 using std::ostream;
 
 /**
-* Class for hander all geometrique exceptions
+* Class for hander all network exceptions
 */
 class NetworkException 
 {
@@ -19,7 +19,7 @@ public:
     NetworkException(const string & message);
     
     /**
-    * Sends a string of excpetion to a stream
+    * Sends a string of exception to a stream
     * @param os ostream 
     * @param NetworkException NetworkException have to print 
     * @return ostream to send to the output
