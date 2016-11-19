@@ -9,7 +9,10 @@ test-socket: test-socket.o socket.o networkexception.o
 	g++ -o ../bin/test-socket ../bin/test-socket.o ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
 
 test-shape: test-shape.o circle.o vector2d.o geometryexception.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o
-	g++ -o ../bin/test-shape ../bin/test-shape.o  ../bin/circle.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o ../bin/socket.o ../bin/networkexception.o
+	g++ -o ../bin/test-shape ../bin/test-shape.o  ../bin/circle.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
+
+test-color: test-color.o color.o utilsexception.o
+	g++ -o ../bin/test-color ../bin/test-color.o ../bin/color.o ../bin/utilsexception.o $(CFLAGS)
 
 test-vector2D.o: Tests/test-vector2D.cpp Geometry/Vector2D.hpp
 	g++ -o ../bin/test-vector2D.o -c Tests/test-vector2D.cpp $(CFLAGS)
@@ -37,6 +40,9 @@ test-socket.o: Tests/test-socket.cpp Network/Socket.hpp
 
 test-shape.o: Tests/test-shape.cpp Shape/Circle.hpp
 	g++ -o ../bin/test-shape.o -c Tests/test-shape.cpp $(CFLAGS)
+
+test-color.o: Tests/test-color.cpp Utils/Color.hpp
+	g++ -o ../bin/test-color.o -c Tests/test-color.cpp $(CFLAGS)
 
 color.o: Utils/Color.cpp Utils/Color.hpp Utils/UtilsException.hpp
 	g++ -o ../bin/color.o -c Utils/Color.cpp $(CFLAGS)

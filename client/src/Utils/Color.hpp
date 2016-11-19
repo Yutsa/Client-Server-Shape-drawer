@@ -7,6 +7,8 @@
 using std::string;
 using std::map;
 using std::pair;
+using std::ostream;
+
 
 /**
 * Represent RGB Color
@@ -28,6 +30,8 @@ public:
     * @param blue unsigned char for blue intensity
     */
     Color(unsigned char red, unsigned char green, unsigned char blue);
+    
+    Color(const Color & color);
     
     /**
     * Initialize map of color
@@ -64,6 +68,10 @@ public:
     * Operator cast to string
     */
     operator string() const;
+    
+    friend ostream & operator<<(ostream & os, const Color & color);
 };
+
+extern ostream & operator<<(ostream & os, const Color & color);
 
 #endif

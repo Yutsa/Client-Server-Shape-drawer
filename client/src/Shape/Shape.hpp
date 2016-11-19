@@ -16,7 +16,7 @@ using std::string;
 */
 class Shape
 {
-private:
+protected:
     /**
     * Member _color for color of the shape
     */
@@ -89,6 +89,9 @@ public:
     * @return The area of the Shape.
     */
     virtual double getArea() const = 0;
+    
+    virtual void setColor(Color color);
+    virtual Color getColor();
 };
 
 #endif
