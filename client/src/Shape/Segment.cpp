@@ -1,6 +1,4 @@
 #include "Segment.hpp"
-#include "../Geometry/Vector2D.hpp"
-#include <cmath>
 
 Segment::Segment(Vector2D firstPoint, Vector2D secondPoint)
 {
@@ -23,7 +21,7 @@ void Segment::save(const SaveVisitor* saveVisitor) const
     saveVisitor.save(this);
 }
 
-Shape* Segment::translation(const Vector2D & translationVector)
+Shape* Segment::translation(const Vector2D & translationVector) const
 {
     Segment newSegment(this);
     newSegment._firstPoint.translation(translationVector);
@@ -32,7 +30,7 @@ Shape* Segment::translation(const Vector2D & translationVector)
 }
 
 void Segment::homothety(const Vector2D & invariantPoint,
-    const double & homothetyRatio)
+    const double & homothetyRatio) const
 {
     Segment newSegment(this);
     newSegment._firstPoint.homothety(invariantPoint,homothetyRatio);
@@ -41,7 +39,7 @@ void Segment::homothety(const Vector2D & invariantPoint,
 }
 
 void Segment::rotation(const Vector2D & rotationCenter,
-    const RadianAngle & rotationAngle)
+    const RadianAngle & rotationAngle) const
 {
     Segment newSegment(this);
     newSegment._firstPoint.rotation(rotationCenter,rotationAngle);

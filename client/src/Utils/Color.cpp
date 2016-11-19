@@ -9,7 +9,16 @@ map<string, Color> Color::_colors;
 
 Color::Color(unsigned char red, unsigned char green, unsigned char blue) : _red(red), _green(green), _blue(blue)
 {
-    
+    _red = red;
+    _green = green;
+    _blue = blue;
+}
+
+Color::Color(const Color & color)
+{
+    _red = color.getRed();
+    _green = color.getGreen();
+    _blue = color.getBlue();
 }
 
 void Color::initColorMap()
@@ -57,6 +66,12 @@ unsigned char Color::getBlue() const
 Color::operator string() const
 {
     ostringstream os;
-    os << _red << "," << _green << "," << _blue;
+    os << (int) _red << "," << (int)_green << "," << (int)_blue;
     return os.str();
+}
+
+ostream & operator<<(ostream & os, const Color & color)
+{
+    os << (string) color;
+    return os;
 }

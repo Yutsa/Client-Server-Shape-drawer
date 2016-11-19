@@ -1,4 +1,4 @@
-#include "ShapeDrawer.hpp"
+#include "ServerDrawer.hpp"
 
 using std::string;
 
@@ -7,25 +7,39 @@ ServerDrawer::ServerDrawer() : DrawingVisitor()
     Socket::createConnexion();
 }
 
-void ServerDrawer::draw(Circle* circle)
+ServerDrawer::~ServerDrawer()
 {
-    string request = (string) circle;
+    
+}
+
+void ServerDrawer::draw(const Circle* circle) const
+{
+    string request = (string) *circle;
     Socket::sendRequest(request);
     // Prints the message received from the server.
     cout << Socket::receiveData() << endl;
 }
 
-void ServerDrawer::draw(Segment* segment)
+void ServerDrawer::draw(const Segment* segment) const
 {
-
+    string request = (string) *segment;
+    Socket::sendRequest(request);
+    // Prints the message received from the server.
+    cout << Socket::receiveData() << endl;
 }
 
-void ServerDrawer::draw(Triangle* triangle)
+void ServerDrawer::draw(const Triangle* triangle) const
 {
-
+    string request = (string) *triangle;
+    Socket::sendRequest(request);
+    // Prints the message received from the server.
+    cout << Socket::receiveData() << endl;
 }
 
-void ServerDrawer::draw(Polygon* polygon)
+void ServerDrawer::draw(const Polygone* polygon) const
 {
-
+    string request = (string) *polygon;
+    Socket::sendRequest(request);
+    // Prints the message received from the server.
+    cout << Socket::receiveData() << endl;
 }

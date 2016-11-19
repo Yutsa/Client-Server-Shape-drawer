@@ -1,11 +1,16 @@
+#ifndef POLYGON_H
+#define POLYGON_H
+
 #include <iostream>
-#include <Shape.hpp>
+#include "Shape.hpp"
 #include <vector>
+#include <cmath>
+
+#include "../Visitor/SaveVisitor.hpp"
+#include "../Visitor/ServerDrawer.hpp"
 
 using std::string;
 
-
-class Vector2D;
 /**
 *   Represent a Polygone
 *   It's a Shape
@@ -56,7 +61,7 @@ public:
     *  translation.
     * @return Shape* the new Polygone after Translation
     */
-    virtual Shape* translation(const Vector2D & translationVector);
+    virtual Shape* translation(const Vector2D & translationVector) const;
 
     /**
     * Apply an homothety on the Polygone.
@@ -65,7 +70,7 @@ public:
     * @return Shape* the new Polygone after homothety
     */
     virtual Shape* homothety(const Vector2D & invariantPoint,
-        const double & homothetyRatio);
+        const double & homothetyRatio) const;
 
     /**
     * Rotates the Polygone.
@@ -74,7 +79,7 @@ public:
     * @return Shape* the new Polygone after rotation
     */
     virtual Shape* rotation(const Vector2D & rotationCenter,
-        const RadianAngle & rotationAngle);
+        const RadianAngle & rotationAngle) const;
 
     /**
     * Returns the area of the Polygone.
@@ -82,3 +87,5 @@ public:
     */
     virtual double getArea() const;
 };
+
+#endif

@@ -4,7 +4,7 @@ using std::cout;
 using std::endl;
 using std::string;
 
-int main()
+int main(int argc, char* argv[])
 {
     string answer;
     Socket::getInstance();

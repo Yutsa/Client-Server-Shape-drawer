@@ -1,56 +1,73 @@
 #include "Circle.hpp"
-#include "../Geometry/Vector2D.hpp"
 #include <cmath>
+#include <sstream>
 
-Circle::Circle(Vector2D center, double diameter)
+using std::ostringstream;
+
+Circle::Circle(Vector2D center, double diameter, Color color) : Shape(color)
 {
     _center.setX(center.getX());
     _center.setY(center.getY());
     _diameter=diameter;
 }
 
-virtual void Circle::draw(const DrawingVisitor* visitor) const
+Circle::Circle(Vector2D center, double diameter) : Shape()
 {
-    visitor.draw(this);
+    _center.setX(center.getX());
+    _center.setY(center.getY());
+    _diameter=diameter;
 }
 
-virtual operator Circle::string() const
+void Circle::draw(const DrawingVisitor* visitor) const
 {
-
+    visitor->draw(this);
 }
 
-virtual void Circle::save(const SaveVisitor* saveVisitor) const
+Circle::operator string() const
 {
-    saveVisitor.save(this);
+    ostringstream os;
+    os << "circle," << _color << "," << _center.getX() << "," << _center.getY() << "," << _diameter;
+    return os.str();
 }
 
-virtual Shape* Circle::translation(const Vector2D & translationVector)
+//void Circle::save(const SaveVisitor* saveVisitor) const
+//{
+//    saveVisitor->save(this);
+//}
+
+Shape* Circle::translation(const Vector2D & translationVector) const
 {
-    Circle newCircle(this);
-    newCircle._center.translation(translationVector);
+    Circle *newCircle = new Circle(*this);
+    newCircle->_center.translation(translationVector);
     return newCircle;
 }
 
-virtual void Circle::homothety(const Vector2D & invariantPoint,
-    const double & homothetyRatio)
+Shape* Circle::homothety(const Vector2D & invariantPoint,
+                         const double & homothetyRatio) const
 {
-    Circle newCircle(this);
-    newCircle._center.homothety(invariantPoint,homothetyRatio);
-    newCircle._diameter *= homothetyRatio;
-    return newCircle;
-
-}
-
-virtual void Circle::rotation(const Vector2D & rotationCenter,
-    const RadianAngle & rotationAngle)
-{
-    Circle newCircle(this);
-    newCircle._center.rotation(rotationCenter,rotationAngle);
+    Circle *newCircle = new Circle(*this);
+    newCircle->_center.homothety(invariantPoint,homothetyRatio);
+    newCircle->_diameter *= homothetyRatio;
     return newCircle;
 }
 
-virtual double Circle::getArea() const
+Shape* Circle::rotation(const Vector2D & rotationCenter,
+                        const RadianAngle & rotationAngle) const
+{
+    Circle *newCircle = new Circle(*this);
+    newCircle->_center.rotation(rotationCenter,rotationAngle);
+    return newCircle;
+}
+
+double Circle::getArea() const
 {
     double radius = _diameter/2;
     return M_PI*radius*radius;
 }
+
+ostream & operator<<(ostream & os, const Circle & circle)
+{
+    os << (string) circle;
+    return os;
+}
+

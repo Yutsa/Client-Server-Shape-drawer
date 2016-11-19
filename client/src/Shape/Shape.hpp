@@ -1,20 +1,41 @@
+#ifndef SHAPE_H
+#define SHAPE_H
+
 #include <iostream>
 #include <string>
+#include "../Geometry/Vector2D.hpp"
+#include "../Utils/Color.hpp"
 
-class DrawingVisitor;
 class SaveVisitor;
+class DrawingVisitor;
 
 using std::string;
 
 /**
 * This class is the base class for every Shape.
 */
-
 class Shape
 {
+protected:
+    /**
+    * Member _color for color of the shape
+    */
+    Color _color;
 
 //TODO: Must implement the shape color.
 public:
+    /*
+    * Empty contructor 
+    * Sets color to NULL
+    */
+    Shape();
+    
+    /*
+    * Contructor
+    * Sets _color to color value
+    */
+    Shape(Color color);
+    
     /**
     * Draws the Shape using a DrawingVisitor.
     * @param visitor The DrawingVisitor to use to draw the shape.
@@ -31,14 +52,14 @@ public:
     * Saves the Shape.
     * @param saveVisitor The SaveVisitor to use to save the shape.
     */
-    virtual void save(const SaveVisitor* saveVisitor) const = 0;
+    //virtual void save(const SaveVisitor* saveVisitor) const = 0;
 
     /**
     * Translate the shape using a translation vector.
     * @param translationVector The translation vector to use for the
     *  translation.
     */
-    virtual void translation(const Vector2D & translationVector) = 0;
+    //virtual void translation(const Vector2D & translationVector) = 0;
 
     /**
     * Translate the shape using a translation vector.
@@ -52,20 +73,25 @@ public:
     * @param invariantPoint The center of the homothety.
     * @param homothetyRatio The ratio of the homothety.
     */
-    virtual void homothety(const Vector2D & invariantPoint,
-        const double & homothetyRatio) = 0;
+    virtual Shape* homothety(const Vector2D & invariantPoint,
+        const double & homothetyRatio) const = 0;
 
     /**
     * Rotates the shape.
     * @param rotationCenter The center of the rotation.
     * @param rotationAngle The angle of the rotation.
     */
-    virtual void rotation(const Vector2D & rotationCenter,
-        const RadianAngle & rotationAngle) = 0;
+    virtual Shape* rotation(const Vector2D & rotationCenter,
+        const RadianAngle & rotationAngle) const = 0;
 
     /**
     * Returns the area of the Shape.
     * @return The area of the Shape.
     */
     virtual double getArea() const = 0;
+    
+    virtual void setColor(Color color);
+    virtual Color getColor();
 };
+
+#endif

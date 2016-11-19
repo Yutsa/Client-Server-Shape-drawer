@@ -3,6 +3,12 @@
 
 #include <iostream>
 #include "../Network/Socket.hpp"
+#include "DrawingVisitor.hpp"
+
+#include "../Shape/Circle.hpp"
+#include "../Shape/Polygone.hpp"
+#include "../Shape/Triangle.hpp"
+#include "../Shape/Segment.hpp"
 
 class ServerDrawer : public DrawingVisitor
 {
@@ -13,25 +19,25 @@ public:
     * Draws the Circle.
     * @param circle The Circle to draw.
     */
-    virtual void draw(Circle* circle);
+    virtual void draw(const Circle* circle) const;
 
     /**
     * Draws the Segment.
     * @param segment The Segment to draw.
     */
-    virtual void draw(Segment* segment);
+    virtual void draw(const Segment* segment) const;
 
     /**
     * Draws the Triangle.
     * @param triangle The Triangle to draw.
     */
-    virtual void draw(Triangle* triangle);
+    virtual void draw(const Triangle* triangle) const;
 
     /**
     * Draws the Polygon.
     * @param polygon The Polygon to draw.
     */
-    virtual void draw(Polygon* polygon);
+    virtual void draw(const Polygone* polygon) const;
 };
 
 #endif

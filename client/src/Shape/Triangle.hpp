@@ -1,9 +1,15 @@
+#ifndef TRIANGLE_H
+#define TRIANGLE_H
+
 #include <iostream>
-#include <Shape.hpp>
+#include "Shape.hpp"
+#include <cmath>
+
+#include "../Visitor/SaveVisitor.hpp"
+#include "../Visitor/ServerDrawer.hpp"
 
 using std::string;
 
-class Vector2D;
 /**
 *   Represent a Triangle
 *   It's a Shape
@@ -30,7 +36,7 @@ public:
     *   @param secondPoint the secondPoint of the Triangle
     *   @param thirdPoint the thirdPoint of the Triangle
     **/
-    Triangle(Vector2D firstPoint, Vector2D secondPoint Vector2D thirdPoint);
+    Triangle(Vector2D firstPoint, Vector2D secondPoint, Vector2D thirdPoint);
 
     /**
     * Draws the Triangle using a DrawingVisitor.
@@ -56,7 +62,7 @@ public:
     *  translation.
     * @return Shape* the new Triangle after the translation
     */
-    virtual Shape* translation(const Vector2D & translationVector);
+    virtual Shape* translation(const Vector2D & translationVector) const;
 
     /**
     * Apply an homothety on the Triangle.
@@ -65,7 +71,7 @@ public:
     * @return Shape* the new triangle after the homotethy
     */
     virtual Shape* homothety(const Vector2D & invariantPoint,
-        const double & homothetyRatio);
+        const double & homothetyRatio) const;
 
     /**
     * Rotates the Triangle.
@@ -74,7 +80,7 @@ public:
     * @return Shape* the new Triangle after the rotation
     */
     virtual Shape* rotation(const Vector2D & rotationCenter,
-        const RadianAngle & rotationAngle);
+        const RadianAngle & rotationAngle) const;
 
     /**
     * Returns the area of the Triangle.
@@ -82,3 +88,5 @@ public:
     */
     virtual double getArea() const;
 };
+
+#endif
