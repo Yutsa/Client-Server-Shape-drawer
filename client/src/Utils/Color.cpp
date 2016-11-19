@@ -33,10 +33,12 @@ void Color::initColorMap()
 
 Color Color::getColor(const string & color)
 {
-    initColorMap();
-    
+    // Initialize the map only if it hasn't already be done.
+    if (_colors.empty())
+        initColorMap();
+
     map<string, Color>::iterator it;
-    
+
     it = _colors.find(color);
     if (it != _colors.end())
     {
