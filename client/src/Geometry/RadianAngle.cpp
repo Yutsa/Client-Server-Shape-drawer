@@ -1,5 +1,9 @@
 #include "RadianAngle.hpp"
 
+#include <sstream>
+
+using std::ostringstream;
+
 RadianAngle::RadianAngle(const double & value)
 {
     setValue(value);
@@ -15,6 +19,19 @@ void RadianAngle::setValue(const double & value)
     {
         _value = value;
     }
+}
+
+RadianAngle::operator string() const
+{
+    ostringstream os;
+    os << _value;
+    return os.str();
+}
+    
+ostream & operator<<(ostream & os, const RadianAngle & angle)
+{
+    os << (string) angle;
+    return os;
 }
 
 double RadianAngle::getValue() const

@@ -34,7 +34,13 @@ public:
     * @return value
     */
     double getValue() const;
+    
+    operator string() const;
+    
+    friend ostream & operator<<(ostream & os, const RadianAngle & angle);
 };
+
+extern ostream & operator<<(ostream & os, const RadianAngle & angle);
 
 double cos(const RadianAngle & angle);
 double sin(const RadianAngle & angle);
