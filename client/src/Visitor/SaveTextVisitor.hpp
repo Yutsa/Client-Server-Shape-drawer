@@ -1,6 +1,8 @@
 #ifndef SAVE_TEXT_VISITOR_H
 #define SAVE_TEXT_VISITOR_H
 
+#include "SaveVisitor.hpp"
+
 using std::string;
 
 class Circle;
@@ -15,6 +17,8 @@ class Shape;
 class SaveTextVisitor : public SaveVisitor
 {
 public:
+    SaveTextVisitor();
+    virtual ~SaveTextVisitor();
     /**
     * Saves the Circle.
     * @param circle The Circle to save.
@@ -35,12 +39,6 @@ public:
     * @param polygon The Polygon to save.
     */
     void save(const Polygon* polygon, const string & filename) const;
-
-    /**
-    * Save a shape.
-    * @param shape the Shape to save
-    */
-    virtual void save(const Shape* shape, const string & filename) const = 0;
 };
 
 #endif

@@ -14,11 +14,11 @@ test-shape: vector2d.o test-shape.o circle.o geometryexception.o radianangle.o c
 test-color: test-color.o color.o utilsexception.o
 	g++ -o ../bin/test-color ../bin/test-color.o ../bin/color.o ../bin/utilsexception.o $(CFLAGS)
 
-test-saving: test-saving.o
-	g++ -o ../bin/test-saving ../bin/test-saving.o
+test-saving: test-saving.o circle.o color.o savetextvisitor.o vector2d.o shape.o radianangle.o utilsexception.o geometryexception.o
+	g++ -o ../bin/test-saving ../bin/test-saving.o ../bin/circle.o ../bin/color.o ../bin/vector2d.o ../bin/savetextvisitor.o ../bin/shape.o ../bin/radianangle.o ../bin/utilsexception.o ../bin/geometryexception.o $(CFLAGS)
 
-test-saving.o:
-	g++ -o ../bin/test-saving.o -c Tests/test-saving.cpp
+test-saving.o: Tests/test-saving.cpp Shape/Circle.hpp Utils/Color.hpp Visitor/SaveTextVisitor.hpp
+	g++ -o ../bin/test-saving.o -c Tests/test-saving.cpp $(CFLAGS)
 
 test-vector2D.o: Tests/test-vector2D.cpp Geometry/Vector2D.hpp
 	g++ -o ../bin/test-vector2D.o -c Tests/test-vector2D.cpp $(CFLAGS)
@@ -70,6 +70,9 @@ triangle.o: Shape/Triangle.cpp Shape/Triangle.hpp Shape/Shape.hpp Visitor/Server
 
 serverdrawer.o: Visitor/ServerDrawer.cpp Visitor/ServerDrawer.hpp Visitor/DrawingVisitor.hpp Network/Socket.hpp Shape/Circle.hpp Shape/Segment.hpp Shape/Triangle.hpp Shape/Polygon.hpp
 	g++ -o ../bin/serverdrawer.o -c Visitor/ServerDrawer.cpp $(FLAGS)
+
+savetextvisitor.o: Visitor/SaveTextVisitor.cpp Visitor/SaveTextVisitor.hpp Shape/Circle.hpp Shape/Triangle.hpp Shape/Segment.hpp Shape/Polygon.hpp
+	g++ -o ../bin/savetextvisitor.o -c Visitor/SaveTextVisitor.cpp $(FLAGS)
 
 clean:
 	rm -rf ../bin/*.o

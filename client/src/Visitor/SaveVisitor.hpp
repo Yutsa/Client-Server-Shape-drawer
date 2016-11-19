@@ -38,12 +38,6 @@ public:
     * @param polygon The Polygon to save.
     */
     virtual void save(const Polygon* polygon, const string & filename) const = 0;
-
-    /**
-    * Save a shape.
-    * @param shape the Shape to save
-    */
-    virtual void save(const Shape* shape, const string & filename) const = 0;
 };
 
 #endif
