@@ -14,6 +14,12 @@ test-shape: vector2d.o test-shape.o circle.o geometryexception.o radianangle.o c
 test-color: test-color.o color.o utilsexception.o
 	g++ -o ../bin/test-color ../bin/test-color.o ../bin/color.o ../bin/utilsexception.o $(CFLAGS)
 
+test-saving: test-saving.o
+	g++ -o ../bin/test-saving ../bin/test-saving.o
+
+test-saving.o:
+	g++ -o ../bin/test-saving.o -c Tests/test-saving.cpp
+
 test-vector2D.o: Tests/test-vector2D.cpp Geometry/Vector2D.hpp
 	g++ -o ../bin/test-vector2D.o -c Tests/test-vector2D.cpp $(CFLAGS)
 

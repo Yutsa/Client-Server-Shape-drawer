@@ -3,7 +3,7 @@ package Client {
     abstract class Shape {
         +{abstract} draw(const DrawingVisitor* visitor)
         +{abstract} toString() : String
-        +{abstract} save(const SaveVisitor* saveVisitor)
+        +{abstract} save(const SaveVisitor* saveVisitor, const string & filename)
         +{abstract} translation(Vector2D translationVector)
         +{abstract} homothétie(const Vector2D & invariantPoint,
             const double & homothetyRatio)
@@ -15,7 +15,7 @@ package Client {
     abstract class ComposedShape {
         +draw(DrawingVisitor* visitor)
         +toString() : String
-        +save(SaveVisitor* saveVisitor)
+        +save(SaveVisitor* saveVisitor, const string & filename)
         +translation(Vector2D translationVector)
         +homothétie(const Vector2D & invariantPoint,
             const double & homothetyRatio)
@@ -27,7 +27,7 @@ package Client {
     class Cercle {
         +draw(DrawingVisitor* visitor)
         +toString() : String
-        +save(SaveVisitor* saveVisitor)
+        +save(SaveVisitor* saveVisitor, const string & filename)
         +translation(Vector2D translationVector)
         +homothétie(const Vector2D & invariantPoint,
             const double & homothetyRatio)
@@ -38,7 +38,7 @@ package Client {
     class Segment {
         +draw(DrawingVisitor* visitor)
         +toString() : String
-        +save(SaveVisitor* saveVisitor)
+        +save(SaveVisitor* saveVisitor, const string & filename)
         +translation(Vector2D translationVector)
         +homothétie(const Vector2D & invariantPoint,
             const double & homothetyRatio)
@@ -49,7 +49,7 @@ package Client {
     class Triangle {
         +draw(DrawingVisitor* visitor)
         +toString() : String
-        +save(SaveVisitor* saveVisitor)
+        +save(SaveVisitor* saveVisitor, const string & filename)
         +translation(Vector2D translationVector)
         +homothétie(const Vector2D & invariantPoint,
             const double & homothetyRatio)
@@ -60,7 +60,7 @@ package Client {
     class Polygone {
         +draw(DrawingVisitor* visitor)
         +toString() : String
-        +save(SaveVisitor* saveVisitor)
+        +save(SaveVisitor* saveVisitor, const string & filename)
         +translation(Vector2D translationVector)
         +homothétie(const Vector2D & invariantPoint,
             const double & homothetyRatio)
@@ -85,10 +85,10 @@ package Client {
     }
 
     abstract class SaveVisitor {
-        +{abstract} save(Cercle *s)
-        +{abstract} save(Segment *s)
-        +{abstract} save(Triangle *s)
-        +{abstract} save(Polygone *s)
+        +{abstract} save(Cercle *s, const string & filename)
+        +{abstract} save(Segment *s, const string & filename)
+        +{abstract} save(Triangle *s, const string & filename)
+        +{abstract} save(Polygone *s, const string & filename)
     }
 
     class ServerDrawer {
