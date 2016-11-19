@@ -25,9 +25,9 @@ Triangle::operator string() const
     return os.str();
 }
 
-void Triangle::save(const SaveVisitor* saveVisitor) const
+void Triangle::save(const SaveVisitor* saveVisitor, const string & filename) const
 {
-    saveVisitor->save(this);
+    saveVisitor->save(this, filename);
 }
 
 Shape* Triangle::translation(const Vector2D & translationVector) const

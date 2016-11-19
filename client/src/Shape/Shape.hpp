@@ -25,17 +25,17 @@ protected:
 //TODO: Must implement the shape color.
 public:
     /*
-    * Empty contructor 
+    * Empty contructor
     * Sets color to NULL
     */
     Shape();
-    
+
     /*
     * Contructor
     * Sets _color to color value
     */
     Shape(Color color);
-    
+
     /**
     * Draws the Shape using a DrawingVisitor.
     * @param visitor The DrawingVisitor to use to draw the shape.
@@ -52,7 +52,7 @@ public:
     * Saves the Shape.
     * @param saveVisitor The SaveVisitor to use to save the shape.
     */
-    //virtual void save(const SaveVisitor* saveVisitor) const = 0;
+    virtual void save(const SaveVisitor* saveVisitor, const string & filename) const = 0;
 
     /**
     * Translate the shape using a translation vector.
@@ -89,9 +89,13 @@ public:
     * @return The area of the Shape.
     */
     virtual double getArea() const = 0;
-    
+
     virtual void setColor(Color color);
     virtual Color getColor();
+
+    friend ostream & operator << (ostream & os, const Shape & shape);
 };
+
+extern ostream & operator << (ostream & os, const Shape & shape);
 
 #endif

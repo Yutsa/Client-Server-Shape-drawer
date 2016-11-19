@@ -30,9 +30,9 @@ Polygon::operator string() const
     return os.str();
 }
 
-void Polygon::save(const SaveVisitor* saveVisitor) const
+void Polygon::save(const SaveVisitor* saveVisitor, const string & filename) const
 {
-    saveVisitor->save(this);
+    saveVisitor->save(this, filename);
 }
 
 Shape* Polygon::translation(const Vector2D & translationVector) const

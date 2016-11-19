@@ -30,9 +30,9 @@ Circle::operator string() const
     return os.str();
 }
 
-void Circle::save(const SaveVisitor* saveVisitor) const
+void Circle::save(const SaveVisitor* saveVisitor, const string & filename) const
 {
-    saveVisitor->save(this);
+    saveVisitor->save(this, filename);
 }
 
 Shape* Circle::translation(const Vector2D & translationVector) const

@@ -54,7 +54,7 @@ public:
     * Saves the Triangle.
     * @param saveVisitor The SaveVisitor to use to save the Triangle.
     */
-    virtual void save(const SaveVisitor* saveVisitor) const;
+    virtual void save(const SaveVisitor* saveVisitor, const string & filename) const;
 
     /**
     * Translate the Triangle using a translation vector.

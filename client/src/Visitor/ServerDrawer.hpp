@@ -37,7 +37,7 @@ public:
     * Draws the Polygon.
     * @param polygon The Polygon to draw.
     */
-    void draw(const Polygone* polygon) const;
+    void draw(const Polygon* polygon) const;
 };
 
 #endif

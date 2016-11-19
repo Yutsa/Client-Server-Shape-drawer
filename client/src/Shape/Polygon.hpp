@@ -54,7 +54,7 @@ public:
     * Saves the Polygon.
     * @param saveVisitor The SaveVisitor to use to save the Polygon.
     */
-    virtual void save(const SaveVisitor* saveVisitor) const;
+    virtual void save(const SaveVisitor* saveVisitor, const string & filename) const;
 
     /**
     * Translate the Polygon using a translation vector.

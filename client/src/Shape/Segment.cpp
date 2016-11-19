@@ -21,9 +21,9 @@ Segment::operator string() const
     return os.str();
 }
 
-void Segment::save(const SaveVisitor* saveVisitor) const
+void Segment::save(const SaveVisitor* saveVisitor, const string & filename) const
 {
-    saveVisitor->save(this);
+    saveVisitor->save(this, filename);
 }
 
 Shape* Segment::translation(const Vector2D & translationVector) const

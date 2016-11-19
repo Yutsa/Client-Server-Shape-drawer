@@ -49,7 +49,7 @@ public:
     * Saves the Segment.
     * @param saveVisitor The SaveVisitor to use to save the Segment.
     */
-    virtual void save(const SaveVisitor* saveVisitor) const;
+    virtual void save(const SaveVisitor* saveVisitor, const string & filename) const;
 
     /**
     * Translate the Segment using a translation vector.

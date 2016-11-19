@@ -57,7 +57,7 @@ public:
     * Saves the Circle.
     * @param saveVisitor The SaveVisitor to use to save the Circle.
     */
-    virtual void save(const SaveVisitor* saveVisitor) const;
+    virtual void save(const SaveVisitor* saveVisitor, const string & filename) const;
 
     /**
     * Translate the Circle using a translation vector.
