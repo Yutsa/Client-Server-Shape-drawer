@@ -8,8 +8,8 @@ test-vector2D: test-vector2D.o vector2d.o radianangle.o geometryexception.o
 test-socket: test-socket.o socket.o networkexception.o
 	g++ -o ../bin/test-socket ../bin/test-socket.o ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
 
-test-shape: test-shape.o circle.o vector2d.o geometryexception.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o
-	g++ -o ../bin/test-shape ../bin/test-shape.o  ../bin/circle.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
+test-shape: vector2d.o test-shape.o circle.o geometryexception.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o
+	g++ -o ../bin/test-shape ../bin/test-shape.o  ../bin/circle.o ../bin/polygon.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
 
 test-color: test-color.o color.o utilsexception.o
 	g++ -o ../bin/test-color ../bin/test-color.o ../bin/color.o ../bin/utilsexception.o $(CFLAGS)
@@ -27,7 +27,7 @@ networkexception.o: Network/NetworkException.cpp Network/NetworkException.hpp
 	g++ -o ../bin/networkexception.o -c Network/NetworkException.cpp $(CFLAGS)
 
 utilsexception.o: Utils/UtilsException.cpp Utils/UtilsException.hpp
-	g++ -o ../bin/utilsexception.o -c Utils/Utilsexception.cpp $(CFLAGS)
+	g++ -o ../bin/utilsexception.o -c Utils/UtilsException.cpp $(CFLAGS)
 
 socket.o: Network/Socket.cpp Network/Socket.hpp Network/NetworkException.hpp
 	g++ -o ../bin/socket.o -c Network/Socket.cpp $(CFLAGS)
@@ -53,7 +53,16 @@ shape.o: Shape/Shape.cpp Shape/Shape.hpp Geometry/Vector2D.hpp Utils/Color.hpp
 circle.o: Shape/Circle.cpp Shape/Circle.hpp Shape/Shape.hpp Visitor/ServerDrawer.hpp Visitor/SaveVisitor.hpp
 	g++ -o ../bin/circle.o -c Shape/Circle.cpp $(CFLAGS)
 
-serverdrawer.o: Visitor/ServerDrawer.cpp Visitor/ServerDrawer.hpp Visitor/DrawingVisitor.hpp Network/Socket.hpp Shape/Circle.hpp Shape/Segment.hpp Shape/Triangle.hpp Shape/Polygone.hpp
+polygon.o: Shape/Polygon.cpp Shape/Polygon.hpp Shape/Shape.hpp Visitor/ServerDrawer.hpp Visitor/SaveVisitor.hpp
+	g++ -o ../bin/polygon.o -c Shape/Polygon.cpp $(CFLAGS)
+
+segment.o: Shape/Segment.cpp Shape/Segment.hpp Shape/Shape.hpp Visitor/ServerDrawer.hpp Visitor/SaveVisitor.hpp
+	g++ -o ../bin/segment.o -c Shape/Segment.cpp $(CFLAGS)
+
+triangle.o: Shape/Triangle.cpp Shape/Triangle.hpp Shape/Shape.hpp Visitor/ServerDrawer.hpp Visitor/SaveVisitor.hpp
+	g++ -o ../bin/triangle.o -c Shape/Triangle.cpp $(CFLAGS)
+
+serverdrawer.o: Visitor/ServerDrawer.cpp Visitor/ServerDrawer.hpp Visitor/DrawingVisitor.hpp Network/Socket.hpp Shape/Circle.hpp Shape/Segment.hpp Shape/Triangle.hpp Shape/Polygon.hpp
 	g++ -o ../bin/serverdrawer.o -c Visitor/ServerDrawer.cpp $(FLAGS)
 
 clean:

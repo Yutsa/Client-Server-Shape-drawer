@@ -30,10 +30,10 @@ Circle::operator string() const
     return os.str();
 }
 
-//void Circle::save(const SaveVisitor* saveVisitor) const
-//{
-//    saveVisitor->save(this);
-//}
+void Circle::save(const SaveVisitor* saveVisitor) const
+{
+    saveVisitor->save(this);
+}
 
 Shape* Circle::translation(const Vector2D & translationVector) const
 {
@@ -70,4 +70,3 @@ ostream & operator<<(ostream & os, const Circle & circle)
     os << (string) circle;
     return os;
 }
-

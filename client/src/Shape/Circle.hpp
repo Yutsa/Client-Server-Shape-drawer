@@ -33,7 +33,7 @@ public:
     * @param color The color of the Circle
     **/
     Circle(Vector2D center, double diameter, Color color);
-    
+
     /**
     * Circle constructor
     * @param center The center point of the Circle
@@ -57,7 +57,7 @@ public:
     * Saves the Circle.
     * @param saveVisitor The SaveVisitor to use to save the Circle.
     */
-    //virtual void save(const SaveVisitor* saveVisitor) const;
+    virtual void save(const SaveVisitor* saveVisitor) const;
 
     /**
     * Translate the Circle using a translation vector.
@@ -90,7 +90,7 @@ public:
     * @return The area of the Circle.
     */
     virtual double getArea() const;
-    
+
     friend ostream & operator<<(ostream & os, const Circle & circle);
 };
 

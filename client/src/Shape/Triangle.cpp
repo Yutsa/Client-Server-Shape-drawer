@@ -1,6 +1,9 @@
 #include "Triangle.hpp"
+#include <sstream>
 
-Triangle::Triangle(Vector2D firstPoint, Vector2D secondPoint, Vector2D thirdPoint)
+using std::ostringstream;
+
+Triangle::Triangle(Vector2D firstPoint, Vector2D secondPoint, Vector2D thirdPoint, Color color) : Shape(color)
 {
     _firstPoint = firstPoint;
     _secondPoint = secondPoint;
@@ -9,47 +12,52 @@ Triangle::Triangle(Vector2D firstPoint, Vector2D secondPoint, Vector2D thirdPoin
 
 void Triangle::draw(const DrawingVisitor* visitor) const
 {
-    visitor.draw(this);
+    visitor->draw(this);
 }
 
-operator Triangle::string() const
+Triangle::operator string() const
 {
-
+    ostringstream os;
+    os << "triangle," << _color << "," << _firstPoint.getX() << ","
+        << _firstPoint.getY() << "," << _secondPoint.getX() << ","
+        << _secondPoint.getY() << "," << _thirdPoint.getX() << ","
+        << _thirdPoint.getY();
+    return os.str();
 }
 
 void Triangle::save(const SaveVisitor* saveVisitor) const
 {
-    saveVisitor.save(this);
+    saveVisitor->save(this);
 }
 
 Shape* Triangle::translation(const Vector2D & translationVector) const
 {
-    Triangle newTriangle(this)
-    newTriangle._firstPoint.translation(translationVector);
+    Triangle *newTriangle = new Triangle(*this);
+    newTriangle->_firstPoint.translation(translationVector);
 
-    newTriangle._secondPoint.translation(translationVector);
+    newTriangle->_secondPoint.translation(translationVector);
 
-    newTriangle._thirdPoint.translation(translationVector);
+    newTriangle->_thirdPoint.translation(translationVector);
     return newTriangle;
 }
 
 Shape* Triangle::homothety(const Vector2D & invariantPoint,
     const double & homothetyRatio) const
 {
-    Triangle newTriangle(this);
-    newTriangle._firstPoint.homothety(invariantPoint,homothetyRatio);
-    newTriangle._secondPoint.homothety(invariantPoint,homothetyRatio);
-    newTriangle._thirdPoint.homothety(invariantPoint,homothetyRatio);
+    Triangle *newTriangle = new Triangle(*this);
+    newTriangle->_firstPoint.homothety(invariantPoint,homothetyRatio);
+    newTriangle->_secondPoint.homothety(invariantPoint,homothetyRatio);
+    newTriangle->_thirdPoint.homothety(invariantPoint,homothetyRatio);
     return newTriangle;
 }
 
 Shape* Triangle::rotation(const Vector2D & rotationCenter,
     const RadianAngle & rotationAngle) const
 {
-    Triangle newTriangle(this);
-    newTriangle._firstPoint.rotation(rotationCenter,rotationAngle);
-    newTriangle._secondPoint.rotation(rotationCenter,rotationAngle);
-    newTriangle._thirdPoint.rotation(rotationCenter,rotationAngle);
+    Triangle *newTriangle = new Triangle(*this);
+    newTriangle->_firstPoint.rotation(rotationCenter,rotationAngle);
+    newTriangle->_secondPoint.rotation(rotationCenter,rotationAngle);
+    newTriangle->_thirdPoint.rotation(rotationCenter,rotationAngle);
     return newTriangle;
 }
 double Triangle::getArea() const
@@ -68,5 +76,10 @@ double Triangle::getArea() const
     return sqrt(semi_perimeter*(semi_perimeter - firstSegment)
         *(semi_perimeter - secondSegment)*(semi_perimeter - thirdSegment));
 
+}
 
+ostream  & operator << (ostream & os, const Triangle & triangle)
+{
+    os << (string) triangle;
+    return os;
 }

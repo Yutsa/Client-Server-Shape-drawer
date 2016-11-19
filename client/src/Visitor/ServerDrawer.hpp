@@ -6,7 +6,7 @@
 #include "DrawingVisitor.hpp"
 
 #include "../Shape/Circle.hpp"
-#include "../Shape/Polygone.hpp"
+#include "../Shape/Polygon.hpp"
 #include "../Shape/Triangle.hpp"
 #include "../Shape/Segment.hpp"
 
@@ -37,7 +37,7 @@ public:
     * Draws the Polygon.
     * @param polygon The Polygon to draw.
     */
-    virtual void draw(const Polygone* polygon) const;
+    virtual void draw(const Polygon* polygon) const;
 };
 
 #endif

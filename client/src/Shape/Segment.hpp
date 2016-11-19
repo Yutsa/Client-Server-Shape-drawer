@@ -20,7 +20,7 @@ private:
     /**
     *   The first point of the Segment
     **/
-    Vector2D _fistPoint;
+    Vector2D _firstPoint;
     /**
     *   The second point of the Segment
     **/
@@ -31,7 +31,7 @@ public:
     *   @param firstPoint the firstPoint of the Segment
     *   @param secondPoint the secondPoint of the Segment
     **/
-    Segment(Vector2D firstPoint, Vector2D secondPoint);
+    Segment(Vector2D firstPoint, Vector2D secondPoint, Color color);
 
     /**
     * Draws the Segment using a DrawingVisitor.
@@ -82,6 +82,10 @@ public:
     * @return The area of the Segment.
     */
     virtual double getArea() const;
+
+    friend ostream & operator << (ostream & os, const Segment & segment);
 };
+
+extern ostream & operator << (ostream & os, const Segment & segment);
 
 #endif

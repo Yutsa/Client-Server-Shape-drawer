@@ -20,7 +20,7 @@ private:
     /**
     *   The first point of the Triangle
     **/
-    Vector2D _fistPoint;
+    Vector2D _firstPoint;
     /**
     *   The second point of the Triangle
     **/
@@ -36,7 +36,7 @@ public:
     *   @param secondPoint the secondPoint of the Triangle
     *   @param thirdPoint the thirdPoint of the Triangle
     **/
-    Triangle(Vector2D firstPoint, Vector2D secondPoint, Vector2D thirdPoint);
+    Triangle(Vector2D firstPoint, Vector2D secondPoint, Vector2D thirdPoint, Color color);
 
     /**
     * Draws the Triangle using a DrawingVisitor.
@@ -87,6 +87,10 @@ public:
     * @return The area of the Triangle.
     */
     virtual double getArea() const;
+
+    friend ostream  & operator << (ostream & os, const Triangle & triangle);
 };
+
+extern ostream  & operator << (ostream & os, const Triangle & triangle);
 
 #endif

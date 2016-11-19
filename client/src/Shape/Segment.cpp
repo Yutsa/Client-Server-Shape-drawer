@@ -1,6 +1,9 @@
 #include "Segment.hpp"
+#include <sstream>
 
-Segment::Segment(Vector2D firstPoint, Vector2D secondPoint)
+using std::ostringstream;
+
+Segment::Segment(Vector2D firstPoint, Vector2D secondPoint, Color color) : Shape(color)
 {
     _firstPoint = firstPoint;
     _secondPoint = secondPoint;
@@ -8,45 +11,53 @@ Segment::Segment(Vector2D firstPoint, Vector2D secondPoint)
 
 void Segment::draw(const DrawingVisitor* visitor) const
 {
-    visitor.draw(this);
+    visitor->draw(this);
 }
 
-operator Segment::string() const
+Segment::operator string() const
 {
-
+    ostringstream os;
+    os << "segment," << _color << "," << _firstPoint.getX() << "," << _firstPoint.getY() << "," << _secondPoint.getX() << "," << _secondPoint.getY();
+    return os.str();
 }
 
 void Segment::save(const SaveVisitor* saveVisitor) const
 {
-    saveVisitor.save(this);
+    saveVisitor->save(this);
 }
 
 Shape* Segment::translation(const Vector2D & translationVector) const
 {
-    Segment newSegment(this);
-    newSegment._firstPoint.translation(translationVector);
-    newSegment._secondPoint.translation(translationVector);
+    Segment *newSegment = new Segment(*this);
+    newSegment->_firstPoint.translation(translationVector);
+    newSegment->_secondPoint.translation(translationVector);
     return newSegment;
 }
 
-void Segment::homothety(const Vector2D & invariantPoint,
+Shape* Segment::homothety(const Vector2D & invariantPoint,
     const double & homothetyRatio) const
 {
-    Segment newSegment(this);
-    newSegment._firstPoint.homothety(invariantPoint,homothetyRatio);
-    newSegment._secondPoint.homothety(invariantPoint,homothetyRatio);
+    Segment *newSegment = new Segment(*this);
+    newSegment->_firstPoint.homothety(invariantPoint,homothetyRatio);
+    newSegment->_secondPoint.homothety(invariantPoint,homothetyRatio);
     return newSegment;
 }
 
-void Segment::rotation(const Vector2D & rotationCenter,
+Shape* Segment::rotation(const Vector2D & rotationCenter,
     const RadianAngle & rotationAngle) const
 {
-    Segment newSegment(this);
-    newSegment._firstPoint.rotation(rotationCenter,rotationAngle);
-    newSegment._secondPoint.rotation(rotationCenter,rotationAngle);
+    Segment *newSegment = new Segment(*this);
+    newSegment->_firstPoint.rotation(rotationCenter,rotationAngle);
+    newSegment->_secondPoint.rotation(rotationCenter,rotationAngle);
     return newSegment;
 }
 double Segment::getArea() const
 {
     return 0;
+}
+
+ostream & operator << (ostream & os, const Segment & segment)
+{
+    os << (string) segment;
+    return os;
 }
