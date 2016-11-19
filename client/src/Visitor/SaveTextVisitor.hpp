@@ -1,7 +1,5 @@
-#ifndef SAVE_VISITOR_H
-#define SAVE_VISITOR_H
-
-#include <iostream>
+#ifndef SAVE_TEXT_VISITOR_H
+#define SAVE_TEXT_VISITOR_H
 
 using std::string;
 
@@ -12,32 +10,31 @@ class Polygon;
 class Shape;
 
 /**
-* The abstract class to implement the classes that will save the Shapes.
+* This class implements a way to save a shape in a simple text format.
 */
-
-class SaveVisitor
+class SaveTextVisitor : public SaveVisitor
 {
 public:
     /**
     * Saves the Circle.
     * @param circle The Circle to save.
     */
-    virtual void save(const Circle* circle, const string & filename) const = 0;
+    void save(const Circle* circle, const string & filename) const;
     /**
     * Saves the Segment.
     * @param segment The Segment to save.
     */
-    virtual void save(const Segment* segment, const string & filename) const = 0;
+    void save(const Segment* segment, const string & filename) const;
     /**
     * Saves the Triangle.
     * @param triangle The Triangle to save.
     */
-    virtual void save(const Triangle* triangle, const string & filename) const = 0;
+    void save(const Triangle* triangle, const string & filename) const;
     /**
     * Saves the Polygon.
     * @param polygon The Polygon to save.
     */
-    virtual void save(const Polygon* polygon, const string & filename) const = 0;
+    void save(const Polygon* polygon, const string & filename) const;
 
     /**
     * Save a shape.

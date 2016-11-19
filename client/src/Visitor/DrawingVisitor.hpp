@@ -12,10 +12,6 @@ using std::string;
 using std::cout;
 using std::endl;
 
-//#include "../Shape/Circle.hpp"
-//#include "../Shape/Segment.hpp"
-//#include "../Shape/Triangle.hpp"
-//#include "../Shape/Polygone.hpp"
 
 /**
 * The abstract base class for all drawers.

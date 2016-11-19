@@ -25,7 +25,8 @@ public class PolygonDrawer extends ShapeDrawerLink
 		}
 		
         String color = arguments[1];
-        
+
+		// 2 arguments are not coord, and each coord counts as 2 arguments (x and y)
         int nbPoint = (arguments.length-2)/2;
         
         int[] pX = null, pY = null;

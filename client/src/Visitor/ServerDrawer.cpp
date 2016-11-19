@@ -9,7 +9,7 @@ ServerDrawer::ServerDrawer() : DrawingVisitor()
 
 ServerDrawer::~ServerDrawer()
 {
-    
+
 }
 
 void ServerDrawer::draw(const Circle* circle) const
@@ -43,3 +43,13 @@ void ServerDrawer::draw(const Polygone* polygon) const
     // Prints the message received from the server.
     cout << Socket::receiveData() << endl;
 }
+
+/* Could be better to do this
+void ServerDrawer::draw(const Shape* shape) const
+{
+    string request = (string) *shape;
+    Socket::sendRequest(request);
+    // Prints the message received from the server.
+    cout << Socket::receiveData() << endl;
+}
+*/

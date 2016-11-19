@@ -14,6 +14,12 @@ test-shape: test-shape.o circle.o vector2d.o geometryexception.o radianangle.o c
 test-color: test-color.o color.o utilsexception.o
 	g++ -o ../bin/test-color ../bin/test-color.o ../bin/color.o ../bin/utilsexception.o $(CFLAGS)
 
+test-saving: test-saving.o
+	g++ -o ../bin/test-saving ../bin/test-saving.o
+
+test-saving.o:
+	g++ -o ../bin/test-saving.o -c Tests/test-saving.cpp
+
 test-vector2D.o: Tests/test-vector2D.cpp Geometry/Vector2D.hpp
 	g++ -o ../bin/test-vector2D.o -c Tests/test-vector2D.cpp $(CFLAGS)
 
@@ -27,7 +33,7 @@ networkexception.o: Network/NetworkException.cpp Network/NetworkException.hpp
 	g++ -o ../bin/networkexception.o -c Network/NetworkException.cpp $(CFLAGS)
 
 utilsexception.o: Utils/UtilsException.cpp Utils/UtilsException.hpp
-	g++ -o ../bin/utilsexception.o -c Utils/Utilsexception.cpp $(CFLAGS)
+	g++ -o ../bin/utilsexception.o -c Utils/UtilsException.cpp $(CFLAGS)
 
 socket.o: Network/Socket.cpp Network/Socket.hpp Network/NetworkException.hpp
 	g++ -o ../bin/socket.o -c Network/Socket.cpp $(CFLAGS)
