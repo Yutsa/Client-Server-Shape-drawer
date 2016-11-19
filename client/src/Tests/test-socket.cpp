@@ -4,18 +4,20 @@
 #include "../Shape/Triangle.hpp"
 #include "../Shape/Segment.hpp"
 
+
 using std::cout;
 using std::endl;
 using std::string;
 
 int main(int argc, char* argv[])
 {
+    Color color = Color::getColor("red");
+    Vector2D center(20, 30);
+    Circle C(center, 50, color);
     
-    string answer;
-    Socket::getInstance();
-    Socket::createConnexion();
-    Socket::sendRequest("Circle,red,100,100,100\n");
-    answer = Socket::receiveData();
-    cout << answer << endl;
+    ServerDrawer *serverDrawer = new ServerDrawer();
+    
+    C.draw(serverDrawer);
+    
     return 0;
 }
