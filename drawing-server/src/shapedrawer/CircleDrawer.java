@@ -17,9 +17,9 @@ public class CircleDrawer extends ShapeDrawerLink
     {
         String[] arguments = request.split(",");
 
-        String shape = arguments[0];
+        String shapeName = arguments[0];
 
-        if (!shape.toLowerCase().equals("circle"))
+        if (!shapeName.toLowerCase().equals("circle"))
             throw new ShapeNotRecognizedException("Shape not recognized");
 
         /* Initialise rgb value */
@@ -34,8 +34,7 @@ public class CircleDrawer extends ShapeDrawerLink
         int diametre = Integer.parseInt(arguments[6]);
 
         /* Draw the circle */
-        //TODO: Change the color
-        System.out.println("Drawing a Circle");
+        System.out.println("Drawing a Circle : ");
         System.out.println(request);
         graphics.setColor(color);
         graphics.fillOval(coordX, coordY, diametre, diametre);

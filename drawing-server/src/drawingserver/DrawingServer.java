@@ -32,7 +32,7 @@ public class DrawingServer
         int nbConnection = 0;
 
         //port = 9111;
-        port = 9112;
+        port = 9113;
         try
         {
             server = new ServerSocket(port);

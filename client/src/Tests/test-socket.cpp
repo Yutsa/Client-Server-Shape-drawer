@@ -11,13 +11,20 @@ using std::string;
 
 int main(int argc, char* argv[])
 {
-    Color color = Color::getColor("red");
-    Vector2D center(20, 30);
-    Circle C(center, 50, color);
+    Vector2D center(20, 30), beginSeg(100, 100), endSeg(100, 150);
+    
+    Segment S(beginSeg, endSeg, Color::getColor("blue"));
+    Circle C(center, 50, Color::getColor("red"));
     
     ServerDrawer *serverDrawer = new ServerDrawer();
     
     C.draw(serverDrawer);
+    cout << "Circle drawn" << endl;
+    
+    sleep(1);
+    
+    S.draw(serverDrawer);
+    cout << "Segment drawn" << endl;
     
     return 0;
 }

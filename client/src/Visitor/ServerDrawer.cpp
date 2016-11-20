@@ -23,7 +23,7 @@ void ServerDrawer::draw(const Circle* circle) const
 void ServerDrawer::draw(const Segment* segment) const
 {
     string request = (string) *segment;
-    Socket::sendRequest(request);
+    Socket::sendRequest(request + "\n");
     // Prints the message received from the server.
     cout << Socket::receiveData() << endl;
 }
@@ -39,7 +39,7 @@ void ServerDrawer::draw(const Triangle* triangle) const
 void ServerDrawer::draw(const Polygon* polygon) const
 {
     string request = (string) *polygon;
-    Socket::sendRequest(request);
+    Socket::sendRequest(request + "\n");
     // Prints the message received from the server.
     cout << Socket::receiveData() << endl;
 }

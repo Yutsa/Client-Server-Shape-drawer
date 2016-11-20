@@ -10,6 +10,13 @@ Triangle::Triangle(Vector2D firstPoint, Vector2D secondPoint, Vector2D thirdPoin
     _thirdPoint = thirdPoint;
 }
 
+Triangle::Triangle(Vector2D firstPoint, Vector2D secondPoint, Vector2D thirdPoint) : Shape()
+{
+    _firstPoint = firstPoint;
+    _secondPoint = secondPoint;
+    _thirdPoint = thirdPoint;
+}
+
 void Triangle::draw(const DrawingVisitor* visitor) const
 {
     visitor->draw(this);

@@ -9,6 +9,12 @@ Segment::Segment(Vector2D firstPoint, Vector2D secondPoint, Color color) : Shape
     _secondPoint = secondPoint;
 }
 
+Segment::Segment(Vector2D firstPoint, Vector2D secondPoint) : Shape()
+{
+    _firstPoint = firstPoint;
+    _secondPoint = secondPoint;
+}
+
 void Segment::draw(const DrawingVisitor* visitor) const
 {
     visitor->draw(this);

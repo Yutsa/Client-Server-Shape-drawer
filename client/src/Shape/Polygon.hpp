@@ -27,14 +27,19 @@ private:
 public:
 
     /**
-    *   Polygon constructors
-    *   @param color the color of the Polygon
+    * Polygon constructor
+    * @param color the color of the Polygon
     **/
     Polygon(Color color);
+    
+    /**
+    * Polygon default constructor
+    **/
+    Polygon();
 
     /**
-    *   Function to add a point on the Polygon
-    *   @param point point to add
+    * Function to add a point on the Polygon
+    * @param point point to add
     **/
     virtual void addPoint(const Vector2D & point);
 
