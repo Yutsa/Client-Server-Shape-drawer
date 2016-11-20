@@ -38,6 +38,7 @@ public class DrawingThread extends Thread
     private Frame _frame;
     private Graphics _graphics;
     private BufferStrategy _strategy;
+    private Socket _socket;
 
     /**
      * Minimal constructor for the DrawingThread.
@@ -53,7 +54,7 @@ public class DrawingThread extends Thread
         this.shapeDrawer = shapeDrawer;
         inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         outputStream = new PrintStream(socket.getOutputStream());
-
+        _socket = socket;
         createFrame();
     }
 
@@ -88,29 +89,37 @@ public class DrawingThread extends Thread
     public void run()
     {
         String request;
+        boolean stop = false;
 
-        try
+        while (!stop)
         {
-        	/* Here is the blocking operation */
-        	for (;;) 
-        	{
-        		request = inputStream.readLine();
+            try
+            {
+                request = inputStream.readLine();
+                if (request == null)
+                {
+                    stop = true;
+                    _socket.close();
+                } else
+                {
+                    shapeDrawer.draw(request, _frame, _graphics, _strategy);
 
-                shapeDrawer.draw(request, _frame, _graphics, _strategy);
+                    outputStream.println("Forme dessinée.");
+                }
 
-                outputStream.println("Forme dessinée.");
-        	}
-        }
-        catch (IOException e)
-        {
-            System.err.println("Couldn't get the request from the input stream.");
-            e.printStackTrace();
-        }
-        catch (ShapeNotRecognizedException e)
-        {
-            System.err.println(e.getMessage());
-            /* Sends the error to the client using the socket output stream. */
-            outputStream.println(e.getMessage());
+
+            }
+            catch (IOException e)
+            {
+                System.err.println("Couldn't get the request from the input stream.");
+                e.printStackTrace();
+            }
+            catch (ShapeNotRecognizedException e)
+            {
+                System.err.println(e.getMessage());
+                /* Sends the error to the client using the socket output stream. */
+                outputStream.println(e.getMessage());
+            }
         }
     }
 }
