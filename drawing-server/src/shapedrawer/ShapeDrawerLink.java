@@ -9,6 +9,9 @@ import java.awt.image.BufferStrategy;
  */
 public abstract class ShapeDrawerLink implements ShapeDrawer
 {
+    /**
+     * The next link of the chain of responsibility.
+     */
     private ShapeDrawerLink _next;
 
     /**

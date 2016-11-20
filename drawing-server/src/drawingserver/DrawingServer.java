@@ -8,12 +8,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import shapedrawer.CircleDrawer;
-import shapedrawer.PolygonDrawer;
-import shapedrawer.SegmentDrawer;
-import shapedrawer.ShapeDrawer;
-import shapedrawer.ShapeDrawerLink;
-
 /**
  * This class will have the ServerSocket and create Threads
  * for each connection by a client.
@@ -31,8 +25,8 @@ public class DrawingServer
         int port = 0;
         int nbConnection = 0;
 
-        //port = 9111;
         port = 9113;
+
         try
         {
             server = new ServerSocket(port);
@@ -58,6 +52,7 @@ public class DrawingServer
         /* We create a ThreadGroup for all the DrawingThreads that will be created. */
         threadGroup = new ThreadGroup("drawingThreads");
 
+        /* Creation of the chain of responsibility that will draw the shapes. */
         ShapeDrawerLink circleDrawer = new CircleDrawer(null);
         ShapeDrawerLink segmentDrawer = new SegmentDrawer(circleDrawer);
         ShapeDrawerLink polygonDrawer = new PolygonDrawer(segmentDrawer);

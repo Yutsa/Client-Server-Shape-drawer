@@ -36,8 +36,20 @@ public class DrawingThread extends Thread
      * The Frame in which the shape will be drawn.
      */
     private Frame _frame;
+
+    /**
+     * The Graphics of the client's Frame.
+     */
     private Graphics _graphics;
+
+    /**
+     * The BufferStrategy for the Frame of the client.
+     */
     private BufferStrategy _strategy;
+
+    /**
+     * The Socket to communicate with the client.
+     */
     private Socket _socket;
 
     /**
@@ -58,6 +70,9 @@ public class DrawingThread extends Thread
         createFrame();
     }
 
+    /**
+     * Creates the client's Frame.
+     */
     private void createFrame()
     {
         _frame = new Frame("Fenêtre de dessin");
@@ -84,7 +99,7 @@ public class DrawingThread extends Thread
     }
 
     /**
-     * Draws the shape the client resquested.
+     * Draws the shape the client requested.
      */
     public void run()
     {

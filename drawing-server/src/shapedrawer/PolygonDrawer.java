@@ -1,21 +1,31 @@
 package shapedrawer;
 
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.util.ArrayList;
 
 /**
- * @author Édouard WILLISSECK
+ * The implementation of the ShapeDrawer to draw a polygon
  */
 public class PolygonDrawer extends ShapeDrawerLink
 {
-	public PolygonDrawer(ShapeDrawerLink next) {
+    /**
+     * Constructor
+     *
+     * @param next The next ShapeDrawerLink in the chain of responsibility.
+     */
+    public PolygonDrawer(ShapeDrawerLink next) {
 		super(next);
-	}
+    }
 
-	@Override
+    /**
+     * Draws the Polygon.
+     * @param request The request of the shape to draw.
+     * @param frame The frame to draw in.
+     * @param graphics The frame's graphics.
+     * @param bufferStrategy The frame's {@link BufferStrategy}
+     * @throws ShapeNotRecognizedException
+     */
+    @Override
 	public void drawShape(String request, Frame frame, Graphics graphics, BufferStrategy bufferStrategy) throws ShapeNotRecognizedException {
 		
 		String[] arguments = request.split(",");
@@ -33,23 +43,19 @@ public class PolygonDrawer extends ShapeDrawerLink
         Color color = new Color(r, g, b);
 
 		// 4 arguments are not coord, and each coord counts as 2 arguments (x and y)
-        int nbPoint = (arguments.length-4)/2;
-        
+        int nbPoint = (arguments.length - 4) / 2;
+
+        /* Creates the array containing all points. */
         int[] pX = new int[nbPoint];
         int[] pY = new int[nbPoint];
-        
-        //ArrayList<Integer> pX = new ArrayList<Integer>();
-        //ArrayList<Integer> pY = new ArrayList<Integer>();
+
         
         for (int i = 0; i < nbPoint; i++)
         {
         	pX[i] = (Integer.parseInt(arguments[4+i*2]));
         	pY[i] = (Integer.parseInt(arguments[5+i*2]));
         }
-        
-        
-        
-        
+
         /* Draw the Polygon */
         
         System.out.println("Drawing a Polygon : ");

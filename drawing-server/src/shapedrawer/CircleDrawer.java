@@ -3,15 +3,30 @@ package shapedrawer;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
-
+/**
+ * The implementation of the ShapeDrawer to draw the Circle.
+ */
 public class CircleDrawer extends ShapeDrawerLink
 {
 
+    /**
+     * Constructor
+     *
+     * @param next The next ShapeDrawerLink in the chain of responsibility.
+     */
     public CircleDrawer(ShapeDrawerLink next)
     {
         super(next);
     }
 
+    /**
+     * Draws the Circle.
+     * @param request The request of the shape to draw.
+     * @param frame The frame to draw in.
+     * @param graphics The frame's graphics.
+     * @param bufferStrategy The frame's {@link BufferStrategy}
+     * @throws ShapeNotRecognizedException
+     */
     @Override
     public void drawShape(String request, Frame frame, Graphics graphics, BufferStrategy bufferStrategy) throws ShapeNotRecognizedException
     {
