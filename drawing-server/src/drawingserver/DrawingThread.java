@@ -92,11 +92,14 @@ public class DrawingThread extends Thread
         try
         {
         	/* Here is the blocking operation */
-            request = inputStream.readLine();
+        	for (;;) 
+        	{
+        		request = inputStream.readLine();
 
-            shapeDrawer.draw(request, _frame, _graphics, _strategy);
+                shapeDrawer.draw(request, _frame, _graphics, _strategy);
 
-            outputStream.println("Forme dessinée.");
+                outputStream.println("Forme dessinée.");
+        	}
         }
         catch (IOException e)
         {

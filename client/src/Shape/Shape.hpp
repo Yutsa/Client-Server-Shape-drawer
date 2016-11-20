@@ -1,7 +1,6 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
-
 #include "../Utils/Color.hpp"
 #include "../Geometry/Vector2D.hpp"
 

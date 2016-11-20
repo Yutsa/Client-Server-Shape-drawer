@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.util.ArrayList;
 
 /**
  * @author Édouard WILLISSECK
@@ -34,15 +35,23 @@ public class PolygonDrawer extends ShapeDrawerLink
 		// 4 arguments are not coord, and each coord counts as 2 arguments (x and y)
         int nbPoint = (arguments.length-4)/2;
         
-        int[] pX = null, pY = null;
+        int[] pX = new int[nbPoint];
+        int[] pY = new int[nbPoint];
+        
+        //ArrayList<Integer> pX = new ArrayList<Integer>();
+        //ArrayList<Integer> pY = new ArrayList<Integer>();
         
         for (int i = 0; i < nbPoint; i++)
         {
-        	pX[i] = Integer.parseInt(arguments[4+i*2]);
-        	pY[i] = Integer.parseInt(arguments[5+i*2]);
+        	pX[i] = (Integer.parseInt(arguments[4+i*2]));
+        	pY[i] = (Integer.parseInt(arguments[5+i*2]));
         }
         
+        
+        
+        
         /* Draw the Polygon */
+        
         System.out.println("Drawing a Polygon : ");
         System.out.println(request);
         graphics.setColor(color);
