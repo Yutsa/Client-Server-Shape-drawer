@@ -21,8 +21,8 @@ int main(int argc, char* argv[])
     
     P.addPoint(point4);
     P.addPoint(point5);
-    P.addPoint(point6);
     P.addPoint(point7);
+    P.addPoint(point6);
     
     ServerDrawer *serverDrawer = new ServerDrawer();
     

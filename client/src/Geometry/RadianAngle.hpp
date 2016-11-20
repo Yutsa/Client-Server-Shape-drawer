@@ -35,14 +35,32 @@ public:
     */
     double getValue() const;
     
+    /**
+    * Casts RadianAngle to a string
+    */
     operator string() const;
     
+    /**
+    * Sends a string of angle to a stream
+    * @param os ostream
+    * @param angle the angle to send 
+    * @return ostream to send to output
+    */
     friend ostream & operator<<(ostream & os, const RadianAngle & angle);
 };
 
 extern ostream & operator<<(ostream & os, const RadianAngle & angle);
 
+/**
+* Override function cos for RadianAngle
+* @param angle RadianAngle have to calculate
+*/
 double cos(const RadianAngle & angle);
+
+/**
+* Override function sin for RadianAngle
+* @param angle RadianAngle have to calculate
+*/
 double sin(const RadianAngle & angle);
 
 #endif

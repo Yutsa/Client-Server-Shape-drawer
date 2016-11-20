@@ -26,12 +26,6 @@ private:
     **/
     Vector2D _secondPoint;
 public:
-    /**
-    * Segment constructor
-    * @param firstPoint the firstPoint of the Segment
-    * @param secondPoint the secondPoint of the Segment
-    **/
-    Segment(Vector2D firstPoint, Vector2D secondPoint);
     
     /**
     * Segment constructor with color
@@ -39,7 +33,7 @@ public:
     * @param secondPoint the secondPoint of the Segment
     * @param color the color of the Segment
     **/
-    Segment(Vector2D firstPoint, Vector2D secondPoint, Color color);
+    Segment(const Vector2D & firstPoint, const Vector2D & secondPoint, const Color & color = Color::getColor("black"));
 
     /**
     * Draws the Segment using a DrawingVisitor.

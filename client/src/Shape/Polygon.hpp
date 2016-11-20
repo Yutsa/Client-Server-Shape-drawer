@@ -30,12 +30,7 @@ public:
     * Polygon constructor
     * @param color the color of the Polygon
     **/
-    Polygon(Color color);
-    
-    /**
-    * Polygon default constructor
-    **/
-    Polygon();
+    Polygon(const Color & color = Color::getColor("black"));
 
     /**
     * Function to add a point on the Polygon

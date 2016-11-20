@@ -3,13 +3,7 @@
 
 using std::ostringstream;
 
-Segment::Segment(Vector2D firstPoint, Vector2D secondPoint, Color color) : Shape(color)
-{
-    _firstPoint = firstPoint;
-    _secondPoint = secondPoint;
-}
-
-Segment::Segment(Vector2D firstPoint, Vector2D secondPoint) : Shape()
+Segment::Segment(const Vector2D & firstPoint, const Vector2D & secondPoint, const Color & color) : Shape(color)
 {
     _firstPoint = firstPoint;
     _secondPoint = secondPoint;

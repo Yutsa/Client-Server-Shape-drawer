@@ -3,15 +3,11 @@
 
 using std::ostringstream;
 
-Polygon::Polygon(Color color) : Shape(color)
+Polygon::Polygon(const Color & color) : Shape(color)
 {
 
 }
 
-Polygon::Polygon() : Shape()
-{
-    
-}
 
 void Polygon::draw(const DrawingVisitor* visitor) const
 {
