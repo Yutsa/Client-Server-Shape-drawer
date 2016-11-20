@@ -2,12 +2,30 @@ package shapedrawer;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
+/**
+ * The implementation of a ShapeDrawer to draw a Segment.
+ */
+
 public class SegmentDrawer extends ShapeDrawerLink
 {
+    /**
+     * Constructor
+     *
+     * @param next The next ShapeDrawerLink in the chain of responsibility.
+     */
     public SegmentDrawer(ShapeDrawerLink next)
     {
         super(next);
     }
+
+    /**
+     * Draws the Segment.
+     * @param request The request of the shape to draw.
+     * @param frame The frame to draw in.
+     * @param graphics The frame's graphics.
+     * @param bufferStrategy The frame's {@link BufferStrategy}
+     * @throws ShapeNotRecognizedException
+     */
     public void drawShape(String request, Frame frame, Graphics graphics, BufferStrategy bufferStrategy) throws ShapeNotRecognizedException
     {
         String[] arguments = request.split(",");
