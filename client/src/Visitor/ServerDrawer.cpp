@@ -14,42 +14,28 @@ ServerDrawer::~ServerDrawer()
 
 void ServerDrawer::draw(const Circle* circle) const
 {
-    string request = (string) *circle;
-    Socket::sendRequest(request + "\n");
-    // Prints the message received from the server.
-    cout << Socket::receiveData() << endl;
+    this->draw( (Shape*) circle);
 }
 
 void ServerDrawer::draw(const Segment* segment) const
 {
-    string request = (string) *segment;
-    Socket::sendRequest(request + "\n");
-    // Prints the message received from the server.
-    cout << Socket::receiveData() << endl;
+    this->draw( (Shape*) segment);
 }
 
 void ServerDrawer::draw(const Triangle* triangle) const
 {
-    string request = (string) *triangle;
-    Socket::sendRequest(request + "\n");
-    // Prints the message received from the server.
-    cout << Socket::receiveData() << endl;
+    this->draw( (Shape*) triangle);
 }
 
 void ServerDrawer::draw(const Polygon* polygon) const
 {
-    string request = (string) *polygon;
+    this->draw( (Shape*) polygon);
+}
+
+void ServerDrawer::draw(const Shape *shape) const
+{
+    string request = (string) *shape;
     Socket::sendRequest(request + "\n");
     // Prints the message received from the server.
     cout << Socket::receiveData() << endl;
 }
-
-/* Could be better to do this
-void ServerDrawer::draw(const Shape* shape) const
-{
-    string request = (string) *shape;
-    Socket::sendRequest(request);
-    // Prints the message received from the server.
-    cout << Socket::receiveData() << endl;
-}
-*/
