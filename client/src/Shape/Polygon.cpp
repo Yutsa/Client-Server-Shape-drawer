@@ -25,7 +25,7 @@ Polygon::operator string() const
     os << "polygon," << _color;
     for(unsigned int i = 0; i < _points.size(); i++)
     {
-        os << "," << _points[i].getX() << "," << _points[i].getY();
+        os << "," << (int)_points[i].getX() << "," << (int)_points[i].getY();
     }
     return os.str();
 }

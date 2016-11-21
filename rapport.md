@@ -29,6 +29,18 @@ Un premier exemple de protocole simple pourrait être le suivant :
 ce qui donnerait par exemple : `triangle,23,43,54,30,40,23,98,78,56`
 pour dessiner un triangle dans une nouvelle fenêtre.
 
+Vector2D
+=========
+
+Les Vector2D représentent des points ou des vecteurs. Ils sont la base de toutes 
+les formes mais aussi de tous les vecteurs de transformations (translation, 
+homothétie et rotation) qui sont réalisées.
+
+Cette classe est composée de 2 nombres réèls pour chaques coordonnée x et y. Les
+opérations de bases (+, -, *) y sont implémentées grâce à la surcharge des
+opérateurs déja présents. Les opérations de transformations sont elles aussi
+présentent pour pouvoir les effectuer directement.
+
 Couleur
 ========
 

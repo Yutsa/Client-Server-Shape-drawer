@@ -31,7 +31,6 @@ public:
     */
     Color(unsigned char red, unsigned char green, unsigned char blue);
 
-    Color(const Color & color);
 
     /**
     * Initialize map of color

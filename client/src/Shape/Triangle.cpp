@@ -18,10 +18,10 @@ void Triangle::draw(const DrawingVisitor* visitor) const
 Triangle::operator string() const
 {
     ostringstream os;
-    os << "triangle," << _color << "," << _firstPoint.getX() << ","
-        << _firstPoint.getY() << "," << _secondPoint.getX() << ","
-        << _secondPoint.getY() << "," << _thirdPoint.getX() << ","
-        << _thirdPoint.getY();
+    os << "triangle," << _color << "," << (int)_firstPoint.getX() << ","
+        << (int)_firstPoint.getY() << "," << (int)_secondPoint.getX() << ","
+        << (int)_secondPoint.getY() << "," << (int)_thirdPoint.getX() << ","
+        << (int)_thirdPoint.getY();
     return os.str();
 }
 

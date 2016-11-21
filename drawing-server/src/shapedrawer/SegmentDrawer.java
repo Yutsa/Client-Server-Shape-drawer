@@ -47,14 +47,9 @@ public class SegmentDrawer extends ShapeDrawerLink
         int coordYB = Integer.parseInt(arguments[7]);
 
         /* Draw the segment */
-        System.out.println("Drawing a Semgent : ");
-        System.out.println(request);
+        System.out.println("Drawing : " + request);
         graphics.setColor(color);
         graphics.drawLine(coordXA,coordYA,coordXB,coordYB);
         bufferStrategy.show();
-        System.out.println("Segment drawn");
-
-        bufferStrategy.show();
-
     }
 }
