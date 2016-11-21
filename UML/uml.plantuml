@@ -1,15 +1,18 @@
 @startuml
 package Client {
     abstract class Shape {
+        +Shape(const Color & color = Color::getColor("black"))
         +{abstract} draw(const DrawingVisitor* visitor)
-        +{abstract} toString() : String
+        +{abstract} operator string()
         +{abstract} save(const SaveVisitor* saveVisitor, const string & filename)
-        +{abstract} translation(Vector2D translationVector)
+        +{abstract} translation(Vector2D translationVector) : Shape*
         +{abstract} homothétie(const Vector2D & invariantPoint,
-            const double & homothetyRatio)
-        +{abstract} rotation(const Vector2D & rotationCenter,
+            const double & homothetyRatio) : Shape*
+        +{abstract} Shape* rotation(const Vector2D & rotationCenter,
             const RadianAngle & rotationAngle)
-        +{abstract} getArea()
+        +{abstract} double getArea()
+        +setColor(const Color & color)
+        +getColor() : Color
     }
 
     abstract class ComposedShape {
@@ -85,10 +88,10 @@ package Client {
     }
 
     abstract class SaveVisitor {
-        +{abstract} save(Cercle *s, const string & filename)
-        +{abstract} save(Segment *s, const string & filename)
-        +{abstract} save(Triangle *s, const string & filename)
-        +{abstract} save(Polygone *s, const string & filename)
+        +{abstract} save(const Cercle *s, const string & filename)
+        +{abstract} save(const Segment *s, const string & filename)
+        +{abstract} save(const Triangle *s, const string & filename)
+        +{abstract} save(const Polygone *s, const string & filename)
     }
 
     class ServerDrawer {
@@ -99,11 +102,11 @@ package Client {
         +draw(Polygone *s)
     }
 
-    class SaveXMLVisitor {
-        +save(Cercle *s)
-        +save(Segment *s)
-        +save(Triangle *s)
-        +save(Polygone *s)
+    class SaveTextVisitor {
+        +save(const Cercle *s, const string & filename)
+        +save(const Segment *s, const string & filename)
+        +save(const Triangle *s, const string & filename)
+        +save(const Polygone *s, const string & filename)
     }
 
     abstract class ShapeLoader {
@@ -118,11 +121,6 @@ package Client {
 
     class ShapeLoaderText {
         +ShapeLoaderText(ShapeLoaderCOR* next)
-        +loadShape()
-    }
-
-    class ShapeLoaderXML {
-        +ShapeLoaderXML(ShapeLoaderCOR* next)
         +loadShape()
     }
 
@@ -199,17 +197,15 @@ ShapeDrawerLink <|-- PolygoneDrawer
 DrawingThread *-- "1" ShapeDrawer
 ComposedShape o-- "1, N" Shape
 Shape <|-- ComposedShape
-SaveVisitor <|-- SaveXMLVisitor
+SaveVisitor <|-- SaveTextVisitor
 DrawingVisitor <|-- ServerDrawer
 ShapeLoader <|-- ShapeLoaderCOR
 ShapeLoaderCOR o-- "0, N" ShapeLoaderCOR
 ShapeLoaderCOR <|-- ShapeLoaderText
-ShapeLoaderCOR <|-- ShapeLoaderXML
 Cercle o--> "1" Vector2D
 Segment o--> "2" Vector2D
 Triangle o--> "3" Vector2D
 Polygone o--> "3, N" Vector2D
 ShapeDrawer .. ShapeNotRecognizedException : << Throws >>
-ServerDrawer o-- "1" Socket
 Socket *-- "1" Socket
 @enduml
