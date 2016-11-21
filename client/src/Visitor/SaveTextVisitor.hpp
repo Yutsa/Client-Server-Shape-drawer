@@ -39,6 +39,12 @@ public:
     * @param polygon The Polygon to save.
     */
     void save(const Polygon* polygon, const string & filename) const;
+
+    /**
+    * Saves the Shape
+    * @param shape The Shape to save.
+    */
+    void save(const Shape* shape, const string & filename) const;
 };
 
 #endif

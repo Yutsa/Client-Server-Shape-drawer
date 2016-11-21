@@ -78,4 +78,4 @@ clean:
 	rm -rf ../bin/*.o
 
 mrproprer: clean
-	rm -rf ../bin/sujet_2015
+	rm -rf ../bin/*
