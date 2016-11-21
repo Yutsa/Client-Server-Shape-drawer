@@ -3,7 +3,7 @@
 
 using std::ostringstream;
 
-Triangle::Triangle(Vector2D firstPoint, Vector2D secondPoint, Vector2D thirdPoint, Color color) : Shape(color)
+Triangle::Triangle(const Vector2D & firstPoint, const Vector2D & secondPoint, const Vector2D & thirdPoint, const Color & color) : Shape(color)
 {
     _firstPoint = firstPoint;
     _secondPoint = secondPoint;

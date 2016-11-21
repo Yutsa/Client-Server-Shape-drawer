@@ -10,6 +10,11 @@
 #include "../Shape/Triangle.hpp"
 #include "../Shape/Segment.hpp"
 
+/**
+* This class is the drawer that implement a way to draw shapes using a
+* drawing server.
+*/
+
 class ServerDrawer : public DrawingVisitor
 {
 public:
@@ -38,6 +43,12 @@ public:
     * @param polygon The Polygon to draw.
     */
     void draw(const Polygon* polygon) const;
+
+    /**
+    * Draws the Shape.
+    * @param polygon The Shape to draw.
+    */
+    virtual void draw(const Shape* shape) const;    
 };
 
 #endif

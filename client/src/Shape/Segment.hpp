@@ -11,27 +11,29 @@
 using std::string;
 
 /**
-*   Represent a Segment
-*   It's a Shape
+* Represent a Segment
+* It's a Shape
 **/
 class Segment : public Shape
 {
 private:
     /**
-    *   The first point of the Segment
+    * The first point of the Segment
     **/
     Vector2D _firstPoint;
     /**
-    *   The second point of the Segment
+    * The second point of the Segment
     **/
     Vector2D _secondPoint;
 public:
+    
     /**
-    *   Segment constructors
-    *   @param firstPoint the firstPoint of the Segment
-    *   @param secondPoint the secondPoint of the Segment
+    * Segment constructor with color
+    * @param firstPoint the firstPoint of the Segment
+    * @param secondPoint the secondPoint of the Segment
+    * @param color the color of the Segment
     **/
-    Segment(Vector2D firstPoint, Vector2D secondPoint, Color color);
+    Segment(const Vector2D & firstPoint, const Vector2D & secondPoint, const Color & color = Color::getColor("black"));
 
     /**
     * Draws the Segment using a DrawingVisitor.

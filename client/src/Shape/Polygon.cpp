@@ -3,7 +3,7 @@
 
 using std::ostringstream;
 
-Polygon::Polygon(Color color) : Shape(color)
+Polygon::Polygon(const Color & color) : Shape(color)
 {
 
 }
@@ -23,7 +23,7 @@ Polygon::operator string() const
 {
     ostringstream os;
     os << "polygon," << _color;
-    for(unsigned int i = 0; i<_points.size();i++)
+    for(unsigned int i = 0; i < _points.size(); i++)
     {
         os << "," << _points[i].getX() << "," << _points[i].getY();
     }

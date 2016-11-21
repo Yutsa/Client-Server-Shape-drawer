@@ -1,10 +1,8 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
-#include <iostream>
-#include <string>
-#include "../Geometry/Vector2D.hpp"
 #include "../Utils/Color.hpp"
+#include "../Geometry/Vector2D.hpp"
 
 class SaveVisitor;
 class DrawingVisitor;
@@ -22,19 +20,12 @@ protected:
     */
     Color _color;
 
-//TODO: Must implement the shape color.
 public:
-    /*
-    * Empty contructor
-    * Sets color to NULL
-    */
-    Shape();
-
     /*
     * Contructor
     * Sets _color to color value
     */
-    Shape(Color color);
+    Shape(const Color & color = Color::getColor("black"));
 
     /**
     * Draws the Shape using a DrawingVisitor.
@@ -53,13 +44,6 @@ public:
     * @param saveVisitor The SaveVisitor to use to save the shape.
     */
     virtual void save(const SaveVisitor* saveVisitor, const string & filename) const = 0;
-
-    /**
-    * Translate the shape using a translation vector.
-    * @param translationVector The translation vector to use for the
-    *  translation.
-    */
-    //virtual void translation(const Vector2D & translationVector) = 0;
 
     /**
     * Translate the shape using a translation vector.
@@ -90,7 +74,16 @@ public:
     */
     virtual double getArea() const = 0;
 
-    virtual void setColor(Color color);
+    /**
+    * Sets the color of the Shape
+    * @param color The color of the Shape.
+    */
+    virtual void setColor(const Color & color);
+
+    /**
+    * Gets the color of the Shape
+    * @return The color of the Shape.
+    */
     virtual Color getColor();
 
     friend ostream & operator << (ostream & os, const Shape & shape);

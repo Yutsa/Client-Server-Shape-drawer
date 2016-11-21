@@ -1,44 +1,68 @@
 package shapedrawer;
 
-import java.awt.Frame;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 /**
- * @author Édouard WILLISSECK
+ * The implementation of the ShapeDrawer to draw a polygon
  */
 public class PolygonDrawer extends ShapeDrawerLink
 {
-	public PolygonDrawer(ShapeDrawerLink next) {
+    /**
+     * Constructor
+     *
+     * @param next The next ShapeDrawerLink in the chain of responsibility.
+     */
+    public PolygonDrawer(ShapeDrawerLink next) {
 		super(next);
-	}
+    }
 
-	@Override
+    /**
+     * Draws the Polygon.
+     * @param request The request of the shape to draw.
+     * @param frame The frame to draw in.
+     * @param graphics The frame's graphics.
+     * @param bufferStrategy The frame's {@link BufferStrategy}
+     * @throws ShapeNotRecognizedException
+     */
+    @Override
 	public void drawShape(String request, Frame frame, Graphics graphics, BufferStrategy bufferStrategy) throws ShapeNotRecognizedException {
 		
 		String[] arguments = request.split(",");
-		String shape = arguments[0];
+				
+		String shapeName = arguments[0];
 		
-		if(!shape.toLowerCase().equals("triangle") && !shape.toLowerCase().equals("polygon"))
-		{
+		if(!shapeName.toLowerCase().equals("triangle") && !shapeName.toLowerCase().equals("polygon"))
 			throw new ShapeNotRecognizedException("Shape not recognized");
-		}
 		
-        String color = arguments[1];
-
-		// 2 arguments are not coord, and each coord counts as 2 arguments (x and y)
-        int nbPoint = (arguments.length-2)/2;
+		/* Initialise rgb value */
+        int r = Integer.parseInt(arguments[1]);
+        int g = Integer.parseInt(arguments[2]);
+        int b = Integer.parseInt(arguments[3]);
         
-        int[] pX = null, pY = null;
+        Color color = new Color(r, g, b);
+
+		// 4 arguments are not coord, and each coord counts as 2 arguments (x and y)
+        int nbPoint = (arguments.length - 4) / 2;
+
+        /* Creates the array containing all points. */
+        int[] pX = new int[nbPoint];
+        int[] pY = new int[nbPoint];
+
         
         for (int i = 0; i < nbPoint; i++)
         {
-        	pX[i] = Integer.parseInt(arguments[2+i*2]);
-        	pY[i] = Integer.parseInt(arguments[3+i*2]);
+        	pX[i] = (Integer.parseInt(arguments[4+i*2]));
+        	pY[i] = (Integer.parseInt(arguments[5+i*2]));
         }
+
+        /* Draw the Polygon */
         
-        //TODO get color 
+        System.out.println("Drawing a Polygon : ");
+        System.out.println(request);
+        graphics.setColor(color);
         graphics.fillPolygon(pX, pY, nbPoint);
-        
+        bufferStrategy.show();
+        System.out.println("Polygon drawn");        
 	}
 }

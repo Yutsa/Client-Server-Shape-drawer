@@ -4,14 +4,7 @@
 
 using std::ostringstream;
 
-Circle::Circle(Vector2D center, double diameter, Color color) : Shape(color)
-{
-    _center.setX(center.getX());
-    _center.setY(center.getY());
-    _diameter=diameter;
-}
-
-Circle::Circle(Vector2D center, double diameter) : Shape()
+Circle::Circle(const Vector2D & center, const double & diameter, const Color & color) : Shape(color)
 {
     _center.setX(center.getX());
     _center.setY(center.getY());
@@ -46,7 +39,7 @@ Shape* Circle::homothety(const Vector2D & invariantPoint,
                          const double & homothetyRatio) const
 {
     Circle *newCircle = new Circle(*this);
-    newCircle->_center.homothety(invariantPoint,homothetyRatio);
+    newCircle->_center.homothety(invariantPoint, homothetyRatio);
     newCircle->_diameter *= homothetyRatio;
     return newCircle;
 }

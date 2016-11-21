@@ -1,9 +1,9 @@
 package drawingserver;
 
-import shapedrawer.ShapeDrawer;
-import shapedrawer.ShapeNotRecognizedException;
-
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
+
+import shapedrawer.ShapeDrawer;
+import shapedrawer.ShapeNotRecognizedException;
 
 /**
  * The Thread that will draw the shape sent by the client.
@@ -36,8 +39,21 @@ public class DrawingThread extends Thread
      * The Frame in which the shape will be drawn.
      */
     private Frame _frame;
+
+    /**
+     * The Graphics of the client's Frame.
+     */
     private Graphics _graphics;
+
+    /**
+     * The BufferStrategy for the Frame of the client.
+     */
     private BufferStrategy _strategy;
+
+    /**
+     * The Socket to communicate with the client.
+     */
+    private Socket _socket;
 
     /**
      * Minimal constructor for the DrawingThread.
@@ -53,25 +69,16 @@ public class DrawingThread extends Thread
         this.shapeDrawer = shapeDrawer;
         inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         outputStream = new PrintStream(socket.getOutputStream());
-
+        _socket = socket;
         createFrame();
     }
 
+    /**
+     * Creates the client's Frame.
+     */
     private void createFrame()
     {
-        _frame = new Frame("Fenêtre de dessin");
-        //TODO: Don't hardcode the size of the frame.
-        _frame.setBounds(0, 0, 500, 500);
-        _frame.setVisible(true);
-        _frame.addWindowListener(new WindowAdapter()
-        {
-            @Override
-            public void windowClosing(WindowEvent e)
-            {
-                super.windowClosing(e);
-                _frame.dispose();
-            }
-        });
+        initFrame();
 
         _frame.setIgnoreRepaint(true);
 
@@ -81,33 +88,73 @@ public class DrawingThread extends Thread
         _strategy = _frame.getBufferStrategy();
         _graphics = _strategy.getDrawGraphics();
     }
+    
+    private void initFrame() 
+    {
+    	_frame = new Frame("Fenêtre de dessin");
+        
+   		Toolkit tk = Toolkit.getDefaultToolkit(); Dimension d = tk.getScreenSize();
+    	int displayHeight, displayWidth, windowHeight, windowWidth, xWindow, yWindow;
+    		
+    	displayHeight = d.height; 
+    	displayWidth = d.width; 
+   		windowHeight = displayHeight*3/4; 
+   		windowWidth = displayWidth*3/4; 
+   		xWindow = displayWidth/10; 
+   		yWindow = displayHeight/10;
+    		
+        _frame.setBounds(xWindow, yWindow, windowWidth, windowHeight);
+    	
+    	_frame.addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                super.windowClosing(e);
+                _frame.dispose();
+            }
+        });
+    	
+        _frame.setVisible(true);
+    }
+
 
     /**
-     * Draws the shape the client resquested.
+     * Draws the shape the client requested.
      */
     public void run()
     {
         String request;
+        boolean stop = false;
 
-        try
+        while (!stop)
         {
-        	/* Here is the blocking operation */
-            request = inputStream.readLine();
+            try
+            {
+                request = inputStream.readLine();
+                if (request == null)
+                {
+                    stop = true;
+                    _socket.close();
+                } 
+                else
+                {
+                    shapeDrawer.draw(request, _frame, _graphics, _strategy);
 
-            shapeDrawer.draw(request, _frame, _graphics, _strategy);
-
-            outputStream.println("Forme dessinée.");
-        }
-        catch (IOException e)
-        {
-            System.err.println("Couldn't get the request from the input stream.");
-            e.printStackTrace();
-        }
-        catch (ShapeNotRecognizedException e)
-        {
-            System.err.println(e.getMessage());
-            /* Sends the error to the client using the socket output stream. */
-            outputStream.println(e.getMessage());
+                    outputStream.println("Forme dessinée.");
+                }
+            }
+            catch (IOException e)
+            {
+                System.err.println("Couldn't get the request from the input stream.");
+                e.printStackTrace();
+            }
+            catch (ShapeNotRecognizedException e)
+            {
+                System.err.println(e.getMessage());
+                /* Sends the error to the client using the socket output stream. */
+                outputStream.println(e.getMessage());
+            }
         }
     }
 }

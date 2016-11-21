@@ -1,16 +1,11 @@
 #include "Shape.hpp"
 
-Shape::Shape(Color color) : _color(color)
+Shape::Shape(const Color & color) : _color(color)
 {
 
 }
 
-Shape::Shape() : _color(Color::getColor("black"))
-{
-
-}
-
-void Shape::setColor(Color color)
+void Shape::setColor(const Color & color)
 {
     _color = color;
 }

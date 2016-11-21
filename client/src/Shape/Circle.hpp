@@ -32,14 +32,7 @@ public:
     * @param diameter The diameter of the Circle
     * @param color The color of the Circle
     **/
-    Circle(Vector2D center, double diameter, Color color);
-
-    /**
-    * Circle constructor
-    * @param center The center point of the Circle
-    * @param diameter The diameter of the Circle
-    **/
-    Circle(Vector2D center, double diameter);
+    Circle(const Vector2D & center, const double & diameter, const Color & color = Color::getColor("black"));
 
     /**
     * Draws the Circle using a DrawingVisitor.

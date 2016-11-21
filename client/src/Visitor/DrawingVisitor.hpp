@@ -7,15 +7,11 @@ class Circle;
 class Segment;
 class Triangle;
 class Polygon;
+class Shape;
 
 using std::string;
 using std::cout;
 using std::endl;
-
-//#include "../Shape/Circle.hpp"
-//#include "../Shape/Segment.hpp"
-//#include "../Shape/Triangle.hpp"
-//#include "../Shape/Polygone.hpp"
 
 /**
 * The abstract base class for all drawers.
@@ -47,6 +43,12 @@ public:
     * @param polygon The Polygon to draw.
     */
     virtual void draw(const Polygon* polygon) const = 0;
+
+    /**
+    * Draws the Shape.
+    * @param polygon The Shape to draw.
+    */
+    virtual void draw(const Shape* shape) const = 0;
 };
 
 #endif

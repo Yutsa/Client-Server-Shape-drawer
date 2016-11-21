@@ -18,25 +18,26 @@ class Triangle : public Shape
 {
 private:
     /**
-    *   The first point of the Triangle
-    **/
+    * The first point of the Triangle
+    */
     Vector2D _firstPoint;
     /**
-    *   The second point of the Triangle
-    **/
+    * The second point of the Triangle
+    */
     Vector2D _secondPoint;
     /**
-    *   The third point of the Triangle
-    **/
+    * The third point of the Triangle
+    */
     Vector2D _thirdPoint;
 public:
     /**
-    *   Triangle constructors
-    *   @param firstPoint the firstPoint of the Triangle
-    *   @param secondPoint the secondPoint of the Triangle
-    *   @param thirdPoint the thirdPoint of the Triangle
-    **/
-    Triangle(Vector2D firstPoint, Vector2D secondPoint, Vector2D thirdPoint, Color color);
+    * Triangle constructor
+    * @param firstPoint the firstPoint of the Triangle
+    * @param secondPoint the secondPoint of the Triangle
+    * @param thirdPoint the thirdPoint of the Triangle
+    * @param color the color of the Triangle
+    */
+    Triangle(const Vector2D & firstPoint, const Vector2D & secondPoint, const Vector2D & thirdPoint, const Color & color = Color::getColor("black"));
 
     /**
     * Draws the Triangle using a DrawingVisitor.
