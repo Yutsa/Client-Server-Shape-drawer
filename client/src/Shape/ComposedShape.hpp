@@ -36,25 +36,25 @@ public:
     *   Function to add a point on the ComposedShape
     *   @param point point to add
     **/
-    virtual void addShape(const Shape* shape);
+    void addShape(const Shape* shape);
 
     /**
     * Draws the ComposedShape using a DrawingVisitor.
     * @param visitor The DrawingVisitor to use to draw the ComposedShape.
     */
-    virtual void draw(const DrawingVisitor* visitor) const;
+    void draw(const DrawingVisitor* visitor) const;
 
     /**
     * Returns a string that represents the ComposedShape.
     * @return The string representing the ComposedShape.
     */
-    virtual operator string() const;
+    operator string() const;
 
     /**
     * Saves the ComposedShape.
     * @param saveVisitor The SaveVisitor to use to save the ComposedShape.
     */
-    virtual void save(const SaveVisitor* saveVisitor, const string & filename) const;
+    void save(const SaveVisitor* saveVisitor, const string & filename) const;
 
     /**
     * Translate the ComposedShape using a translation vector.
@@ -62,7 +62,7 @@ public:
     *  translation.
     * @return Shape* the new ComposedShape after Translation
     */
-    virtual Shape* translation(const Vector2D & translationVector) const;
+    Shape* translation(const Vector2D & translationVector) const;
 
     /**
     * Apply an homothety on the ComposedShape.
@@ -70,7 +70,7 @@ public:
     * @param homothetyRatio The ratio of the homothety.
     * @return Shape* the new ComposedShape after homothety
     */
-    virtual Shape* homothety(const Vector2D & invariantPoint,
+    Shape* homothety(const Vector2D & invariantPoint,
         const double & homothetyRatio) const;
 
     /**
@@ -79,14 +79,14 @@ public:
     * @param rotationAngle The angle of the rotation.
     * @return Shape* the new ComposedShape after rotation
     */
-    virtual Shape* rotation(const Vector2D & rotationCenter,
+    Shape* rotation(const Vector2D & rotationCenter,
         const RadianAngle & rotationAngle) const;
 
     /**
     * Returns the area of the ComposedShape.
     * @return The area of the ComposedShape.
     */
-    virtual double getArea() const;
+    double getArea() const;
 
     friend ostream & operator << (ostream & os, const ComposedShape & composedShape);
 };
