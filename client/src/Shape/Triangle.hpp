@@ -43,19 +43,19 @@ public:
     * Draws the Triangle using a DrawingVisitor.
     * @param visitor The DrawingVisitor to use to draw the Triangle.
     */
-    virtual void draw(const DrawingVisitor* visitor) const;
+    void draw(const DrawingVisitor* visitor) const;
 
     /**
     * Returns a string that represents the Triangle.
     * @return The string representing the Triangle.
     */
-    virtual operator string() const;
+    operator string() const;
 
     /**
     * Saves the Triangle.
     * @param saveVisitor The SaveVisitor to use to save the Triangle.
     */
-    virtual void save(const SaveVisitor* saveVisitor, const string & filename) const;
+    void save(const SaveVisitor* saveVisitor, const string & filename) const;
 
     /**
     * Translate the Triangle using a translation vector.
@@ -63,7 +63,7 @@ public:
     *  translation.
     * @return Shape* the new Triangle after the translation
     */
-    virtual Shape* translation(const Vector2D & translationVector) const;
+    Shape* translation(const Vector2D & translationVector) const;
 
     /**
     * Apply an homothety on the Triangle.
@@ -71,7 +71,7 @@ public:
     * @param homothetyRatio The ratio of the homothety.
     * @return Shape* the new triangle after the homotethy
     */
-    virtual Shape* homothety(const Vector2D & invariantPoint,
+    Shape* homothety(const Vector2D & invariantPoint,
         const double & homothetyRatio) const;
 
     /**
@@ -80,14 +80,14 @@ public:
     * @param rotationAngle The angle of the rotation.
     * @return Shape* the new Triangle after the rotation
     */
-    virtual Shape* rotation(const Vector2D & rotationCenter,
+    Shape* rotation(const Vector2D & rotationCenter,
         const RadianAngle & rotationAngle) const;
 
     /**
     * Returns the area of the Triangle.
     * @return The area of the Triangle.
     */
-    virtual double getArea() const;
+    double getArea() const;
 
     friend ostream  & operator << (ostream & os, const Triangle & triangle);
 };
