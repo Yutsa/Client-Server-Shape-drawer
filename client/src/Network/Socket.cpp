@@ -44,8 +44,8 @@ void Socket::createConnexion()
 
     /* Connexion to server */
     int res;
-    res = connect(_sock, (sockaddr*) &_socketAddress,
-        sizeof(_socketAddress));
+    res = connect(_sock, (sockaddr*) &_socketAddress, sizeof(_socketAddress));
+
     if (res == -1)
     {
         throw NetworkException("Erreur de connexion au server.");

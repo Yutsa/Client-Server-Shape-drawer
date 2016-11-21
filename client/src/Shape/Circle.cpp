@@ -39,7 +39,7 @@ Shape* Circle::homothety(const Vector2D & invariantPoint,
                          const double & homothetyRatio) const
 {
     Circle *newCircle = new Circle(*this);
-    newCircle->_center.homothety(invariantPoint,homothetyRatio);
+    newCircle->_center.homothety(invariantPoint, homothetyRatio);
     newCircle->_diameter *= homothetyRatio;
     return newCircle;
 }

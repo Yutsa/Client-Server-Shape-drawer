@@ -25,7 +25,7 @@ public class DrawingServer
         int port = 0;
         int nbConnection = 0;
 
-        port = 9113;
+        port = 9112;
 
         try
         {
