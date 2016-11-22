@@ -1,0 +1,3 @@
+#include "ShapeLoaderLink.hpp"
+
+ShapeLoader::
