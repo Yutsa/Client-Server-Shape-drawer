@@ -5,8 +5,8 @@ all: test-vector2D
 test-vector2D: test-vector2D.o vector2d.o radianangle.o geometryexception.o
 	g++ -o ../bin/test-vector2D ../bin/test-vector2D.o ../bin/vector2d.o ../bin/radianangle.o ../bin/geometryexception.o $(CFLAGS)
 
-test-socket: test-socket.o socket.o networkexception.o circle.o geometryexception.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o
-	g++ -o ../bin/test-socket ../bin/test-socket.o ../bin/circle.o ../bin/polygon.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o  ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
+test-socket: test-socket.o socket.o networkexception.o circle.o geometryexception.o composedShape.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o
+	g++ -o ../bin/test-socket ../bin/test-socket.o ../bin/circle.o ../bin/composedShape.o ../bin/polygon.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o  ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
 
 test-shape: vector2d.o test-shape.o circle.o geometryexception.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o composedShape.o
 	g++ -o ../bin/test-shape ../bin/test-shape.o  ../bin/circle.o ../bin/polygon.o ../bin/composedShape.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
