@@ -1,3 +1,4 @@
+@startuml
 class Thread
 
 package DrawingServer {
@@ -47,3 +48,5 @@ ShapeDrawerLink <|-- PolygoneDrawer
 DrawingThread *-- "1" ShapeDrawer
 ShapeDrawer .. ShapeNotRecognizedException : << Throws >>
 Thread <|-- DrawingThread
+
+@enduml
