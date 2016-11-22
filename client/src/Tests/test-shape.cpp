@@ -2,6 +2,7 @@
 #include "../Shape/Polygon.hpp"
 #include "../Shape/Triangle.hpp"
 #include "../Shape/Segment.hpp"
+#include "../Shape/ComposedShape.hpp"
 
 using std::cout;
 using std::endl;
@@ -118,6 +119,27 @@ int main(int argc, char* argv[])
 
         TModif = T.rotation(rotationCenter, rotationAngle);
         cout << "Rotation : " << *TModif << " Aire : " << TModif->getArea() << endl << endl;
+
+    cout << "===== Composed Shape =====" << endl << endl;
+
+        Shape* CSModif;
+        ComposedShape CS = ComposedShape(red);
+
+        CS.addShape(&C);
+        CS.addShape(&P);
+        CS.addShape(&S);
+        CS.addShape(&T);
+
+        cout << "Normal : " << CS << " Aire : " << CS.getArea() << endl<< endl;
+
+        CSModif = CS.homothety(invariantPoint, homothetyRatio);
+        cout << "Homothety : "  << *CSModif << " Aire : " << CSModif->getArea() << endl<< endl;
+
+        CSModif = CS.translation(translationVector);
+        cout << "Translation : " << *CSModif << " Aire : " << CSModif->getArea() << endl<< endl;
+
+        CSModif = CS.rotation(rotationCenter, rotationAngle);
+        cout << "Rotation : " << *CSModif << " Aire : " << CSModif->getArea() << endl << endl;
 
 
 

@@ -5,14 +5,17 @@ using std::ostringstream;
 
 ComposedShape::ComposedShape(Color color) : Shape(color){}
 
-void ComposedShape::addShape(const Shape* shape)
+void ComposedShape::addShape( Shape* shape)
 {
     _shapes.push_back(shape);
 }
 
 void ComposedShape::draw(const DrawingVisitor* visitor) const
 {
-    visitor->draw(this);
+    for(unsigned int i = 0; i < _shapes.size(); i++)
+    {
+        visitor->draw(_shapes[i]);
+    }
 }
 
 ComposedShape::operator string() const
@@ -21,8 +24,9 @@ ComposedShape::operator string() const
     os << "composedShape\n";
     for(unsigned int i = 0; i < _shapes.size(); i++)
     {
-        os << _shapes[i] << "\n";
+        os << *_shapes[i] << "\n";
     }
+    return os.str();
 }
 
 void ComposedShape::save(const SaveVisitor* saveVisitor, const string & filename) const
@@ -32,10 +36,10 @@ void ComposedShape::save(const SaveVisitor* saveVisitor, const string & filename
 
 Shape* ComposedShape::translation(const Vector2D & translationVector) const
 {
-    ComposedShape* newComposedShape = new ComposedShape(*this);
-    for(unsigned int i = 0; i < newComposedShape->_shapes.size(); i++)
+    ComposedShape* newComposedShape = new ComposedShape(_color);
+    for(unsigned int i = 0; i < _shapes.size(); i++)
     {
-        newComposedShape->_shapes[i].translation(translationVector);
+        newComposedShape->_shapes.push_back(_shapes[i]->translation(translationVector));
     }
     return newComposedShape;
 }
@@ -43,10 +47,10 @@ Shape* ComposedShape::translation(const Vector2D & translationVector) const
 Shape* ComposedShape::homothety(const Vector2D & invariantPoint,
     const double & homothetyRatio) const
 {
-    ComposedShape* newComposedShape = new ComposedShape(*this);
-    for(unsigned int i = 0; i < newComposedShape->_shapes.size(); i++)
+    ComposedShape* newComposedShape = new ComposedShape(_color);
+    for(unsigned int i = 0; i < _shapes.size(); i++)
     {
-        newComposedShape->_shapes[i].homothety(invariantPoint, homothetyRatio);
+        newComposedShape->_shapes.push_back(_shapes[i]->homothety(invariantPoint, homothetyRatio));
     }
     return newComposedShape;
 }
@@ -54,10 +58,10 @@ Shape* ComposedShape::homothety(const Vector2D & invariantPoint,
 Shape* ComposedShape::rotation(const Vector2D & rotationCenter,
     const RadianAngle & rotationAngle) const
 {
-    ComposedShape* newComposedShape = new ComposedShape(*this);
-    for(unsigned int i = 0; i < newComposedShape->_shapes.size(); i++)
+    ComposedShape* newComposedShape = new ComposedShape(_color);
+    for(unsigned int i = 0; i < _shapes.size(); i++)
     {
-        newComposedShape->_shapes[i].rotation(rotationCenter, rotationAngle);
+        newComposedShape->_shapes.push_back(_shapes[i]->rotation(rotationCenter, rotationAngle));
     }
     return newComposedShape;
 }
@@ -74,5 +78,6 @@ double ComposedShape::getArea() const
 
 ostream & operator << (ostream & os, const ComposedShape & composedShape)
 {
-
+    os << (string) composedShape;
+    return os;
 }

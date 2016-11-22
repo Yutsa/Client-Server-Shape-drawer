@@ -8,8 +8,8 @@ test-vector2D: test-vector2D.o vector2d.o radianangle.o geometryexception.o
 test-socket: test-socket.o socket.o networkexception.o circle.o geometryexception.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o
 	g++ -o ../bin/test-socket ../bin/test-socket.o ../bin/circle.o ../bin/polygon.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o  ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
 
-test-shape: vector2d.o test-shape.o circle.o geometryexception.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o
-	g++ -o ../bin/test-shape ../bin/test-shape.o  ../bin/circle.o ../bin/polygon.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
+test-shape: vector2d.o test-shape.o circle.o geometryexception.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o composedShape.o
+	g++ -o ../bin/test-shape ../bin/test-shape.o  ../bin/circle.o ../bin/polygon.o ../bin/composedShape.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
 
 test-color: test-color.o color.o utilsexception.o
 	g++ -o ../bin/test-color ../bin/test-color.o ../bin/color.o ../bin/utilsexception.o $(CFLAGS)
@@ -61,6 +61,9 @@ circle.o: Shape/Circle.cpp Shape/Circle.hpp Shape/Shape.hpp Visitor/ServerDrawer
 
 polygon.o: Shape/Polygon.cpp Shape/Polygon.hpp Shape/Shape.hpp Visitor/ServerDrawer.hpp Visitor/SaveVisitor.hpp
 	g++ -o ../bin/polygon.o -c Shape/Polygon.cpp $(CFLAGS)
+
+composedShape.o: Shape/ComposedShape.cpp Shape/ComposedShape.hpp Shape/Shape.hpp Visitor/ServerDrawer.hpp Visitor/SaveVisitor.hpp
+	g++ -o ../bin/composedShape.o -c Shape/ComposedShape.cpp $(CFLAGS)
 
 segment.o: Shape/Segment.cpp Shape/Segment.hpp Shape/Shape.hpp Visitor/ServerDrawer.hpp Visitor/SaveVisitor.hpp
 	g++ -o ../bin/segment.o -c Shape/Segment.cpp $(CFLAGS)

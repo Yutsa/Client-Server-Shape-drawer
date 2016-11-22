@@ -36,7 +36,7 @@ public:
     *   Function to add a point on the ComposedShape
     *   @param point point to add
     **/
-    void addShape(const Shape* shape);
+    void addShape( Shape* shape);
 
     /**
     * Draws the ComposedShape using a DrawingVisitor.
