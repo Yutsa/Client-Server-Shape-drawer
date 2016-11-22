@@ -1,9 +1,9 @@
 package drawingserver;
 
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.Toolkit;
+import shapedrawer.ShapeDrawer;
+import shapedrawer.ShapeNotRecognizedException;
+
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
@@ -12,9 +12,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
-
-import shapedrawer.ShapeDrawer;
-import shapedrawer.ShapeNotRecognizedException;
 
 /**
  * The Thread that will draw the shape sent by the client.
@@ -87,6 +84,16 @@ public class DrawingThread extends Thread
         _frame.createBufferStrategy(nbBuffers);
         _strategy = _frame.getBufferStrategy();
         _graphics = _strategy.getDrawGraphics();
+
+        // Waits for the BufferStrategy and Graphics to be ready
+        try
+        {
+            Thread.sleep(200);
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
     }
     
     private void initFrame() 
