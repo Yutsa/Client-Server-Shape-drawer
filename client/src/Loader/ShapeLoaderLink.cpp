@@ -1,3 +1,28 @@
 #include "ShapeLoaderLink.hpp"
+#include "ShapeLoaderException.hpp"
 
-ShapeLoader::
+ShapeLoaderLink::ShapeLoaderLink(const ShapeLoaderLink* next)
+{
+    _next = next;
+}
+
+ShapeLoaderLink::~ShapeLoaderLink()
+{
+    delete _next;
+}
+
+const Shape* ShapeLoaderLink::load(const string &filename) const
+{
+    try
+    {
+        return loadShape(filename);
+    }
+    catch (ShapeLoaderException e)
+    {
+        if (_next != NULL)
+        {
+            return _next->load(filename);
+        }
+        throw ShapeLoaderException("La forme n'a pas été reconnue.");
+    }
+}
