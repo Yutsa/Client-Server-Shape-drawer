@@ -163,20 +163,47 @@ package Loader {
         +{abstract} load()
     }
 
-    class ShapeLoaderCOR {
-        +ShapeLoaderCOR(ShapeLoaderCOR* next)
+    class ShapeLoaderLink {
+        +ShapeLoaderLink(ShapeLoaderCOR* next)
         +load()
         +{abstract}loadShape()
     }
 
     class ShapeLoaderText {
-        +ShapeLoaderText(ShapeLoaderCOR* next)
+        +ShapeLoaderText(ShapeLoaderLink* next)
         +loadShape()
     }
 
-    ShapeLoader <|-- ShapeLoaderCOR
-    ShapeLoaderCOR o-- "0, N" ShapeLoaderCOR
-    ShapeLoaderCOR <|-- ShapeLoaderText
+    abstract class ShapeCreator {
+        +{abstract} const Shape* createShape(const string & shapeString) const
+    }
+
+    class ShapeCreatorLink {
+        +ShapeCreatorLink(const ShapeCreatorLink* next)
+        +const Shape* createShape(const string & shapeString) const
+        +{abstract} const Shape* createShapeSpe(const string & shapeString) const
+    }
+
+    class SegmentCreator {
+        +const Shape* createShapeSpe(const string & shapeString) const
+    }
+
+    class CircleCreator {
+        +const Shape* createShapeSpe(const string & shapeString) const
+    }
+
+    class PolygonCreator {
+        +const Shape* createShapeSpe(const string & shapeString) const
+    }
+
+    ShapeLoader <|-- ShapeLoaderLink
+    ShapeLoaderLink o-- "1" ShapeLoaderLink : next
+    ShapeLoaderLink <|-- ShapeLoaderText
+    ShapeCreator <|-- ShapeCreatorLink
+    ShapeCreatorLink <|-- SegmentCreator
+    ShapeCreatorLink <|-- CircleCreator
+    ShapeCreatorLink <|-- PolygonCreator
+    ShapeCreatorLink o-- "1" ShapeCreatorLink  : next
 }
 
 package Geometry {
