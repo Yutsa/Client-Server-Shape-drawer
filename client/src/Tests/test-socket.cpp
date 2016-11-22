@@ -14,14 +14,15 @@ int main(int argc, char* argv[])
     
 //=============== Variables Init ===============//
     
-    Vector2D center(50, 50), beginSeg(100, 100), endSeg(100, 150), point1(200, 200), point2(250, 250), point3(300, 200);
-    Vector2D point4(300, 300), point5(400, 300), point6(300, 400), point7(450, 450), point8(500, 500);
-    Vector2D centerRotation(100, 100);
-    Vector2D vectorTranslation(100, 0);
+    Vector2D center(50, 50), beginSeg(300, 100), endSeg(400, 150);
+    Vector2D point1(450, 200), point2(500, 270), point3(500, 200);
+    Vector2D point4(600, 150), point5(650, 300), point6(570, 450), point7(450, 450), point8(500, 500);
+    Vector2D centerRotation(100, 100), centerRotation2(250, 150), centerRotation3(500, 100);
+    Vector2D vectorTranslation(100, 0), vectorTranslation2(300, -50);
     Vector2D invariantPoint(50, 50);
-    double ratio = 1;
+    double ratio = 1.5;
     
-    RadianAngle angle(M_PI/2);
+    RadianAngle pi(M_PI), halfPi(M_PI/2);
     
     Segment S(beginSeg, endSeg, Color::getColor("blue"));
     Circle C(center, 50, Color::getColor("red"));
@@ -29,12 +30,15 @@ int main(int argc, char* argv[])
     Polygon P(Color::getColor("black"));
     
     Shape *C1, *C2, *C3, *C4, *C5;
-    Shape *T1, *T2;
+    Shape *S1, *S2, *S3;
+    Shape *T1, *T2, *T3;
+    Shape *P1, *P2, *P3;
     
-    P.addPoint(point4);
     P.addPoint(point5);
-    P.addPoint(point7);
     P.addPoint(point6);
+    P.addPoint(point8);
+    P.addPoint(point7);
+    P.addPoint(point4);
     
 //=============== Start Connexion ===============//
     
@@ -46,23 +50,22 @@ int main(int argc, char* argv[])
     C.draw(serverDrawer);
     sleep(1);
     
-    C1 = C.rotation(centerRotation, angle);
+    C1 = C.rotation(centerRotation, halfPi);
         
     C1->draw(serverDrawer);
     sleep(1);
     
-    C2 = C1->rotation(centerRotation, angle);
+    C2 = C1->rotation(centerRotation, halfPi);
     
     C2->draw(serverDrawer);
     sleep(1);
     
-    C3 = C2->rotation(centerRotation, angle);
+    C3 = C2->rotation(centerRotation, halfPi);
         
     C3->draw(serverDrawer);
     sleep(1);
     
-    C3->setColor(Color::getColor("blue"));
-    C4 = C3->homothety(center, 2);
+    C4 = C3->homothety(center, ratio);
     
     C4->draw(serverDrawer);
     sleep(1);
@@ -75,38 +78,51 @@ int main(int argc, char* argv[])
 //=============== Draw Segment ===============//
     
     S.draw(serverDrawer);
-    cout << "Segment drawn" << endl;
-    
     sleep(1);
     
-    T.draw(serverDrawer);
-    cout << "Triangle drawn" << endl;
+    S1 = S.rotation(centerRotation2, halfPi);
     
+    S1->draw(serverDrawer);
+    sleep(1);
+    
+    S2 = S1->homothety(centerRotation2, ratio);
+    
+    S2->draw(serverDrawer);
+    sleep(1);
+    
+    S3 = S2->translation(vectorTranslation);
+    
+    S3->draw(serverDrawer);
+    sleep(1);
+    
+//=============== Draw Triangle ===============//
+    
+    T.draw(serverDrawer);    
     sleep(1);
     
     T1 = T.translation(vectorTranslation);
     
     T1->draw(serverDrawer);
-    cout << "Triangle drawn" << endl;
-    
     sleep(1);
     
-    T2 = T.homothety(invariantPoint, ratio);
+    T2 = T1->homothety(point1, ratio);
     
-    T2->draw(serverDrawer);
-    cout << "Triangle drawn" << endl;
-    
+    T2->draw(serverDrawer);    
     sleep(1);
+    
+    T3 = T2->rotation(centerRotation3, pi);
+    
+    T3->draw(serverDrawer);    
+    sleep(1);
+    
+//=============== Draw Polygon ===============//
     
     P.draw(serverDrawer);
-    cout << "Polygon drawn" << endl;
-    
-    P.addPoint(point8);
-    
     sleep(1);
     
-    P.draw(serverDrawer);
-    cout << "New polygon drawn" << endl;
+    P1 = P.translation(vectorTranslation2);
+    
+    P1->draw(serverDrawer);
     
     return 0;
 }

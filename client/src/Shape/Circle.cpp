@@ -19,7 +19,7 @@ void Circle::draw(const DrawingVisitor* visitor) const
 Circle::operator string() const
 {
     ostringstream os;
-    os << "circle," << _color << "," << _center.getX() << "," << _center.getY() << "," << _diameter;
+    os << "circle," << _color << "," << (int)_center.getX() << "," << (int)_center.getY() << "," << (int)_diameter;
     return os.str();
 }
 

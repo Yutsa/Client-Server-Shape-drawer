@@ -19,7 +19,7 @@ private:
 public:
     /**
     * Constructor of the radian angle
-    * @param value value of angle : 0 < value < 2*PI
+    * @param value value of angle
     */
     RadianAngle(const double & value);
     
@@ -47,6 +47,55 @@ public:
     * @return ostream to send to output
     */
     friend ostream & operator<<(ostream & os, const RadianAngle & angle);
+    
+    /**
+    * Allows to add two RadianAngle
+    * @param angle RadianAngle to add
+    * @return RadianAngle which is the result of addition
+    */
+    const RadianAngle operator+ (const RadianAngle & angle) const;
+    
+    /**
+    * Allows to add RadianAngle and double
+    * @param a double to add
+    * @return RadianAngle which is the result of addition
+    */
+    const RadianAngle operator+ (const double & a) const;
+    
+    const RadianAngle & operator+= (const RadianAngle & angle);
+    const RadianAngle & operator+= (const double & a);
+
+    /**
+    * Allows to multiply a angle by a double
+    * @param a double to multiply
+    * @return RadianAngle which is the result of product
+    */
+    const RadianAngle operator* (const double & a) const;
+    
+    const RadianAngle & operator*= (const double & a);
+
+    /**
+    * Gets the opposite of a RadianAngle
+    * @return RadianAngle
+    */
+    const RadianAngle operator- () const;
+    
+    /**
+    * Allows to substract two RadianAngle
+    * @param angle RadianAngle to sub
+    * @return RadianAngle which is the result of substraction
+    */
+    const RadianAngle operator- (const RadianAngle & angle) const;
+    
+    /**
+    * Allows to substract two RadianAngle
+    * @param a double to sub
+    * @return RadianAngle which is the result of substraction
+    */
+    const RadianAngle operator- (const double & a) const;
+    
+    const RadianAngle & operator-= (const RadianAngle & angle);
+    const RadianAngle & operator-= (const double & a);
 };
 
 extern ostream & operator<<(ostream & os, const RadianAngle & angle);

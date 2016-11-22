@@ -136,7 +136,7 @@ public class DrawingThread extends Thread
                 {
                     stop = true;
                     _socket.close();
-                } 
+                }
                 else
                 {
                     shapeDrawer.draw(request, _frame, _graphics, _strategy);

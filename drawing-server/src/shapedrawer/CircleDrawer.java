@@ -49,11 +49,9 @@ public class CircleDrawer extends ShapeDrawerLink
         int diametre = Integer.parseInt(arguments[6]);
 
         /* Draw the circle */
-        System.out.println("Drawing a Circle : ");
-        System.out.println(request);
+        System.out.println("Drawing : " + request);
         graphics.setColor(color);
         graphics.fillOval(coordX, coordY, diametre, diametre);
         bufferStrategy.show();
-        System.out.println("Circle drawn");
     }
 }

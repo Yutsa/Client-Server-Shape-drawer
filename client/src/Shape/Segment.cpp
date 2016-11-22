@@ -17,7 +17,7 @@ void Segment::draw(const DrawingVisitor* visitor) const
 Segment::operator string() const
 {
     ostringstream os;
-    os << "segment," << _color << "," << _firstPoint.getX() << "," << _firstPoint.getY() << "," << _secondPoint.getX() << "," << _secondPoint.getY();
+    os << "segment," << _color << "," << (int)_firstPoint.getX() << "," << (int)_firstPoint.getY() << "," << (int)_secondPoint.getX() << "," << (int)_secondPoint.getY();
     return os.str();
 }
 

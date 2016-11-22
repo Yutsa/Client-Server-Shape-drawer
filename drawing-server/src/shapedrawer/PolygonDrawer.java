@@ -42,14 +42,15 @@ public class PolygonDrawer extends ShapeDrawerLink
         
         Color color = new Color(r, g, b);
 
-		// 4 arguments are not coord, and each coord counts as 2 arguments (x and y)
+		/* 4 arguments are not coord, and each coord counts as 2 arguments (x and y)
+         So take the number of coord with this calcul */
         int nbPoint = (arguments.length - 4) / 2;
 
         /* Creates the array containing all points. */
         int[] pX = new int[nbPoint];
         int[] pY = new int[nbPoint];
-
         
+        /* For each x and y, store in an array */
         for (int i = 0; i < nbPoint; i++)
         {
         	pX[i] = (Integer.parseInt(arguments[4+i*2]));
@@ -57,12 +58,9 @@ public class PolygonDrawer extends ShapeDrawerLink
         }
 
         /* Draw the Polygon */
-        
-        System.out.println("Drawing a Polygon : ");
-        System.out.println(request);
+        System.out.println("Drawing : " + request);
         graphics.setColor(color);
         graphics.fillPolygon(pX, pY, nbPoint);
         bufferStrategy.show();
-        System.out.println("Polygon drawn");        
 	}
 }
