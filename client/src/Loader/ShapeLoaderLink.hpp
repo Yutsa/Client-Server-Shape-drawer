@@ -1,3 +1,6 @@
+#ifndef SHAPE_LOADER_LINK_H
+#define SHAPE_LOADER_LINK_H
+
 #include <iosfwd>
 #include "ShapeLoader.hpp"
 
@@ -8,9 +11,12 @@ class ShapeLoaderLink : public ShapeLoader
 
 {
 private:
-    ShapeLoaderLink* _next;
+    const ShapeLoaderLink* _next;
 public:
     ShapeLoaderLink(const ShapeLoaderLink* next);
+    virtual ~ShapeLoaderLink();
     const Shape* load(const string & filename) const;
-    virtual const Shape* loadShape(const string & filename) = 0;
+    virtual const Shape* loadShape(const string & filename) const = 0;
 };
+
+#endif
