@@ -13,7 +13,7 @@ TriangleCreator::TriangleCreator(ShapeCreatorLink *next) : ShapeCreatorLink(next
     
 }
     
-const Shape* TriangleCreator::createShapeSpe(const string & shapeString) const
+Shape* TriangleCreator::createShapeSpe(const string & shapeString) const
 {
     vector<string> shapeStrings = func::split(shapeString, ',');
     
@@ -36,7 +36,7 @@ const Shape* TriangleCreator::createShapeSpe(const string & shapeString) const
                 px3 = atof(shapeStrings[8].c_str()),
                 py3 = atof(shapeStrings[9].c_str());
         
-        Vector2D point1(px1, px2),
+        Vector2D point1(px1, py1),
                 point2(px2, py2),
                 point3(px3, py3);
         

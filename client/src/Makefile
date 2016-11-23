@@ -89,6 +89,12 @@ trianglecreator.o: Loader/SegmentCreator.cpp Loader/ShapeCreatorLink.hpp
 polygoncreator.o: Loader/PolygonCreator.cpp Loader/ShapeCreatorLink.hpp
 	g++ -o ../bin/polygoncreator.o -c Loader/PolygonCreator.cpp $(FLAGS)
 
+composedshapecreator.o: Loader/ComposedShapeCreator.cpp Loader/ShapeCreatorLink.hpp
+	g++ -o ../bin/composedshapecreator.o -c Loader/ComposedShapeCreator.cpp $(FLAGS)
+
+circlecreator.o: Loader/CircleCreator.cpp Loader/ShapeCreatorLink.hpp
+	g++ -o ../bin/circlecreator.o -c Loader/CircleCreator.cpp $(FLAGS)
+
 clean:
 	rm -rf ../bin/*.o
 

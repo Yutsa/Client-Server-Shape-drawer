@@ -8,7 +8,7 @@ ShapeCreatorLink::ShapeCreatorLink(ShapeCreatorLink* next)
     _next = next;
 }
 
-const Shape* ShapeCreatorLink::createShape(const string & shapeString) const
+Shape* ShapeCreatorLink::createShape(const string & shapeString) const
 {
     try 
     {
@@ -27,7 +27,7 @@ const Shape* ShapeCreatorLink::createShape(const string & shapeString) const
     }
 }
 
-vector<string> split(const string & s, char sep)
+vector<string> func::split(const string & s, char sep)
 {
     vector<string> Strings;
 

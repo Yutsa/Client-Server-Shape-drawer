@@ -28,9 +28,8 @@ public:
 
     /**
     *   ComposedShape constructors
-    *   @param color the color of the ComposedShape
     **/
-    ComposedShape(Color color);
+    ComposedShape();
 
     /**
     *   Function to add a point on the ComposedShape

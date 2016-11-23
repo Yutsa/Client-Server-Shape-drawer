@@ -13,7 +13,7 @@ PolygonCreator::PolygonCreator(ShapeCreatorLink *next) : ShapeCreatorLink(next)
     
 }
 
-const Shape* PolygonCreator::createShapeSpe(const string & shapeString) const
+Shape* PolygonCreator::createShapeSpe(const string & shapeString) const
 {
     vector<string> shapeStrings = func::split(shapeString, ',');
     

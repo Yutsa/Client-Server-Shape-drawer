@@ -1,8 +1,8 @@
 #include "ShapeCreatorLink.hpp"
 
-class PolygonCreator : public ShapeCreatorLink
+class ComposedShapeCreator : public ShapeCreatorLink
 {
-    PolygonCreator(ShapeCreatorLink *next);
+    ComposedShapeCreator(ShapeCreatorLink *next);
     
     virtual Shape* createShapeSpe(const string & shapeString) const;
 };

@@ -1,6 +1,6 @@
-#include "SegmentCreator.hpp"
+#include "CircleCreator.hpp"
 #include "ShapeLoaderException.hpp"
-#include "../Shape/Segment.hpp"
+#include "../Shape/Circle.hpp"
 
 #include <iostream>
 #include <cstdlib>
@@ -8,18 +8,18 @@
 using std::atoi;
 using std::atof;
 
-SegmentCreator::SegmentCreator(ShapeCreatorLink *next) : ShapeCreatorLink(next)
+CircleCreator::CircleCreator(ShapeCreatorLink *next) : ShapeCreatorLink(next)
 {
     
 }
 
-Shape* SegmentCreator::createShapeSpe(const string & shapeString) const
+Shape* CircleCreator::createShapeSpe(const string & shapeString) const
 {
     vector<string> shapeStrings = func::split(shapeString, ',');
     
-    if(shapeStrings[0] != "segment")
+    if(shapeStrings[0] != "circle")
     {
-        throw ShapeLoaderException("Not a segment");
+        throw ShapeLoaderException("Not a Circle");
     }
     else
     {
@@ -31,14 +31,12 @@ Shape* SegmentCreator::createShapeSpe(const string & shapeString) const
         
         double px1 = atof(shapeStrings[4].c_str()),
                 py1 = atof(shapeStrings[5].c_str()),
-                px2 = atof(shapeStrings[6].c_str()),
-                py2 = atof(shapeStrings[7].c_str());
+                diameter = atof(shapeStrings[7].c_str());
         
-        Vector2D point1(px1, py1),
-                point2(px2, py2);
+        Vector2D point1(px1, py1);
         
-        Segment *S = new Segment(point1, point2, color);
+        Circle *C = new Circle(point1, diameter, color);
         
-        return S;
+        return C;
     }
 }
