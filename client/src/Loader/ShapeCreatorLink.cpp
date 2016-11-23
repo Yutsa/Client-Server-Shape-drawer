@@ -10,7 +10,7 @@ ShapeCreatorLink::ShapeCreatorLink(ShapeCreatorLink* next)
 
 Shape* ShapeCreatorLink::createShape(const string & shapeString) const
 {
-    try 
+    try
     {
         return createShapeSpe(shapeString);
     }
@@ -43,4 +43,3 @@ vector<string> func::split(const string & s, char sep)
 
     return Strings;
 }
-

@@ -5,7 +5,7 @@
 
 using std::vector;
 
-namespace func 
+namespace func
 {
     vector<string> split(const string & s, char sep);
 }

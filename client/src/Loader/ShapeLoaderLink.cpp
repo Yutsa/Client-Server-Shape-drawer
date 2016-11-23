@@ -1,7 +1,8 @@
 #include "ShapeLoaderLink.hpp"
 #include "ShapeLoaderException.hpp"
 
-ShapeLoaderLink::ShapeLoaderLink(const ShapeLoaderLink* next)
+ShapeLoaderLink::ShapeLoaderLink(const ShapeLoaderLink* next,
+    const ShapeCreator* shapeCreator) : ShapeLoader(shapeCreator)
 {
     _next = next;
 }

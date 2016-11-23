@@ -13,7 +13,7 @@ SegmentCreator::SegmentCreator(ShapeCreatorLink *next) : ShapeCreatorLink(next)
 
 }
 
-Shape* SegmentCreator::createShapeSpe(const string & shapeString) const
+const Shape* SegmentCreator::createShapeSpe(const string & shapeString) const
 {
     vector<string> shapeStrings = func::split(shapeString, ',');
 
@@ -33,11 +33,7 @@ Shape* SegmentCreator::createShapeSpe(const string & shapeString) const
                 py1 = atof(shapeStrings[5].c_str()),
                 px2 = atof(shapeStrings[6].c_str()),
                 py2 = atof(shapeStrings[7].c_str());
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> ba3f924e49a635588edb4d738ba22f50c5e12259
         Vector2D point1(px1, py1),
                 point2(px2, py2);
 
