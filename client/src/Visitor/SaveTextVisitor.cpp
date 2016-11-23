@@ -37,6 +37,7 @@ void SaveTextVisitor::save(const Polygon *polygon,
 void SaveTextVisitor::save(const Shape* shape,
      const string & filename) const
 {
+    // Doesn't use HOME anymore!!!
     char* path;
     ofstream file;
     string textShape = (string) *shape;
@@ -45,7 +46,7 @@ void SaveTextVisitor::save(const Shape* shape,
     {
         strcat(path, "/");
         strcat(path, filename.c_str());
-        file.open(path);
+        file.open(filename);
         file << textShape << "\n";
         file.close();
     }
