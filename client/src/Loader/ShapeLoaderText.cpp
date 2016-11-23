@@ -19,7 +19,7 @@ ShapeLoaderLink(next, shapeCreator)
 
 }
 
-const Shape* ShapeLoaderText::loadShape(const string & filename) const
+Shape* ShapeLoaderText::loadShape(const string & filename) const
 {
     // We get the extension of the file
     size_t pointPos = filename.find_last_of(".");

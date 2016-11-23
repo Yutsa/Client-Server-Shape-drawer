@@ -7,7 +7,7 @@ class ShapeLoaderText : public ShapeLoaderLink
 {
 public:
     ShapeLoaderText(const ShapeLoaderLink* next, const ShapeCreator* shapeCreator);
-    const Shape* loadShape(const string & filename) const;
+    Shape* loadShape(const string & filename) const;
 };
 
 #endif

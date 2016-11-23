@@ -12,7 +12,7 @@ ShapeLoaderLink::~ShapeLoaderLink()
     delete _next;
 }
 
-const Shape* ShapeLoaderLink::load(const string &filename) const
+Shape* ShapeLoaderLink::load(const string &filename) const
 {
     try
     {
