@@ -160,17 +160,18 @@ package Visitor {
 
 package Loader {
     abstract class ShapeLoader {
+        +ShapeLoader(const ShapeCreator* shapeCreator)
         +{abstract} load()
     }
 
     class ShapeLoaderLink {
-        +ShapeLoaderLink(ShapeLoaderCOR* next)
+        +ShapeLoaderLink(ShapeLoaderCOR* next, const ShapeCreator* shapeCreator)
         +load()
         +{abstract}loadShape()
     }
 
     class ShapeLoaderText {
-        +ShapeLoaderText(ShapeLoaderLink* next)
+        +ShapeLoaderText(ShapeLoaderLink* next, const ShapeCreator* shapeCreator)
         +loadShape()
     }
 
@@ -197,6 +198,7 @@ package Loader {
     }
 
     ShapeLoader <|-- ShapeLoaderLink
+    ShapeLoader o-- "1" ShapeCreator
     ShapeLoaderLink o-- "1" ShapeLoaderLink : next
     ShapeLoaderLink <|-- ShapeLoaderText
     ShapeCreator <|-- ShapeCreatorLink

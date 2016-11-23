@@ -25,7 +25,8 @@ int main()
     ShapeLoader* loader = new ShapeLoaderText(NULL, creator);
     try
     {
-        loader->load(filename);
+        const Shape* shape = loader->load(filename);
+        cout << *shape << std::endl;
     }
     catch (ShapeLoaderException & e)
     {

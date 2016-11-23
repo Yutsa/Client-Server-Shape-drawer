@@ -49,7 +49,5 @@ const Shape* ShapeLoaderText::loadShape(const string & filename) const
     }
 
     std::cout << "Contenu fichier: " << ss.str() << std::endl;
-    Shape* shape =  _shapeCreator->createShape(ss.str());
-//    std::cout << "Forme chargée: " << *shape << std::endl;
-
+    return _shapeCreator->createShape(ss.str());
 }

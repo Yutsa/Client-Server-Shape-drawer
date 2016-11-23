@@ -19,3 +19,4 @@ client-doc/
 Exemple_doc.cpp
 drawing-server/src/META-INF/
 *.gch
+*.save
