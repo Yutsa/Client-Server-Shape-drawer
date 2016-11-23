@@ -13,7 +13,7 @@ class ShapeLoaderLink : public ShapeLoader
 private:
     const ShapeLoaderLink* _next;
 public:
-    ShapeLoaderLink(const ShapeLoaderLink* next);
+    ShapeLoaderLink(const ShapeLoaderLink* next, const ShapeCreator* shapeCreator);
     virtual ~ShapeLoaderLink();
     const Shape* load(const string & filename) const;
     virtual const Shape* loadShape(const string & filename) const = 0;
