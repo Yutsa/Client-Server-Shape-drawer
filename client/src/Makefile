@@ -83,6 +83,19 @@ shapecreatorlink.o: Loader/ShapeCreatorLink.cpp Loader/ShapeCreatorLink.hpp Load
 segmentcreator.o: Loader/SegmentCreator.cpp Loader/ShapeCreatorLink.hpp
 	g++ -o ../bin/segmentcreator.o -c Loader/SegmentCreator.cpp $(FLAGS)
 
+<<<<<<< HEAD
+trianglecreator.o: Loader/SegmentCreator.cpp Loader/ShapeCreatorLink.hpp
+	g++ -o ../bin/trianglecreator.o -c Loader/TriangleCreator.cpp $(FLAGS)
+
+polygoncreator.o: Loader/PolygonCreator.cpp Loader/ShapeCreatorLink.hpp
+	g++ -o ../bin/polygoncreator.o -c Loader/PolygonCreator.cpp $(FLAGS)
+
+composedshapecreator.o: Loader/ComposedShapeCreator.cpp Loader/ShapeCreatorLink.hpp
+	g++ -o ../bin/composedshapecreator.o -c Loader/ComposedShapeCreator.cpp $(FLAGS)
+
+circlecreator.o: Loader/CircleCreator.cpp Loader/ShapeCreatorLink.hpp
+	g++ -o ../bin/circlecreator.o -c Loader/CircleCreator.cpp $(FLAGS)
+=======
 shapeloader.o: Loader/ShapeLoader.hpp
 	g++ -o ../bin/shapeloader.o -c Loader/ShapeLoader.hpp $(FLAGS)
 
@@ -101,6 +114,7 @@ shapeloaderexception.o: Loader/ShapeLoaderException.hpp Loader/ShapeLoaderExcept
 test-loader: shapeloadertext.o circle.o color.o savetextvisitor.o shape.o vector2d.o shapeloaderexception.o radianangle.o shapeloaderlink.o utilsexception.o test-loader.o segment.o segmentcreator.o shapecreatorlink.o
 	g++ -o ../bin/test-loader ../bin/shapeloadertext.o ../bin/circle.o ../bin/color.o ../bin/savetextvisitor.o ../bin/shape.o ../bin/vector2d.o ../bin/shapeloaderexception.o ../bin/radianangle.o ../bin/shapeloaderlink.o ../bin/utilsexception.o ../bin/test-loader.o ../bin/segment.o ../bin/segmentcreator.o ../bin/shapecreatorlink.o
 
+>>>>>>> ba3f924e49a635588edb4d738ba22f50c5e12259
 
 clean:
 	rm -rf ../bin/*.o

@@ -39,6 +39,19 @@ public:
     void addPoint(const Vector2D & point);
 
     /**
+    *   Function to get a point of _points with index
+    *   @Param index the index of point to get
+    *   @return Vector2D the point
+    **/
+    const Vector2D getPoint(int index) const;
+
+    /**
+    *   Function to get the size of _points
+    *   @return int the size of _points
+    **/
+    const int getPointsSize() const;
+
+    /**
     * Draws the Polygon using a DrawingVisitor.
     * @param visitor The DrawingVisitor to use to draw the Polygon.
     */

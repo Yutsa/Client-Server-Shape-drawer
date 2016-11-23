@@ -11,6 +11,16 @@ Circle::Circle(const Vector2D & center, const double & diameter, const Color & c
     _diameter=diameter;
 }
 
+const Vector2D Circle::get_center() const
+{
+    return _center;
+}
+
+const double Circle::get_diameter() const
+{
+    return _diameter;
+}
+
 void Circle::draw(const DrawingVisitor* visitor) const
 {
     visitor->draw(this);

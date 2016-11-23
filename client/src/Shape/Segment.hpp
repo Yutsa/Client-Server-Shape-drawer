@@ -36,6 +36,18 @@ public:
     Segment(const Vector2D & firstPoint, const Vector2D & secondPoint, const Color & color = Color::getColor("black"));
 
     /**
+    *   Getter of the first point
+    *   @return Vector2D The first point
+    **/
+    const Vector2D getFirstPoint() const;
+
+    /**
+    *   Getter of the second point
+    *   @return Vector2D The second point
+    **/
+    const Vector2D getSecondPoint() const;
+
+    /**
     * Draws the Segment using a DrawingVisitor.
     * @param visitor The DrawingVisitor to use to draw the Segment.
     */

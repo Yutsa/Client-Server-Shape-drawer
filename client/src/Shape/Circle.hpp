@@ -34,6 +34,17 @@ public:
     **/
     Circle(const Vector2D & center, const double & diameter, const Color & color = Color::getColor("black"));
 
+    /**
+    * Center getter
+    * @return Vector2D the center of the circle
+    **/
+    const Vector2D getCenter() const;
+
+    /**
+    * Diameter getter
+    * @return double the diameter of the circle
+    **/
+    const double getDiameter() const;
 
     /**
     * Draws the Circle using a DrawingVisitor.

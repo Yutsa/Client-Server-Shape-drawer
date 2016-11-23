@@ -1,8 +1,8 @@
 #include "ShapeCreatorLink.hpp"
 
-class TriangleCreator : public ShapeCreatorLink
+class ComposedShapeCreator : public ShapeCreatorLink
 {
-    TriangleCreator(ShapeCreatorLink *next);
+    ComposedShapeCreator(ShapeCreatorLink *next);
     
     virtual Shape* createShapeSpe(const string & shapeString) const;
 };

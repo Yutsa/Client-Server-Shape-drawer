@@ -9,6 +9,16 @@ Segment::Segment(const Vector2D & firstPoint, const Vector2D & secondPoint, cons
     _secondPoint = secondPoint;
 }
 
+const Vector2D getFirstPoint() const
+{
+    return _firstPoint;
+}
+
+const Vector2D getSecondPoint() const
+{
+    return _secondPoint;
+}
+
 void Segment::draw(const DrawingVisitor* visitor) const
 {
     visitor->draw(this);

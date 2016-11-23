@@ -8,7 +8,7 @@ ShapeCreatorLink::ShapeCreatorLink(ShapeCreatorLink* next)
     _next = next;
 }
 
-const Shape* ShapeCreatorLink::createShape(const string & shapeString) const
+Shape* ShapeCreatorLink::createShape(const string & shapeString) const
 {
     try
     {
