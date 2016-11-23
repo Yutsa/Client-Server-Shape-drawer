@@ -1,9 +1,9 @@
 #include "ShapeCreatorLink.hpp"
+#include "ShapeLoaderException.hpp"
 
-#include <vector>
+#include <iostream>
 
-
-ShapeCreatorLink::ShapeCreatorLink(const ShapeCreatorLink* next)
+ShapeCreatorLink::ShapeCreatorLink(ShapeCreatorLink* next)
 {
     _next = next;
 }
@@ -26,3 +26,21 @@ const Shape* ShapeCreatorLink::createShape(const string & shapeString) const
         }
     }
 }
+
+vector<string> split(const string & s, char sep)
+{
+    vector<string> Strings;
+
+    string::size_type prev_pos = 0, pos = 0;
+
+    while((pos = String.find(sep, pos)) != string::npos)
+    {
+        string substring(s.substr(prev_pos, pos-prev_pos));
+        Strings.push_back(substring);
+        prev_pos = ++pos;
+    }
+    Strings.push_back(s.substr(prev_pos, pos-prev_pos)); // Last word
+
+    return Strings;
+}
+
