@@ -20,7 +20,7 @@ class Polygon : public Shape
 private:
 
     /**
-    *   Array of Vector2D for store points of the Polygon
+    * Array of Vector2D for store points of the Polygon
     **/
     std::vector<Vector2D> _points;
 
@@ -39,15 +39,15 @@ public:
     void addPoint(const Vector2D & point);
 
     /**
-    *   Function to get a point of _points with index
-    *   @Param index the index of point to get
-    *   @return Vector2D the point
+    * Function to get a point of _points with index
+    * @Param index the index of point to get
+    * @return Vector2D the point
     **/
     const Vector2D getPoint(int index) const;
 
     /**
-    *   Function to get the size of _points
-    *   @return int the size of _points
+    * Function to get the size of _points
+    * @return int the size of _points
     **/
     const int getPointsSize() const;
 
