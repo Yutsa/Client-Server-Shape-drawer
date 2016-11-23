@@ -15,6 +15,21 @@ void Triangle::draw(const DrawingVisitor* visitor) const
     visitor->draw(this);
 }
 
+const Vector2D getFirstPoint() const
+{
+    return _firstPoint;
+}
+
+const Vector2D getSecondPoint() const
+{
+    return _secondPoint;
+}
+
+const Vector2D getThirdPoint() const
+{
+    return _thirdPoint;
+}
+
 Triangle::operator string() const
 {
     ostringstream os;

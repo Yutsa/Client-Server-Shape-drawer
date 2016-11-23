@@ -19,6 +19,16 @@ void Polygon::addPoint(const Vector2D & point)
     _points.push_back(point);
 }
 
+const Vector2D Polygon::getPoint(int index) const
+{
+    return _points[index];
+}
+
+const int Polygon::getPointsSize() const
+{
+    return _points.size();
+}
+
 Polygon::operator string() const
 {
     ostringstream os;
