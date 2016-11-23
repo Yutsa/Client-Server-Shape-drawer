@@ -1,15 +1,24 @@
 #include <iosfwd>
 #include "ShapeCreator.hpp"
+#include <vector>
+#include <string>
 
 class Shape;
+
 using std::string;
+using std::vector;
+
+namespace func 
+{
+    vector<string> split(const string & s, char sep);
+}
 
 class ShapeCreatorLink : public ShapeCreator
 {
-private:
+protected:
     ShapeCreatorLink* _next;
 public:
-    ShapeCreatorLink(const ShapeCreatorLink* next);
+    ShapeCreatorLink(ShapeCreatorLink* next);
     const Shape* createShape(const string & shapeString) const;
-    virtual const Shape* createShapeSpe(const string & shapeString) = 0;
+    virtual const Shape* createShapeSpe(const string & shapeString) const = 0;
 };

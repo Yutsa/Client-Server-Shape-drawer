@@ -33,7 +33,7 @@ vector<string> split(const string & s, char sep)
 
     string::size_type prev_pos = 0, pos = 0;
 
-    while((pos = String.find(sep, pos)) != string::npos)
+    while((pos = s.find(sep, pos)) != string::npos)
     {
         string substring(s.substr(prev_pos, pos-prev_pos));
         Strings.push_back(substring);

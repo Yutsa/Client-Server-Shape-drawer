@@ -2,7 +2,7 @@
 
 class SegmentCreator : public ShapeCreatorLink
 {
-    SegmentCreator();
+    SegmentCreator(ShapeCreatorLink *next);
     
-    virtual const Shape* createShapeSpe(const string & shapeString);
-}
+    virtual const Shape* createShapeSpe(const string & shapeString) const;
+};
