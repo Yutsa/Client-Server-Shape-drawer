@@ -9,12 +9,12 @@ Segment::Segment(const Vector2D & firstPoint, const Vector2D & secondPoint, cons
     _secondPoint = secondPoint;
 }
 
-const Vector2D getFirstPoint() const
+const Vector2D Segment::getFirstPoint() const
 {
     return _firstPoint;
 }
 
-const Vector2D getSecondPoint() const
+const Vector2D Segment::getSecondPoint() const
 {
     return _secondPoint;
 }

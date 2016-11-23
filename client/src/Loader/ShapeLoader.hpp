@@ -19,7 +19,7 @@ public:
     {
         _shapeCreator = shapeCreator;
     }
-    virtual const Shape* load(const string & filename) const = 0;
+    virtual Shape* load(const string & filename) const = 0;
 };
 
 #endif

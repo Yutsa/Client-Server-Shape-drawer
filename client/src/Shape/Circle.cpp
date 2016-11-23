@@ -11,12 +11,12 @@ Circle::Circle(const Vector2D & center, const double & diameter, const Color & c
     _diameter=diameter;
 }
 
-const Vector2D Circle::get_center() const
+const Vector2D Circle::getCenter() const
 {
     return _center;
 }
 
-const double Circle::get_diameter() const
+const double Circle::getDiameter() const
 {
     return _diameter;
 }

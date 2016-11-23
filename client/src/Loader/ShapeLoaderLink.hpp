@@ -15,8 +15,8 @@ private:
 public:
     ShapeLoaderLink(const ShapeLoaderLink* next, const ShapeCreator* shapeCreator);
     virtual ~ShapeLoaderLink();
-    const Shape* load(const string & filename) const;
-    virtual const Shape* loadShape(const string & filename) const = 0;
+    Shape* load(const string & filename) const;
+    virtual Shape* loadShape(const string & filename) const = 0;
 };
 
 #endif
