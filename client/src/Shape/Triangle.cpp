@@ -15,17 +15,17 @@ void Triangle::draw(const DrawingVisitor* visitor) const
     visitor->draw(this);
 }
 
-const Vector2D getFirstPoint() const
+const Vector2D Triangle::getFirstPoint() const
 {
     return _firstPoint;
 }
 
-const Vector2D getSecondPoint() const
+const Vector2D Triangle::getSecondPoint() const
 {
     return _secondPoint;
 }
 
-const Vector2D getThirdPoint() const
+const Vector2D Triangle::getThirdPoint() const
 {
     return _thirdPoint;
 }
