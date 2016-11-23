@@ -3,9 +3,6 @@
 #include <vector>
 #include <string>
 
-class Shape;
-
-using std::string;
 using std::vector;
 
 namespace func 

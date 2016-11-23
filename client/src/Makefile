@@ -77,14 +77,17 @@ serverdrawer.o: Visitor/ServerDrawer.cpp Visitor/ServerDrawer.hpp Visitor/Drawin
 savetextvisitor.o: Visitor/SaveTextVisitor.cpp Visitor/SaveTextVisitor.hpp Shape/Circle.hpp Shape/Triangle.hpp Shape/Segment.hpp Shape/Polygon.hpp
 	g++ -o ../bin/savetextvisitor.o -c Visitor/SaveTextVisitor.cpp $(FLAGS)
 
-segmentcreator.o: Loader/SegmentCreator.cpp 
-	g++ -o ../bin/segmentcreator.o -c Loader/SegmentCreator.cpp $(FLAGS)
-
 shapecreatorlink.o: Loader/ShapeCreatorLink.cpp Loader/ShapeCreatorLink.hpp Loader/ShapeCreator.hpp
 	g++ -o ../bin/shapecreatorlink.o -c Loader/ShapeCreatorLink.cpp $(FLAGS)
 
 segmentcreator.o: Loader/SegmentCreator.cpp Loader/ShapeCreatorLink.hpp
 	g++ -o ../bin/segmentcreator.o -c Loader/SegmentCreator.cpp $(FLAGS)
+
+trianglecreator.o: Loader/SegmentCreator.cpp Loader/ShapeCreatorLink.hpp
+	g++ -o ../bin/trianglecreator.o -c Loader/TriangleCreator.cpp $(FLAGS)
+
+polygoncreator.o: Loader/PolygonCreator.cpp Loader/ShapeCreatorLink.hpp
+	g++ -o ../bin/polygoncreator.o -c Loader/PolygonCreator.cpp $(FLAGS)
 
 clean:
 	rm -rf ../bin/*.o
