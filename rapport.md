@@ -47,7 +47,9 @@ Couleur
 Les couleurs sont gérées par une classe couleur constituée des valeurs
 rouge, vert, bleu pour créer la couleur.
 
-Mais également d'une map contenant quelques couleurs de base déjà créées.
+Mais également d'une map contenant quelques couleurs de base déjà créées,
+accessible grâce à une chaine de caractère caractérisant la couleur 
+("red", "blue" ...).
 
 Transformations de formes
 ==========================
@@ -55,6 +57,14 @@ Transformations de formes
 Chaque forme étant composée de Vector2D, lorsque l'on applique une
 transformation sur une forme on effectue simplement cette transformation
 sur chacun de ses points, c'est à dire chaque Vector2D qui la compose.
+La transformation s'effectue alors simplement sur toute la forme. Un seul
+cas particulier est à gérer lors d'une homothétie avec un cercle ; il n'est
+pas possible d'appliquer une homothétie sur tous les points du cercle mais 
+il suffit simplement de l'appliquer sur le centre et de multiplier le
+diamètre par le ratio de l'homothétie.
+
+Dans le cas de la forme composée, les transformations sont appliquées 
+successivement pour chacunes des formes élémentaires qui la composent.
 
 Création du socket
 ===================
