@@ -84,7 +84,7 @@ public:
     * Gets the color of the Shape
     * @return The color of the Shape.
     */
-    virtual Color getColor();
+    virtual Color getColor() const;
 
     friend ostream & operator << (ostream & os, const Shape & shape);
 };

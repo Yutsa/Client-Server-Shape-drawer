@@ -1,4 +1,4 @@
-CFLAGS = -Wall -ansi
+CFLAGS = -Wall -ansi -fdiagnostics-color=auto
 INCDIRS=-I/usr/include/qt4 -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtCore
 LIBS=-lQtCore -lQtGui
 
