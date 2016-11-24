@@ -5,11 +5,11 @@ all: test-vector2D
 test-vector2D: test-vector2D.o vector2d.o radianangle.o geometryexception.o
 	g++ -o ../bin/test-vector2D ../bin/test-vector2D.o ../bin/vector2d.o ../bin/radianangle.o ../bin/geometryexception.o $(CFLAGS)
 
-test-socket: test-socket.o socket.o networkexception.o circle.o geometryexception.o composedShape.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o
-	g++ -o ../bin/test-socket ../bin/test-socket.o ../bin/circle.o ../bin/composedShape.o ../bin/polygon.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o  ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
+test-socket: test-socket.o socket.o networkexception.o circle.o geometryexception.o composedshape.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o
+	g++ -o ../bin/test-socket ../bin/test-socket.o ../bin/circle.o ../bin/composedshape.o ../bin/polygon.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o  ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
 
-test-shape: vector2d.o test-shape.o circle.o geometryexception.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o composedShape.o
-	g++ -o ../bin/test-shape ../bin/test-shape.o  ../bin/circle.o ../bin/polygon.o ../bin/composedShape.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
+test-shape: vector2d.o test-shape.o circle.o geometryexception.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o composedshape.o
+	g++ -o ../bin/test-shape ../bin/test-shape.o  ../bin/circle.o ../bin/polygon.o ../bin/composedshape.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
 
 test-color: test-color.o color.o utilsexception.o
 	g++ -o ../bin/test-color ../bin/test-color.o ../bin/color.o ../bin/utilsexception.o $(CFLAGS)
@@ -62,8 +62,8 @@ circle.o: Shape/Circle.cpp Shape/Circle.hpp Shape/Shape.hpp Visitor/ServerDrawer
 polygon.o: Shape/Polygon.cpp Shape/Polygon.hpp Shape/Shape.hpp Visitor/ServerDrawer.hpp Visitor/SaveVisitor.hpp
 	g++ -o ../bin/polygon.o -c Shape/Polygon.cpp $(CFLAGS)
 
-composedShape.o: Shape/ComposedShape.cpp Shape/ComposedShape.hpp Shape/Shape.hpp Visitor/ServerDrawer.hpp Visitor/SaveVisitor.hpp
-	g++ -o ../bin/composedShape.o -c Shape/ComposedShape.cpp $(CFLAGS)
+composedshape.o: Shape/ComposedShape.cpp Shape/ComposedShape.hpp Shape/Shape.hpp Visitor/ServerDrawer.hpp Visitor/SaveVisitor.hpp
+	g++ -o ../bin/composedshape.o -c Shape/ComposedShape.cpp $(CFLAGS)
 
 segment.o: Shape/Segment.cpp Shape/Segment.hpp Shape/Shape.hpp Visitor/ServerDrawer.hpp Visitor/SaveVisitor.hpp
 	g++ -o ../bin/segment.o -c Shape/Segment.cpp $(CFLAGS)
@@ -110,8 +110,8 @@ test-loader.o: Tests/test-loader.cpp Loader/ShapeLoaderText.hpp Shape/Circle.hpp
 shapeloaderexception.o: Loader/ShapeLoaderException.hpp Loader/ShapeLoaderException.cpp
 	g++ -o ../bin/shapeloaderexception.o -c Loader/ShapeLoaderException.cpp
 
-test-loader: shapeloadertext.o circle.o color.o savetextvisitor.o shape.o vector2d.o shapeloaderexception.o radianangle.o shapeloaderlink.o utilsexception.o test-loader.o segment.o segmentcreator.o shapecreatorlink.o
-	g++ -o ../bin/test-loader ../bin/shapeloadertext.o ../bin/circle.o ../bin/color.o ../bin/savetextvisitor.o ../bin/shape.o ../bin/vector2d.o ../bin/shapeloaderexception.o ../bin/radianangle.o ../bin/shapeloaderlink.o ../bin/utilsexception.o ../bin/test-loader.o ../bin/segment.o ../bin/segmentcreator.o ../bin/shapecreatorlink.o
+test-loader: shapeloadertext.o color.o savetextvisitor.o vector2d.o shapeloaderexception.o radianangle.o shapeloaderlink.o utilsexception.o test-loader.o segmentcreator.o shapecreatorlink.o circlecreator.o trianglecreator.o polygoncreator.o composedshapecreator.o shape.o circle.o segment.o triangle.o polygon.o composedshape.o
+	g++ -o ../bin/test-loader ../bin/shapeloadertext.o ../bin/color.o ../bin/savetextvisitor.o ../bin/vector2d.o ../bin/shapeloaderexception.o ../bin/radianangle.o ../bin/shapeloaderlink.o ../bin/utilsexception.o ../bin/test-loader.o ../bin/segmentcreator.o ../bin/shapecreatorlink.o ../bin/circlecreator.o ../bin/polygoncreator.o ../bin/trianglecreator.o ../bin/composedshapecreator.o ../bin/shape.o ../bin/circle.o ../bin/triangle.o ../bin/polygon.o ../bin/composedshape.o ../bin/segment.o
 
 clean:
 	rm -rf ../bin/*.o

@@ -3,7 +3,7 @@
 
 using std::ostringstream;
 
-ComposedShape::ComposedShape() : Shape(){}
+ComposedShape::ComposedShape(Color color) : Shape(color){}
 
 void ComposedShape::addShape( Shape* shape)
 {
