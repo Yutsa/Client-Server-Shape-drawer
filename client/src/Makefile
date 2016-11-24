@@ -1,4 +1,6 @@
 CFLAGS = -Wall -ansi
+INCDIRS=-I/usr/include/qt4 -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtCore
+LIBS=-lQtCore -lQtGui
 
 all: test-vector2D
 
@@ -72,7 +74,7 @@ triangle.o: Shape/Triangle.cpp Shape/Triangle.hpp Shape/Shape.hpp Visitor/Server
 	g++ -o ../bin/triangle.o -c Shape/Triangle.cpp $(CFLAGS)
 
 qtdrawer.o: Visitor/QtDrawer.cpp Visitor/QtDrawer.hpp Visitor/DrawingVisitor.hpp Network/Socket.hpp Shape/Circle.hpp Shape/Segment.hpp Shape/Triangle.hpp Shape/Polygon.hpp
-	g++ -o ../bin/qtdrawer.o -c Visitor/QtDrawer.cpp $(FLAGS)
+	g++ -o ../bin/qtdrawer.o $(INCDIRS) -c Visitor/QtDrawer.cpp $(FLAGS)
 
 serverdrawer.o: Visitor/ServerDrawer.cpp Visitor/ServerDrawer.hpp Visitor/DrawingVisitor.hpp Network/Socket.hpp Shape/Circle.hpp Shape/Segment.hpp Shape/Triangle.hpp Shape/Polygon.hpp
 	g++ -o ../bin/serverdrawer.o -c Visitor/ServerDrawer.cpp $(FLAGS)
