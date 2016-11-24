@@ -2,12 +2,12 @@
 
 using std::string;
 
-QtDrawer::QtDrawer(int argc, char* argv[]) : DrawingVisitor()
+QtDrawer::QtDrawer() : DrawingVisitor()
 {
-  _app = new QApplication(argc, argv);
-  _scene = new QGraphicsScene();
-  _pen = new QPen();
-  _vue = new QGraphicsView();
+    _app = new QApplication(NULL);
+    _scene = new QGraphicsScene();
+    _pen = new QPen();
+    _vue = new QGraphicsView(_scene);
 }
 
 QtDrawer::~QtDrawer()
@@ -20,16 +20,15 @@ void QtDrawer::draw(const Circle* circle) const
     Color color = circle->getColor();
     Vector2D center = circle->getCenter();
     double radius = circle->getDiameter()/2;
+    QColor qcolor = QColor(color.getRed(), color.getGreen(), 			  color.getBlue());
 
-    QColor qcolor = QColor(color.getRed(), color.getGreen(),
-			  color.getBlue());
-    _pen->setColor(qcolor);
-    _scene->addEllipse(30, 30, 30, 30);
+    _vue->setWindowTitle("Cercle");
+    _scene->addEllipse(center.getX(), center.getY(),
+		       radius, radius, *_pen);
 
     _vue->setScene(_scene);
     _vue->show();
-    /*  _app->exec();*/
-
+    _app->exec();
 }
 
 void QtDrawer::draw(const Segment* segment) const

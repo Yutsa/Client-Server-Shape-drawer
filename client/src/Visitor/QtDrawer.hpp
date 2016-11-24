@@ -27,7 +27,7 @@ private:
     QPen* _pen;
 
 public:
-    QtDrawer(int argc, char* argv[]);
+    QtDrawer();
     virtual ~QtDrawer();
     /**
     * Draws the Circle.
