@@ -16,13 +16,14 @@ CircleCreator::CircleCreator(ShapeCreatorLink *next) : ShapeCreatorLink(next)
 Shape* CircleCreator::createShapeSpe(const string & shapeString) const
 {
     vector<string> shapeStrings = func::split(shapeString, ',');
-    
+        
     if(shapeStrings[0] != "circle")
     {
         throw ShapeLoaderException("Not a Circle");
     }
     else
     {
+
         unsigned char r = (unsigned char)atoi(shapeStrings[1].c_str()),
                     g = (unsigned char)atoi(shapeStrings[2].c_str()),
                     b = (unsigned char)atoi(shapeStrings[3].c_str());
@@ -36,7 +37,7 @@ Shape* CircleCreator::createShapeSpe(const string & shapeString) const
         Vector2D point1(px1, py1);
         
         Circle *C = new Circle(point1, diameter, color);
-        
+                
         return C;
     }
 }

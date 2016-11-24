@@ -22,10 +22,10 @@ void ComposedShape::draw(const DrawingVisitor* visitor) const
 ComposedShape::operator string() const
 {
     ostringstream os;
-    os << "composedShape\n";
+    os << "composedShape";
     for(unsigned int i = 0; i < _shapes.size(); i++)
     {
-        os << *_shapes[i] << "\n";
+        os << "|" << *_shapes[i];
     }
     return os.str();
 }

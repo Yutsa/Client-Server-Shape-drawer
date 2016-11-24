@@ -9,6 +9,7 @@
 */
 class ComposedShapeCreator : public ShapeCreatorLink
 {
+public:
     /**
     * Constructor of ComposedShapeCreator
     * @param next The next ShapeCreatorLink if this one fails 
