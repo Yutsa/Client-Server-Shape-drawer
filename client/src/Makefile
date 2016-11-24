@@ -123,7 +123,7 @@ test-qtdrawer.o:
 
 test-qtdrawer: test-qtdrawer.o circle.o geometryexception.o \
 composedshape.o radianangle.o color.o utilsexception.o shape.o \
-polygon.o triangle.o segment.o qtdrawer.o
+polygon.o triangle.o segment.o qtdrawer.o vector2d.o
 	g++ -o ../bin/test-qtdrawer ../bin/test-qtdrawer.o \
 ../bin/circle.o ../bin/composedshape.o ../bin/polygon.o \
 ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o \
