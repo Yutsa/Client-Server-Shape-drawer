@@ -10,7 +10,7 @@ void Shape::setColor(const Color & color)
     _color = color;
 }
 
-Color Shape::getColor()
+Color Shape::getColor() const
 {
     return _color;
 }

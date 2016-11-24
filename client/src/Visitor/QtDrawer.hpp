@@ -18,13 +18,13 @@
 class QtDrawer : public DrawingVisitor
 {
 private:
-    QApplication _app;
+    QApplication* _app;
 
-	QGraphicsScene _scene;
+    QGraphicsScene* _scene;
 
-	QGraphicsView _vue;
+    QGraphicsView* _vue;
 
-    QPen _pen;
+    QPen* _pen;
 
 public:
     QtDrawer(int argc, char* argv[]);
