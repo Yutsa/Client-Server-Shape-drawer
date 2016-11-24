@@ -9,6 +9,7 @@
 */
 class CircleCreator : public ShapeCreatorLink
 {
+public:
     /**
     * Constructor of CircleCreator
     * @param next The next ShapeCreatorLink if this one fails 

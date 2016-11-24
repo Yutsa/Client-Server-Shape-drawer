@@ -31,6 +31,7 @@ Shape* ShapeLoaderText::loadShape(const string & filename) const
         std::cout << "format not recognized" << std::endl;
         throw ShapeLoaderException("Save format not recognized.");
     }
+
     string line;
     ifstream myfile (filename);
     stringstream ss;
@@ -50,4 +51,5 @@ Shape* ShapeLoaderText::loadShape(const string & filename) const
 
     std::cout << "Contenu fichier: " << ss.str() << std::endl;
     return _shapeCreator->createShape(ss.str());
+    
 }

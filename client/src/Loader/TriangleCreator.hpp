@@ -9,6 +9,7 @@
 */
 class TriangleCreator : public ShapeCreatorLink
 {
+public:
     /**
     * Constructor of TriangleCreator
     * @param next The next ShapeCreatorLink if this one fails 

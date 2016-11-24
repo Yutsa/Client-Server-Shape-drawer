@@ -15,8 +15,8 @@ ComposedShapeCreator::ComposedShapeCreator(ShapeCreatorLink *next) : ShapeCreato
 
 Shape* ComposedShapeCreator::createShapeSpe(const string & shapeString) const
 {
-    vector<string> shapeStrings = func::split(shapeString, '\n');
-    
+    vector<string> shapeStrings = func::split(shapeString, '|');
+
     if(shapeStrings[0] != "composedShape")
     {
         throw ShapeLoaderException("Not a ComposedShape");
@@ -27,6 +27,7 @@ Shape* ComposedShapeCreator::createShapeSpe(const string & shapeString) const
         
         for(int i = 1; i < shapeStrings.size(); i++)
         {
+            std::cout << "i : " << i << " -> " << shapeStrings[i] << std::endl;
             cp->addShape(createShape(shapeStrings[i]));
         }
         

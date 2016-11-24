@@ -9,6 +9,7 @@
 */
 class PolygonCreator : public ShapeCreatorLink
 {
+public:
     /**
     * Constructor of PolygonCreator
     * @param next The next ShapeCreatorLink if this one fails 
