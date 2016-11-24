@@ -43,9 +43,15 @@ void QtDrawer::draw(const Triangle* triangle) const
 {
     Color color = triangle->getColor();
     pen = pen(QColor(color.getRed(),color.getGreen(),color.getBlue()));
-    Vector2D firstPoint =
-    Vector2D secondPoint =
+    Vector2D firstPoint = triangle->getFirstPoint();
+    Vector2D secondPoint = triangle->getSecondPoint();
+    Vector2D thirdPoint = triangle->getThirdPoint();
 
+    QPolygon polygon;
+
+    polygon << QPoint(firstPoint.getX(),firstPoint.getY()) << QPoint(secondPoint.getX(),secondPoint.getY()) << QPoint(thirdPoint.getX(),thirdPoint.getY());
+
+    _scene.addPolygon(polygon);
 
     _vue.show();
     _app.exec();
@@ -53,9 +59,16 @@ void QtDrawer::draw(const Triangle* triangle) const
 
 void QtDrawer::draw(const Polygon* polygon) const
 {
-    this->draw( (Shape*) polygon);
+    Color color = triangle->getColor();
+    pen = pen(QColor(color.getRed(),color.getGreen(),color.getBlue()));
 
+    QPolygon polygonDraw;
 
+    for(int i = 0; i < polygon->getPointsSize(); i++)
+    {
+        QPolygon << QPoint(polygon->getPoint(i).getX(), polygon->getPoint(i).getY());
+    }
+    _scene.addPolygon(polygon);
     _vue.show();
     _app.exec();
 }
