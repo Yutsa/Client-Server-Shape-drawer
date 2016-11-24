@@ -1,3 +1,6 @@
+#ifndef UTILS_EXCEPTION_H
+#define UTILS_EXCEPTION_H
+
 #include <iostream>
 
 using std::string;
@@ -28,3 +31,5 @@ public:
 };
 
 extern ostream & operator<<(ostream & os, const UtilsException & utilsException);
+
+#endif

@@ -47,7 +47,24 @@ Couleur
 Les couleurs sont gérées par une classe couleur constituée des valeurs
 rouge, vert, bleu pour créer la couleur.
 
-Mais également d'une map contenant quelques couleurs de base déjà créées.
+Mais également d'une map contenant quelques couleurs de base déjà créées,
+accessible grâce à une chaine de caractère caractérisant la couleur 
+("red", "blue" ...).
+
+La méthode qui permet d'accéder à la map de couleur est statique, il est ainsi
+possible d'y accéder sans que la classe soit instanciée.
+
+Angle
+======
+
+Les angles, aussi ont une classe pour eux. Elle est très simple puisqu'elle
+se comporte comme une encapsulation d'un unique nombre réèl, la valeur en radian
+de l'angle. Son constructeur et ses méthodes de modifications (surtout des 
+surcharges d'opérateurs) vérifient juste que l'angle est bien compris entre 0 et 2*pi,
+et l'ajuste (modulo 2*pi) si besoin.
+
+Les nombreuses surcharges d'opérateur permettent d'utiliser les angles très simplement 
+(+, -, *, cos, sin ...).
 
 Transformations de formes
 ==========================
@@ -55,6 +72,14 @@ Transformations de formes
 Chaque forme étant composée de Vector2D, lorsque l'on applique une
 transformation sur une forme on effectue simplement cette transformation
 sur chacun de ses points, c'est à dire chaque Vector2D qui la compose.
+La transformation s'effectue alors simplement sur toute la forme. Un seul
+cas particulier est à gérer lors d'une homothétie avec un cercle ; il n'est
+pas possible d'appliquer une homothétie sur tous les points du cercle mais 
+il suffit simplement de l'appliquer sur le centre et de multiplier le
+diamètre par le ratio de l'homothétie.
+
+Dans le cas de la forme composée, les transformations sont appliquées 
+successivement pour chacunes des formes élémentaires qui la composent.
 
 Création du socket
 ===================
@@ -68,6 +93,14 @@ peut donc appeler pour transmettre les messages au serveur.
 
 Le fait que ces méthodes soient statiques permet de les utiliser sans
 passer l'instance en paramètes partout.
+
+Le socket possède 3 méthodes essentielles. La première permet de connecter
+le socket au serveur, en y renseignant l'adresse IP et le port de ce dernier.
+Les deux suivantes permettent d'envoyer et de recevoir, c'est à dire de 
+communiquer avec le serveur. Les deux fonctionnent avec des chaine de caractères.
+
+Une dernière fonction permet de fermer la connexion avec le serveur en fin de 
+session.
 
 Dessin des formes
 =================

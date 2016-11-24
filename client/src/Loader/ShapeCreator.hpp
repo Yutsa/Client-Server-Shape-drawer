@@ -1,3 +1,6 @@
+#ifndef SHAPE_CREATOR_H
+#define SHAPE_CREATOR_H
+
 #include <iosfwd>
 
 class Shape;
@@ -16,3 +19,5 @@ public:
     */
     virtual Shape* createShape(const string & shapeString) const = 0;
 };
+
+#endif

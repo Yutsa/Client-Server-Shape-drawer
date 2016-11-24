@@ -40,6 +40,7 @@ public:
     /**
     * Gets color in map with a string
     * @param color string of the color
+    * @throws UtilsException When color isn't found in the array of colors
     * @return The corresponding Color object
     */
     static Color getColor(const string & color);

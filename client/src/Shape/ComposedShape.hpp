@@ -29,13 +29,13 @@ public:
     /**
     *   ComposedShape constructors
     **/
-    ComposedShape();
+    ComposedShape(Color color = Color::getColor("black"));
 
     /**
     *   Function to add a point on the ComposedShape
     *   @param point point to add
     **/
-    void addShape( Shape* shape);
+    void addShape(Shape* shape);
 
     /**
     * Draws the ComposedShape using a DrawingVisitor.

@@ -59,22 +59,26 @@ public:
 
     /**
     * Creates the connexion to the server.
+    * @throws NetworkException When the socket can't be created or when server connexion can't be open
     */
     static void createConnexion();
 
     /**
     * Sends the request to the server.
+    * @throws NetworkException when message cannot be send
     */
     static void sendRequest(const string & request);
 
     /**
     * Receives a message from the server and returns it.
+    * @throws NetworkException When message from server cannot be load
     * @return string The message received from the server.
     */
     static string receiveData();
 
     /**
     * Closes the socket
+    * @throws NetworkException When close function fails
     */
     static void closeSocket();
 };
