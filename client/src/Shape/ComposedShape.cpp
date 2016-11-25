@@ -12,7 +12,7 @@ void ComposedShape::addShape( Shape* shape)
 
 void ComposedShape::draw(const DrawingVisitor* visitor) const
 {
-    ComposedShape newComposedShape = ComposedShape(this);
+    //ComposedShape newComposedShape = ComposedShape(this);
     for(unsigned int i = 0; i < _shapes.size(); i++)
     {
         visitor->draw(_shapes[i]);

@@ -27,7 +27,7 @@ private:
     double _diameter;
 public:
     /**
-    * Circle constructor with color
+    * Circle constructor
     * @param center The center point of the Circle
     * @param diameter The diameter of the Circle
     * @param color The color of the Circle
@@ -35,13 +35,13 @@ public:
     Circle(const Vector2D & center, const double & diameter, const Color & color = Color::getColor("black"));
 
     /**
-    * Center getter
+    * Gets the center of the circle
     * @return Vector2D the center of the circle
     **/
     const Vector2D getCenter() const;
 
     /**
-    * Diameter getter
+    * Gets the diameter of the circle
     * @return double the diameter of the circle
     **/
     const double getDiameter() const;

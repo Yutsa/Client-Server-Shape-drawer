@@ -18,7 +18,7 @@ public:
     
     /**
     * Try to create a Circle with the string
-    * @param shapeString the string with informations of the shape
+    * @param shapeString The string with informations of the shape
     * @return The Shape* wich were created
     */
     virtual Shape* createShapeSpe(const string & shapeString) const;
