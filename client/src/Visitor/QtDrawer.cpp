@@ -15,17 +15,12 @@ QtDrawer::~QtDrawer()
 
 }
 
+/* We could use only the draw(Shape*) since they will all do the
+ * same thing
+*/
 void QtDrawer::draw(const Circle* circle) const
 {
-    Color color = circle->getColor();
-    Vector2D center = circle->getCenter();
-    double radius = circle->getDiameter()/2;
-    QColor qcolor = QColor(color.getRed(), color.getGreen(), 			  color.getBlue());
-
-    _vue->setWindowTitle("Cercle");
-    _scene->addEllipse(center.getX(), center.getY(),
-		       radius, radius, *_pen);
-
+    this->addToScene(circle);
     _vue->setScene(_scene);
     _vue->show();
     _app->exec();
@@ -89,4 +84,16 @@ void QtDrawer::draw(const Polygon* polygon) const
 void QtDrawer::draw(const Shape *shape) const
 {
 
+}
+
+void QtDrawer::addToScene(const Circle* circle) const
+{
+    Color color = circle->getColor();
+    Vector2D center = circle->getCenter();
+    double radius = circle->getDiameter()/2;
+    QColor qcolor = QColor(color.getRed(), color.getGreen(), 			  color.getBlue());
+
+    _vue->setWindowTitle("Cercle");
+    _scene->addEllipse(center.getX(), center.getY(),
+		       radius, radius, *_pen);    
 }

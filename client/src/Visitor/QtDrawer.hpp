@@ -57,7 +57,13 @@ public:
     * Draws the Shape.
     * @param shape The Shape to draw.
     */
-    virtual void draw(const Shape* shape) const;
+    void draw(const Shape* shape) const;
+
+    /**
+     * Add the Circle to the scene.
+     * @param circle The Circle to add to the scene.
+     */
+    void addToScene(const Circle* circle) const;
 };
 
 #endif
