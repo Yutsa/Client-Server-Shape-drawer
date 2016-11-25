@@ -87,6 +87,21 @@ public:
     */
     double getArea() const;
 
+    /**
+     * Returns the number of Shapes composing this ComposedShape.
+     * @return The number of shapes composing this ComposedShape.
+     */
+    int getShapeNumber() const;
+
+    /**
+     * Returns the i-th shape in this ComposedShape
+     * @return The i-th shape in this ComposedShape
+     * @throws ShapeException if the index is wrong.
+     */
+    Shape* getShape(unsigned int i) const;
+
+    //TODO: operator[] to get the i-th shape.
+
     friend ostream & operator << (ostream & os, const ComposedShape & composedShape);
 };
 
