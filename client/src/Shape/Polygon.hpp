@@ -55,7 +55,7 @@ public:
     * Draws the Polygon using a DrawingVisitor.
     * @param visitor The DrawingVisitor to use to draw the Polygon.
     */
-    void draw(const DrawingVisitor* visitor) const;
+    void draw(DrawingVisitor* visitor) const;
 
     /**
     * Returns a string that represents the Polygon.

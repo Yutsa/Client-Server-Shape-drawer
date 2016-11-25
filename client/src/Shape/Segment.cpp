@@ -19,7 +19,7 @@ const Vector2D Segment::getSecondPoint() const
     return _secondPoint;
 }
 
-void Segment::draw(const DrawingVisitor* visitor) const
+void Segment::draw(DrawingVisitor* visitor) const
 {
     visitor->draw(this);
 }

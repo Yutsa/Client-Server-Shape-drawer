@@ -9,7 +9,7 @@ Polygon::Polygon(const Color & color) : Shape(color)
 }
 
 
-void Polygon::draw(const DrawingVisitor* visitor) const
+void Polygon::draw(DrawingVisitor* visitor) const
 {
     visitor->draw(this);
 }

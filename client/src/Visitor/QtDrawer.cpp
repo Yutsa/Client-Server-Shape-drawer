@@ -15,40 +15,40 @@ QtDrawer::~QtDrawer()
 
 }
 
-void QtDrawer::draw(const Circle* circle) const
+void QtDrawer::draw(const Circle* circle)
 {
     _scene->clear();
     this->addToScene(circle);
     this->displayWindow();
 }
 
-void QtDrawer::draw(const Segment* segment) const
+void QtDrawer::draw(const Segment* segment)
 {
     _scene->clear();
     this->addToScene(segment);
     this->displayWindow();
 }
 
-void QtDrawer::draw(const Triangle* triangle) const
+void QtDrawer::draw(const Triangle* triangle)
 {
     _scene->clear();
     this->addToScene(triangle);
     this->displayWindow();
 }
 
-void QtDrawer::draw(const Polygon* polygon) const
+void QtDrawer::draw(const Polygon* polygon)
 {
     _scene->clear();
     this->addToScene(polygon);
     this->displayWindow();
 }
 
-void QtDrawer::draw(const Shape *shape) const
+void QtDrawer::draw(const Shape *shape)
 {
 
 }
 
-void QtDrawer::addToScene(const Circle* circle) const
+void QtDrawer::addToScene(const Circle* circle)
 {
     Color color = circle->getColor();
     Vector2D center = circle->getCenter();
@@ -61,7 +61,7 @@ void QtDrawer::addToScene(const Circle* circle) const
 		       radius, radius, *_pen);    
 }
 
-void QtDrawer::addToScene(const Segment* segment) const
+void QtDrawer::addToScene(const Segment* segment)
 {
     Color color = segment->getColor();
     QColor qcolor = QColor(color.getRed(), color.getGreen(),
@@ -75,7 +75,7 @@ void QtDrawer::addToScene(const Segment* segment) const
 		    secondPoint.getX(), secondPoint.getY(), *_pen);
 }
 
-void QtDrawer::addToScene(const Triangle* triangle) const
+void QtDrawer::addToScene(const Triangle* triangle)
 {
     Color color = triangle->getColor();
     QColor qcolor = QColor(color.getRed(), color.getGreen(),
@@ -96,7 +96,7 @@ void QtDrawer::addToScene(const Triangle* triangle) const
     _scene->addPolygon(polygon);    
 }
 
-void QtDrawer::addToScene(const Polygon* polygon) const
+void QtDrawer::addToScene(const Polygon* polygon)
 {
     Color color = polygon->getColor();
     QPolygon polygonDraw;
@@ -115,15 +115,15 @@ void QtDrawer::addToScene(const Polygon* polygon) const
     _scene->addPolygon(polygonDraw);    
 }
 
-void QtDrawer::addToScene(const ComposedShape* composedShape) const
+void QtDrawer::addToScene(const ComposedShape* composedShape)
 {
-    /*for(unsigned int i = 0; i < composedShape->getShapeNumber(); i++)
-    {
-	this->addToScene(composedShape->getShape(i))
-	}*/
+    // for(unsigned int i = 0; i < composedShape->getShapeNumber(); i++)
+    // {
+    // 	this->addToScene(composedShape->getShape(i));
+    // }
 }
 
-void QtDrawer::displayWindow() const
+void QtDrawer::displayWindow()
 {
     _vue->setScene(_scene);
     _vue->show();

@@ -38,66 +38,66 @@ public:
     * Draws the Circle.
     * @param circle The Circle to draw.
     */
-    void draw(const Circle* circle) const;
+    void draw(const Circle* circle);
 
     /**
     * Draws the Segment.
     * @param segment The Segment to draw.
     */
-    void draw(const Segment* segment) const;
+    void draw(const Segment* segment);
 
     /**
     * Draws the Triangle.
     * @param triangle The Triangle to draw.
     */
-    void draw(const Triangle* triangle) const;
+    void draw(const Triangle* triangle);
 
     /**
     * Draws the Polygon.
     * @param polygon The Polygon to draw.
     */
-    void draw(const Polygon* polygon) const;
+    void draw(const Polygon* polygon);
 
     /**
     * Draws the Shape.
     * @param shape The Shape to draw.
     */
-    void draw(const Shape* shape) const;
+    void draw(const Shape* shape);
 
     /**
      * Add the Circle to the scene.
      * @param circle The Circle to add to the scene.
      */
-    void addToScene(const Circle* circle) const;
+    void addToScene(const Circle* circle);
 
     /**
      * Add the Segment to the scene.
      * @param segment The Segment to add to the scene.
      */
-    void addToScene(const Segment* segment) const;
+    void addToScene(const Segment* segment);
 
     /**
      * Add the Triangle to the scene.
      * @param triangle The Triangle to add to the scene.
      */
-    void addToScene(const Triangle* triangle) const;
+    void addToScene(const Triangle* triangle);
 
     /**
      * Add the Polygon to the scene.
      * @param polygon The Polygon to add to the scene.
      */
-    void addToScene(const Polygon* polygon) const;
+    void addToScene(const Polygon* polygon);
 
     /**
      * Add the ComposedShape to the scene.
      * @param composedShape The ComposedShape to add to the scene.
      */
-    void addToScene(const ComposedShape* composedShape) const;
+    void addToScene(const ComposedShape* composedShape);
 
     /**
      * Sets the scene to the view and display it.
      */
-    void displayWindow() const;
+    void displayWindow();
     
 };
 

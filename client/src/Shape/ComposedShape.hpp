@@ -41,7 +41,7 @@ public:
     * Draws the ComposedShape using a DrawingVisitor.
     * @param visitor The DrawingVisitor to use to draw the ComposedShape.
     */
-    void draw(const DrawingVisitor* visitor) const;
+    void draw(DrawingVisitor* visitor) const;
 
     /**
     * Returns a string that represents the ComposedShape.
