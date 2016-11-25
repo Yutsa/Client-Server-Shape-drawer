@@ -10,9 +10,10 @@ void ComposedShape::addShape( Shape* shape)
     _shapes.push_back(shape);
 }
 
-void ComposedShape::draw(const DrawingVisitor* visitor) const
+void ComposedShape::draw(DrawingVisitor* visitor) const
 {
     //ComposedShape newComposedShape = ComposedShape(this);
+
     for(unsigned int i = 0; i < _shapes.size(); i++)
     {
         visitor->draw(_shapes[i]);
@@ -81,4 +82,20 @@ ostream & operator << (ostream & os, const ComposedShape & composedShape)
 {
     os << (string) composedShape;
     return os;
+}
+
+int ComposedShape::getShapeNumber() const
+{
+    return _shapes.size();
+}
+
+Shape* ComposedShape::getShape(unsigned int i) const
+{
+    if (i < 0 || i > _shapes.size())
+    {
+	//TODO: Throw Exception, need to create a ShapeException
+	std::cout << "Erreur d'indice." << std::endl;
+	return NULL;
+    }
+    return _shapes[i];
 }

@@ -31,7 +31,7 @@ public:
     * Draws the Shape using a DrawingVisitor.
     * @param visitor The DrawingVisitor to use to draw the shape.
     */
-    virtual void draw(const DrawingVisitor* visitor) const = 0;
+    virtual void draw(DrawingVisitor* visitor) const = 0;
 
     /**
     * Returns a string that represents the Shape.

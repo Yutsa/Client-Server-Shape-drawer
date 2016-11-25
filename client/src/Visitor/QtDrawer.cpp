@@ -2,9 +2,12 @@
 
 using std::string;
 
-QtDrawer::QtDrawer(int argc, char* argv[]) : DrawingVisitor(), _app(argc, argv), _vue(&_scene), _scene()
+QtDrawer::QtDrawer() : DrawingVisitor()
 {
-
+    _app = new QApplication(NULL);
+    _scene = new QGraphicsScene();
+    _pen = new QPen();
+    _vue = new QGraphicsView(_scene);
 }
 
 QtDrawer::~QtDrawer()
@@ -12,67 +15,122 @@ QtDrawer::~QtDrawer()
 
 }
 
-void QtDrawer::draw(const Circle* circle) const
+void QtDrawer::draw(const Circle* circle)
+{
+    _scene->clear();
+    this->addToScene(circle);
+    this->displayWindow();
+}
+
+void QtDrawer::draw(const Segment* segment)
+{
+    _scene->clear();
+    this->addToScene(segment);
+    this->displayWindow();
+}
+
+void QtDrawer::draw(const Triangle* triangle)
+{
+    _scene->clear();
+    this->addToScene(triangle);
+    this->displayWindow();
+}
+
+void QtDrawer::draw(const Polygon* polygon)
+{
+    _scene->clear();
+    this->addToScene(polygon);
+    this->displayWindow();
+}
+
+void QtDrawer::draw(const Shape *shape)
+{
+
+}
+
+void QtDrawer::addToScene(const Circle* circle)
 {
     Color color = circle->getColor();
     Vector2D center = circle->getCenter();
-    double radius = circle->getDiameter()/2;
+    double radius = circle->getDiameter() / 2;
+    QColor qcolor = QColor(color.getRed(), color.getGreen(),
+			   color.getBlue());
 
-    _pen = QPen(QColor(color.getRed(),color.getGreen(),color.getBlue()));
-    _scene.addEllipse(center.getX(),center.getY(),radius,radius,_pen);
-
-    _vue.show();
-    _app.exec();
-
+    _vue->setWindowTitle("Cercle");
+    _scene->addEllipse(center.getX(), center.getY(),
+		       radius, radius, *_pen);    
 }
 
-void QtDrawer::draw(const Segment* segment) const
+void QtDrawer::addToScene(const Segment* segment)
 {
     Color color = segment->getColor();
-    _pen = QPen(QColor(color.getRed(),color.getGreen(),color.getBlue()));
+    QColor qcolor = QColor(color.getRed(), color.getGreen(),
+			   color.getBlue());
+    _pen->setColor(qcolor);
+
     Vector2D firstPoint = segment->getFirstPoint();
     Vector2D secondPoint = segment->getSecondPoint();
-    _scene.addLine(firstPoint.getX(),firstPoint.getY(),secondPoint.getX(),secondPoint.getY(),_pen);
 
-    _vue.show();
-    _app.exec();
+    _scene->addLine(firstPoint.getX(), firstPoint.getY(),
+		    secondPoint.getX(), secondPoint.getY(), *_pen);
 }
 
-void QtDrawer::draw(const Triangle* triangle) const
+void QtDrawer::addToScene(const Triangle* triangle)
 {
     Color color = triangle->getColor();
-    _pen = QPen(QColor(color.getRed(),color.getGreen(),color.getBlue()));
+    QColor qcolor = QColor(color.getRed(), color.getGreen(),
+			   color.getBlue());
+
+    _pen->setColor(qcolor);  
+
     Vector2D firstPoint = triangle->getFirstPoint();
     Vector2D secondPoint = triangle->getSecondPoint();
     Vector2D thirdPoint = triangle->getThirdPoint();
 
     QPolygon polygon;
 
-    polygon << QPoint(firstPoint.getX(),firstPoint.getY()) << QPoint(secondPoint.getX(),secondPoint.getY()) << QPoint(thirdPoint.getX(),thirdPoint.getY());
+    polygon << QPoint(firstPoint.getX(), firstPoint.getY())
+	    << QPoint(secondPoint.getX(), secondPoint.getY())
+	    << QPoint(thirdPoint.getX(), thirdPoint.getY());
 
-    _scene.addPolygon(polygon);
-
-    _vue.show();
-    _app.exec();
+    _scene->addPolygon(polygon);    
 }
 
-void QtDrawer::draw(const Polygon* polygon) const
+void QtDrawer::addToScene(const Polygon* polygon)
 {
     Color color = polygon->getColor();
-    _pen = QPen(QColor(color.getRed(),color.getGreen(),color.getBlue()));
-
     QPolygon polygonDraw;
+
+    QColor qcolor = QColor(color.getRed(), color.getGreen(),
+			   color.getBlue());
+
+    _pen->setColor(qcolor);
 
     for(int i = 0; i < polygon->getPointsSize(); i++)
     {
-        polygonDraw << QPoint(polygon->getPoint(i).getX(), polygon->getPoint(i).getY());
+        polygonDraw << QPoint(polygon->getPoint(i).getX(),
+			      polygon->getPoint(i).getY());
     }
-    _scene.addPolygon(polygonDraw);
-    _vue.show();
-    _app.exec();
+    
+    _scene->addPolygon(polygonDraw);    
 }
 
-void QtDrawer::draw(const Shape *shape) const
+void QtDrawer::addToScene(const ComposedShape* composedShape)
 {
+    /*
+     * We need to add each shape composing the ComposedShape to 
+     * the scene. But the getShape method gives us a Shape* and it 
+     * doens't work with our addToScene method because of that.
+     */
+    // for(unsigned int i = 0; i < composedShape->getShapeNumber(); i++)
+    // {
+    // 	this->addToScene(composedShape->getShape(i));
+    // }
+}
 
+void QtDrawer::displayWindow()
+{
+    _vue->setScene(_scene);
+    _vue->show();
+    _app->exec();
 }

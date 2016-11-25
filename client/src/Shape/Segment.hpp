@@ -51,7 +51,7 @@ public:
     * Draws the Segment using a DrawingVisitor.
     * @param visitor The DrawingVisitor to use to draw the Segment.
     */
-    void draw(const DrawingVisitor* visitor) const;
+    void draw(DrawingVisitor* visitor) const;
 
     /**
     * Returns a string that represents the Segment.

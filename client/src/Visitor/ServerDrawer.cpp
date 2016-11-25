@@ -12,27 +12,27 @@ ServerDrawer::~ServerDrawer()
 
 }
 
-void ServerDrawer::draw(const Circle* circle) const
+void ServerDrawer::draw(const Circle* circle)
 {
     this->draw( (Shape*) circle);
 }
 
-void ServerDrawer::draw(const Segment* segment) const
+void ServerDrawer::draw(const Segment* segment)
 {
     this->draw( (Shape*) segment);
 }
 
-void ServerDrawer::draw(const Triangle* triangle) const
+void ServerDrawer::draw(const Triangle* triangle)
 {
     this->draw( (Shape*) triangle);
 }
 
-void ServerDrawer::draw(const Polygon* polygon) const
+void ServerDrawer::draw(const Polygon* polygon)
 {
     this->draw( (Shape*) polygon);
 }
 
-void ServerDrawer::draw(const Shape *shape) const
+void ServerDrawer::draw(const Shape *shape)
 {
     string request = (string) *shape;
     Socket::sendRequest(request + "\n");

@@ -10,7 +10,7 @@ Triangle::Triangle(const Vector2D & firstPoint, const Vector2D & secondPoint, co
     _thirdPoint = thirdPoint;
 }
 
-void Triangle::draw(const DrawingVisitor* visitor) const
+void Triangle::draw(DrawingVisitor* visitor) const
 {
     visitor->draw(this);
 }

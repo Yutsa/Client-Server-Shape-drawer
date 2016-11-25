@@ -21,7 +21,7 @@ const double Circle::getDiameter() const
     return _diameter;
 }
 
-void Circle::draw(const DrawingVisitor* visitor) const
+void Circle::draw(DrawingVisitor* visitor) const
 {
     visitor->draw(this);
 }

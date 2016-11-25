@@ -1,4 +1,4 @@
-CFLAGS = -Wall -ansi -fdiagnostics-color=auto
+CFLAGS = -Wall -ansi -g
 INCDIRS=-I/usr/include/qt4 -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtCore
 LIBS=-lQtCore -lQtGui
 
@@ -7,8 +7,8 @@ all: test-vector2D
 test-vector2D: test-vector2D.o vector2d.o radianangle.o geometryexception.o
 	g++ -o ../bin/test-vector2D ../bin/test-vector2D.o ../bin/vector2d.o ../bin/radianangle.o ../bin/geometryexception.o $(CFLAGS)
 
-test-socket: test-socket.o socket.o networkexception.o circle.o geometryexception.o composedshape.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o
-	g++ -o ../bin/test-socket ../bin/test-socket.o ../bin/circle.o ../bin/composedshape.o ../bin/polygon.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o  ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
+test-socket: test-socket.o socket.o networkexception.o circle.o geometryexception.o composedshape.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o qtdrawer.o
+	g++ -o ../bin/test-socket ../bin/test-socket.o ../bin/circle.o ../bin/composedshape.o ../bin/polygon.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o  ../bin/socket.o ../bin/networkexception.o ../bin/qtdrawer.o $(LIBS) $(CFLAGS)
 
 test-shape: vector2d.o test-shape.o circle.o geometryexception.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o composedshape.o
 	g++ -o ../bin/test-shape ../bin/test-shape.o  ../bin/circle.o ../bin/polygon.o ../bin/composedshape.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
@@ -44,7 +44,7 @@ radianangle.o: Geometry/RadianAngle.cpp Geometry/RadianAngle.hpp Geometry/Geomet
 	g++ -o ../bin/radianangle.o -c Geometry/RadianAngle.cpp $(CFLAGS)
 
 test-socket.o: Tests/test-socket.cpp Network/Socket.hpp
-	g++ -o ../bin/test-socket.o -c Tests/test-socket.cpp $(CFLAGS)
+	g++ -o ../bin/test-socket.o $(INCDIRS) -c Tests/test-socket.cpp $(CFLAGS)
 
 test-shape.o: Tests/test-shape.cpp Shape/Circle.hpp
 	g++ -o ../bin/test-shape.o -c Tests/test-shape.cpp $(CFLAGS)
@@ -117,6 +117,19 @@ shapeloaderexception.o: Loader/ShapeLoaderException.hpp Loader/ShapeLoaderExcept
 
 test-loader: shapeloadertext.o color.o savetextvisitor.o vector2d.o shapeloaderexception.o radianangle.o shapeloaderlink.o utilsexception.o test-loader.o segmentcreator.o shapecreatorlink.o circlecreator.o trianglecreator.o polygoncreator.o composedshapecreator.o shape.o circle.o segment.o triangle.o polygon.o composedshape.o
 	g++ -o ../bin/test-loader ../bin/shapeloadertext.o ../bin/color.o ../bin/savetextvisitor.o ../bin/vector2d.o ../bin/shapeloaderexception.o ../bin/radianangle.o ../bin/shapeloaderlink.o ../bin/utilsexception.o ../bin/test-loader.o ../bin/segmentcreator.o ../bin/shapecreatorlink.o ../bin/circlecreator.o ../bin/polygoncreator.o ../bin/trianglecreator.o ../bin/composedshapecreator.o ../bin/shape.o ../bin/circle.o ../bin/triangle.o ../bin/polygon.o ../bin/composedshape.o ../bin/segment.o
+
+test-qtdrawer.o:
+	g++ -o ../bin/test-qtdrawer.o $(INCDIRS) -c Tests/test-qtdrawer.cpp $(CFLAGS)
+
+test-qtdrawer: test-qtdrawer.o circle.o geometryexception.o \
+composedshape.o radianangle.o color.o utilsexception.o shape.o \
+polygon.o triangle.o segment.o qtdrawer.o vector2d.o
+	g++ -o ../bin/test-qtdrawer ../bin/test-qtdrawer.o \
+../bin/circle.o ../bin/composedshape.o ../bin/polygon.o \
+../bin/triangle.o ../bin/segment.o ../bin/vector2d.o \
+../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o \
+../bin/utilsexception.o ../bin/shape.o ../bin/qtdrawer.o \
+$(LIBS) $(CFLAGS)
 
 clean:
 	rm -rf ../bin/*.o

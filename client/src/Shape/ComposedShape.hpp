@@ -41,7 +41,7 @@ public:
     * Draws the ComposedShape using a DrawingVisitor.
     * @param visitor The DrawingVisitor to use to draw the ComposedShape.
     */
-    void draw(const DrawingVisitor* visitor) const;
+    void draw(DrawingVisitor* visitor) const;
 
     /**
     * Returns a string that represents the ComposedShape.
@@ -86,6 +86,21 @@ public:
     * @return The area of the ComposedShape.
     */
     double getArea() const;
+
+    /**
+     * Returns the number of Shapes composing this ComposedShape.
+     * @return The number of shapes composing this ComposedShape.
+     */
+    int getShapeNumber() const;
+
+    /**
+     * Returns the i-th shape in this ComposedShape
+     * @return The i-th shape in this ComposedShape
+     * @throws ShapeException if the index is wrong.
+     */
+    Shape* getShape(unsigned int i) const;
+
+    //TODO: operator[] to get the i-th shape.
 
     friend ostream & operator << (ostream & os, const ComposedShape & composedShape);
 };

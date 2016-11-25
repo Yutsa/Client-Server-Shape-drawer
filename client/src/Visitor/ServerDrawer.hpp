@@ -24,31 +24,31 @@ public:
     * Draws the Circle.
     * @param circle The Circle to draw.
     */
-    void draw(const Circle* circle) const;
+    void draw(const Circle* circle);
 
     /**
     * Draws the Segment.
     * @param segment The Segment to draw.
     */
-    void draw(const Segment* segment) const;
+    void draw(const Segment* segment);
 
     /**
     * Draws the Triangle.
     * @param triangle The Triangle to draw.
     */
-    void draw(const Triangle* triangle) const;
+    void draw(const Triangle* triangle);
 
     /**
     * Draws the Polygon.
     * @param polygon The Polygon to draw.
     */
-    void draw(const Polygon* polygon) const;
+    void draw(const Polygon* polygon);
 
     /**
     * Draws the Shape.
     * @param polygon The Shape to draw.
     */
-    virtual void draw(const Shape* shape) const;    
+    virtual void draw(const Shape* shape);    
 };
 
 #endif
