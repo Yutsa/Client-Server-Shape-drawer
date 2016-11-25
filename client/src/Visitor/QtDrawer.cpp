@@ -15,43 +15,32 @@ QtDrawer::~QtDrawer()
 
 }
 
-/* We could use only the draw(Shape*) since they will all do the
- * same thing
-*/
 void QtDrawer::draw(const Circle* circle) const
 {
     _scene->clear();
     this->addToScene(circle);
-    _vue->setScene(_scene);
-    _vue->show();
-    _app->exec();
+    this->displayWindow();
 }
 
 void QtDrawer::draw(const Segment* segment) const
 {
     _scene->clear();
     this->addToScene(segment);
-    _vue->setScene(_scene);
-    _vue->show();
-    _app->exec();
+    this->displayWindow();
 }
 
 void QtDrawer::draw(const Triangle* triangle) const
 {
     _scene->clear();
     this->addToScene(triangle);
-    _vue->setScene(_scene);
-    _vue->show();
-    _app->exec();
+    this->displayWindow();
 }
 
 void QtDrawer::draw(const Polygon* polygon) const
 {
     _scene->clear();
     this->addToScene(polygon);
-    _vue->setScene(_scene);
-    _vue->show();
-    _app->exec();
+    this->displayWindow();
 }
 
 void QtDrawer::draw(const Shape *shape) const
@@ -64,7 +53,8 @@ void QtDrawer::addToScene(const Circle* circle) const
     Color color = circle->getColor();
     Vector2D center = circle->getCenter();
     double radius = circle->getDiameter() / 2;
-    QColor qcolor = QColor(color.getRed(), color.getGreen(), 			  color.getBlue());
+    QColor qcolor = QColor(color.getRed(), color.getGreen(),
+			   color.getBlue());
 
     _vue->setWindowTitle("Cercle");
     _scene->addEllipse(center.getX(), center.getY(),
@@ -131,4 +121,11 @@ void QtDrawer::addToScene(const ComposedShape* composedShape) const
     {
 	this->addToScene(composedShape->getShape(i))
 	}*/
+}
+
+void QtDrawer::displayWindow() const
+{
+    _vue->setScene(_scene);
+    _vue->show();
+    _app->exec();
 }

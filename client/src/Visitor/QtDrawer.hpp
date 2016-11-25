@@ -30,6 +30,10 @@ private:
 public:
     QtDrawer();
     virtual ~QtDrawer();
+
+    // TODO: None of these methods should be const as they modify
+    // The instance.
+    
     /**
     * Draws the Circle.
     * @param circle The Circle to draw.
@@ -89,6 +93,11 @@ public:
      * @param composedShape The ComposedShape to add to the scene.
      */
     void addToScene(const ComposedShape* composedShape) const;
+
+    /**
+     * Sets the scene to the view and display it.
+     */
+    void displayWindow() const;
     
 };
 
