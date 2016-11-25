@@ -10,6 +10,7 @@
 #include "../Shape/Polygon.hpp"
 #include "../Shape/Triangle.hpp"
 #include "../Shape/Segment.hpp"
+#include "../Shape/ComposedShape.hpp"
 
 /**
 * This class is the drawer that implement a way to draw shapes using Qt
@@ -64,6 +65,31 @@ public:
      * @param circle The Circle to add to the scene.
      */
     void addToScene(const Circle* circle) const;
+
+    /**
+     * Add the Segment to the scene.
+     * @param segment The Segment to add to the scene.
+     */
+    void addToScene(const Segment* segment) const;
+
+    /**
+     * Add the Triangle to the scene.
+     * @param triangle The Triangle to add to the scene.
+     */
+    void addToScene(const Triangle* triangle) const;
+
+    /**
+     * Add the Polygon to the scene.
+     * @param polygon The Polygon to add to the scene.
+     */
+    void addToScene(const Polygon* polygon) const;
+
+    /**
+     * Add the ComposedShape to the scene.
+     * @param composedShape The ComposedShape to add to the scene.
+     */
+    void addToScene(const ComposedShape* composedShape) const;
+    
 };
 
 #endif
