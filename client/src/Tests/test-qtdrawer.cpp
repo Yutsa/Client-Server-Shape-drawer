@@ -13,15 +13,6 @@ using std::cout;
 using std::endl;
 using std::string;
 
-
-/*
- * QtDrawer is considered as const because when it calls its
- * draw method inside the Shape's draw method, it's passed 
- * as a "const DrawingVisitor &" so it is const.
- * It can't be anymore since QtDrawer modifies its instance when
- * drawing (the scene, the view and so on.)
- */
-
 int main(int argc, char* argv[])
 {
     QtDrawer *qtDrawer = new QtDrawer();

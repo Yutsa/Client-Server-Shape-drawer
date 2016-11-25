@@ -117,6 +117,11 @@ void QtDrawer::addToScene(const Polygon* polygon)
 
 void QtDrawer::addToScene(const ComposedShape* composedShape)
 {
+    /*
+     * We need to add each shape composing the ComposedShape to 
+     * the scene. But the getShape method gives us a Shape* and it 
+     * doens't work with our addToScene method because of that.
+     */
     // for(unsigned int i = 0; i < composedShape->getShapeNumber(); i++)
     // {
     // 	this->addToScene(composedShape->getShape(i));
