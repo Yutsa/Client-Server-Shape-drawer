@@ -128,3 +128,36 @@ Sauvegarde de forme
 ====================
 
 La sauvegarde de forme utilise également le design pattern visitor et est implémenté de la même manière.
+
+Chargement de forme
+======================
+
+Pour pouvoir charger des formes nous avons décider de créer deux 
+chain of responsibility.
+
+Une qui se chargera de reconnaître le format de sauvegarde utilisé.
+
+Et l'autre qui se chargera de reconnaître la forme stockée et 
+l'instanciera.
+
+Ainsi la première chaîne reconnait le format de sauvegarde, traduit 
+ce format dans le même format que l'on utilise pour transmettre les 
+données au serveurs. On passe ensuite cette string à la chaine qui 
+va retourner une instance de la forme qui était sauvegardée.
+
+Dessin avec Qt
+================
+
+Nous avons choisi comme fonctionnalité supplémentaire d'implémenter 
+un mode de dessin utilisant la librairie Qt.
+
+Cela a demandé plusieurs modifications dans notre code. En effet 
+lorsque l'on dessine avec Qt, nous utilisons une classe QtDrawer 
+qui hérite de DrawingVisitor.
+
+Cependant pour dessiner avec Qt nous devons créer une QGraphicsScene 
+ainsi qu'une QGraphicsView qui vont changer lors des dessins.
+
+Donc l'instance de QtDrawer ne peut être const. Comme ServerDrawer 
+lui ne changeait rien nous avions passé le DrawingVisitor en const 
+dans les méthodes draw des formes ce que nous avons donc du changer.
