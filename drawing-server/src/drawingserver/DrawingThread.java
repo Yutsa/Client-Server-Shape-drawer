@@ -139,7 +139,7 @@ public class DrawingThread extends Thread
             try
             {
                 request = inputStream.readLine();
-                if (request == null)
+                if (request == null || request == "quit")
                 {
                     stop = true;
                     _socket.close();

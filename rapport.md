@@ -101,12 +101,15 @@ Dans ce cas, avec le serveur java, l'implémentation de chaque dessin est identi
 
 La méthode draw(Shape*) est la pour éviter la duplication de code dans chacune des méthodes.
 
+Pour communiquer avec le serveur, la méthode draw utilise le socket ainsi que le protocole décrit auparavant.
+
 #### Sauvegarde des formes
 
-La sauvegarde de forme utilise également le design pattern visitor et est implémenté de la même manière.
+La sauvegarde utilise un design pattern visitor pour les mêmes raisons que pour le dessin ; une nouvelle façon de sauvergarder peut se faire de mainère indepandante de la notre, et ce, relativement facilement. 
 
-Chargement de forme
-======================
+La manière de sauvegarder les formes est très similaire à celle de les dessiner, puisqu'elle constiste elle aussi à récuperer la chaine de caractère de la forme puis de la traiter ; Ici elle est simplement écrite dans un fichier.
+
+### Le chargement des formes
 
 Pour pouvoir charger des formes nous avons décider de créer deux 
 chain of responsibility.
@@ -121,8 +124,7 @@ ce format dans le même format que l'on utilise pour transmettre les
 données au serveurs. On passe ensuite cette string à la chaine qui 
 va retourner une instance de la forme qui était sauvegardée.
 
-Dessin avec Qt
-================
+### Dessin avec Qt (Fonctionnalité supplémentaire)
 
 Nous avons choisi comme fonctionnalité supplémentaire d'implémenter 
 un mode de dessin utilisant la librairie Qt.
@@ -137,3 +139,29 @@ ainsi qu'une QGraphicsView qui vont changer lors des dessins.
 Donc l'instance de QtDrawer ne peut être const. Comme ServerDrawer 
 lui ne changeait rien nous avions passé le DrawingVisitor en const 
 dans les méthodes draw des formes ce que nous avons donc du changer.
+
+## Le serveur Java
+
+La deuxième grande partie de ce diagramme des classes est le serveur. Il est néanmoins beaucoup plus petit que le client.
+
+### Initialisation et fonctionnement 
+
+Une première classe gère le serveur en lui même, DrawingServeur. Il commence par démarrer, puis transmet toutes ses caractéristiques, qui sont l'adresse et le port de connexion, via la console. Une "boucle infinie" attend qu'un utilisateur se connecte puis lui alloue un DrawingThread.  
+
+Le drawingServer lui prend en charge un client. Il se charge de lui créer une fenêtre ainsi que d'initialiser les méthodes de dessins sur la fenêtre, à savoir la bufferStrategy et le graphics.
+
+Ensuite une autre "boucle infinie" attend inlassablement les différentes requête de l'utilisateur, jusqu'à ce qu'il n'y en ai plus, ou que l'utilisateur ai envoyé le message "quit" au thread.
+
+### Les méthodes de dessin
+
+Une chaîne de responsabilité vas se charger quant à elle d'analyser la requête de l'utilisateur pour pouvoir dessiner la forme correspondante. 
+
+La méthode draw va alors essayer tout les experts de dessins (cercle, segment...) jusqu'à trouver le bon (ou jeter une exception). Les différents experts split la chaine de caractère pour en extraire le premier mot (le nom de la forme), pour voir s'ils sont capable de la dessiner. Si la forme est reconnue le dessin peut être effectuer grâce a toutes les informations de la chaine de caractere.
+
+Il est interresant de noter qu'il n'y a pas de drawer pour le triangle, puisque celui-ci est reconnu et traité comme un polygone par l'expert de polygone.
+
+
+
+
+
+
