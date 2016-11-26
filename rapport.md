@@ -85,30 +85,23 @@ Dans le cas de la forme composée, la nom commencera par le mot `composedshape` 
 
 Chacunes des formes sera ainsi traitée une après l'autre.
 
-Dessin des formes
-=================
+### Les visiteurs 
 
-Pour permettre l'utilisation de nouveaux modes de dessins nous
-utilisons le design pattern visitor.
+2 classes visiteurs font partie du client. Une pour gérer le dessin avec le serveur, et une autre pour sauvegarder les différentes formes.
 
-On met donc une classe abstraite permettant d'implémenter une méthode
-de dessins pour chaque type de formes.
+#### Le dessin des formes
 
-Il suffit ensuite de créer une classe descendant de cette interface
-pour implémenter différents modes de dessins, avec une classe par
-mode de dessin.
+Le design pattern visitor est utilisé ici pour permettre l'implémentation rapide de nouvelles fonctionnalités de dessins.
 
-Nous avons implémenté le dessin utilisant un serveur Java. Pour ce cas
-l'implémentation de chaque dessin est identique.
+Le visiteur de dessin est donc une classe abstraite permettant d'implémenter une méthode de dessin pour chaque type de formes.
 
-C'est pourquoi l'interface DrawingVisitor fourni une fonction draw pour chaque type de forme mais également une générale pour un Shape*
+Il faut ensuite de créer une classe descendant de cette interface pour implémenter différents modes de dessins, avec une classe par mode de dessin. Nous avons donc implémenté le dessin utilisant un serveur Java. Pour changer de mode de dessin il faudrait simplement ajouter une nouvelle classe héritant elle aussi de cette interface, qui pourrait alors contruire sa propre méthode de dessin, de manière totalement indépendante.
 
-Ainsi si une méthode de dessin fait la même chose quelque soit la forme, on implémente la méthode draw prenant en paramètre un Shape*, et puis toutes les autres méthodes draw appeleront celle qui prend le Shape*.
+Dans ce cas, avec le serveur java, l'implémentation de chaque dessin est identique. C'est pourquoi l'interface DrawingVisitor fourni une fonction draw pour chaque type de forme mais également une générale pour un Shape*. Ainsi, si une méthode de dessin fait la même chose quelque soit la forme, il faut choisr d'implémenter la méthode draw prenant en paramètre un Shape*. Toutes les autres méthodes draw appeleront celle qui prend le Shape*. Sinon, si une méthode de dessin a un traitement différent pour chaque forme, on implémentera chaque méthode draw puis on laissera un corps vide pour draw(Shape*).
 
-Si une méthode a un traitement différent pour chaque forme, on implémentera chaque méthode draw puis on laissera un corps vide pour draw(Shape*).
+La méthode draw(Shape*) est la pour éviter la duplication de code dans chacune des méthodes.
 
-Sauvegarde de forme
-====================
+#### Sauvegarde des formes
 
 La sauvegarde de forme utilise également le design pattern visitor et est implémenté de la même manière.
 
