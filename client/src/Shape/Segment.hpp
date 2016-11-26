@@ -5,8 +5,10 @@
 #include "Shape.hpp"
 #include <cmath>
 
-#include "../Visitor/SaveVisitor.hpp"
-#include "../Visitor/ServerDrawer.hpp"
+//#include "../Visitor/SaveVisitor.hpp"
+//#include "../Visitor/ServerDrawer.hpp"
+#include "../Visitor/DrawingVisitor.hpp"
+#include "../Visitor/SaveTextVisitor.hpp"
 
 using std::string;
 

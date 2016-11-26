@@ -1,6 +1,10 @@
 #include <iostream>
 #include "../Loader/ShapeLoaderText.hpp"
 #include "../Shape/ComposedShape.hpp"
+#include "../Shape/Segment.hpp"
+#include "../Shape/Polygon.hpp"
+#include "../Shape/Circle.hpp"
+#include "../Shape/Triangle.hpp"
 #include "../Utils/Color.hpp"
 #include "../Visitor/SaveTextVisitor.hpp"
 #include "../Loader/SegmentCreator.hpp"

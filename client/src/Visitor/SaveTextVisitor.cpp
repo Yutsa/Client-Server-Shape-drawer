@@ -3,9 +3,9 @@
 #include <fstream>
 #include "SaveTextVisitor.hpp"
 #include "../Shape/Circle.hpp"
+#include "../Shape/Polygon.hpp"
 #include "../Shape/Triangle.hpp"
 #include "../Shape/Segment.hpp"
-#include "../Shape/Polygon.hpp"
 
 using std::string;
 using std::ofstream;

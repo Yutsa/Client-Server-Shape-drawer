@@ -5,10 +5,7 @@
 #include "../Network/Socket.hpp"
 #include "DrawingVisitor.hpp"
 
-#include "../Shape/Circle.hpp"
-#include "../Shape/Polygon.hpp"
-#include "../Shape/Triangle.hpp"
-#include "../Shape/Segment.hpp"
+
 
 /**
 * This class is the drawer that implement a way to draw shapes using a

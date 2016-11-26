@@ -1,5 +1,11 @@
 #include "ServerDrawer.hpp"
 
+#include "../Shape/Circle.hpp"
+#include "../Shape/Polygon.hpp"
+#include "../Shape/Triangle.hpp"
+#include "../Shape/Segment.hpp"
+
+
 using std::string;
 
 ServerDrawer::ServerDrawer() : DrawingVisitor()

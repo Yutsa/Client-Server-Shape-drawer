@@ -6,8 +6,8 @@
 #include <vector>
 #include <cmath>
 
-#include "../Visitor/SaveVisitor.hpp"
-#include "../Visitor/ServerDrawer.hpp"
+//#include "../Visitor/SaveVisitor.hpp"
+//#include "../Visitor/ServerDrawer.hpp"
 
 using std::string;
 
@@ -17,7 +17,7 @@ using std::string;
 **/
 class Polygon : public Shape
 {
-private:
+protected:
 
     /**
     * Array of Vector2D for store points of the Polygon

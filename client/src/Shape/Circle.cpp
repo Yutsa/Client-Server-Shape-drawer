@@ -2,6 +2,11 @@
 #include <cmath>
 #include <sstream>
 
+//#include "../Visitor/SaveVisitor.hpp"
+//#include "../Visitor/ServerDrawer.hpp"
+#include "../Visitor/DrawingVisitor.hpp"
+#include "../Visitor/SaveTextVisitor.hpp"
+
 using std::ostringstream;
 
 Circle::Circle(const Vector2D & center, const double & diameter, const Color & color) : Shape(color)

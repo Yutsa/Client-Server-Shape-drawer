@@ -1,6 +1,11 @@
 #include "Polygon.hpp"
 #include <sstream>
 
+//#include "../Visitor/SaveVisitor.hpp"
+//#include "../Visitor/ServerDrawer.hpp"
+#include "../Visitor/DrawingVisitor.hpp"
+#include "../Visitor/SaveTextVisitor.hpp"
+
 using std::ostringstream;
 
 Polygon::Polygon(const Color & color) : Shape(color)

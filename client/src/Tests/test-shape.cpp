@@ -11,9 +11,9 @@ using std::string;
 int main(int argc, char* argv[])
 {
     Color red(Color::getColor("red"));
-    Color blue(Color::getColor("blue"));
-    Color white(Color::getColor("white"));
-    Color black(Color::getColor("black"));
+    //Color blue(Color::getColor("blue"));
+    //Color white(Color::getColor("white"));
+    //Color black(Color::getColor("black"));
 
     Vector2D invariantPoint = Vector2D(0, 0);
     Vector2D translationVector = Vector2D(1, 2);

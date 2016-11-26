@@ -1,6 +1,9 @@
 #include "ComposedShape.hpp"
 #include <sstream>
 
+#include "../Visitor/DrawingVisitor.hpp"
+#include "../Visitor/SaveTextVisitor.hpp"
+
 using std::ostringstream;
 
 ComposedShape::ComposedShape(Color color) : Shape(color){}
@@ -91,7 +94,7 @@ int ComposedShape::getShapeNumber() const
 
 Shape* ComposedShape::getShape(unsigned int i) const
 {
-    if (i < 0 || i > _shapes.size())
+    if (i > _shapes.size())
     {
 	//TODO: Throw Exception, need to create a ShapeException
 	std::cout << "Erreur d'indice." << std::endl;
