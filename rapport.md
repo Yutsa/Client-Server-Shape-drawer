@@ -14,17 +14,17 @@ geometry: margin=3cm
 
 Ils représentent des points ou des vecteurs. Ils sont la base de toutes les formes mais aussi de tous les vecteurs de transformations (translation, homothétie et rotation) qui seront réalisées.
 
-Cette classe est composée de 2 nombres réèls pour chaques coordonnée x et y. Les opérations de bases (+, -, \*) y sont implémentées grâce à la surcharge des opérateurs déja présents. Les opérations de transformations sont elles aussi présentent pour pouvoir les effectuer directement sur chaque point.
+Cette classe est composée de 2 nombres réèls pour chaque coordonnée x et y. Les opérations de bases (+, -, \*) y sont implémentées grâce à la surcharge des opérateurs déjà présents. Les opérations de transformations sont elles aussi présentes pour pouvoir les effectuer directement sur chaque point.
 
 #### Les Couleurs
 
-Les couleurs sont gérées par une classe couleur constituée de 3 unsigned char : rouge, vert et bleu. Ce sont simplement les valeurs RGB qui vont nous permettrent de créer la couleur.
+Les couleurs sont gérées par une classe couleur constituée de 3 unsigned char : rouge, vert et bleu. Ce sont simplement les valeurs RGB qui vont nous permettent de créer la couleur.
 
-Elle dispose également d'une map contenant quelques couleurs de base déjà créées. La méthode qui permet d'accéder à la map de couleur est statique, il est ainsi possible d'y accéder sans que la classe soit instanciée. Les couleurs pré-enregistrée sont accessible grâce à une chaine de caractère caractérisant la couleur ("red", "blue" ...).
+Elle dispose également d'une map contenant quelques couleurs de base déjà créées. La méthode qui permet d'accéder à la map de couleur est statique, il est ainsi possible d'y accéder sans que la classe soit instanciée. Les couleurs pré-enregistrée sont accessible grâce à une chaîne de caractères caractérisant la couleur ("red", "blue" ...).
 
 #### Les Angles
 
-Les angles, aussi ont une classe pour eux. Elle est très simple puisqu'elle se comporte comme une encapsulation d'un unique nombre réèl, la valeur en radian de l'angle. Son constructeur et ses méthodes de modifications (surtout des surcharges d'opérateurs) vérifient juste que l'angle est bien compris entre 0 et 2*pi, et l'ajuste (modulo 2*pi) si besoin.
+Les angles, aussi ont une classe pour eux. Elle est très simple puisqu'elle se comporte comme une encapsulation d'un unique nombre réèl, la valeur en radian de l'angle. Son constructeur et ses méthodes de modifications (surtout des surcharges d'opérateurs) vérifient juste que l'angle est bien compris entre 0 et $2 \times \pi$, et l'ajuste (modulo $2\pi$) si besoin.
 
 Les nombreuses surcharges d'opérateur permettent d'utiliser les angles très simplement (+, -, \*, cos, sin ...).
 
@@ -32,34 +32,39 @@ Les nombreuses surcharges d'opérateur permettent d'utiliser les angles très si
 
 #### La classe Shape
 
-La classe shape est la classe mère de toute les formes. Autrement dit, toutes les formes héritent de cette dernière. Le seul membre commun à toutes les formes est la couleur, qui est ainsi déclaré ici. Sans ce membre la classe pourrait se résumer à une interface. Et les méthodes sont nombreuses
+La classe shape est la classe mère de toutes les formes. Autrement dit, toutes les formes héritent de cette dernière. Leur seul membre commun est la couleur, qui est ainsi déclaré ici. Sans ce membre la classe pourrait se résumer à une interface. Et les méthodes sont nombreuses
+
 1. Les méthodes de transformation géométrique et de calcul d'aire
+
 2. Celles de dessin et de sauvergarde
+
 3. Et les opérateurs << et (string)
 
 Mis à part l'opérateur << et les getters/setters, toutes les méthodes sont des virtuelles pures. Nous reviendrons sur l'implémentation de ces dernières.
 
 Chaque forme étant composée d'au moins un Vector2D, lorsque l'on applique une transformation sur une forme on effectue simplement cette transformation sur chacun de ses points, c'est à dire chaque Vector2D qui la compose. En effet l'opération est la même pour toutes les formes : pour appliquer un rotation à une forme, il faut appliquer une rotation à tous les points de la formes. Un seul cas particulier est à gérer, lors d'une homothétie avec un cercle ; il n'est pas possible d'appliquer une homothétie sur tous les points du cercle mais il suffit de l'appliquer sur le centre et de multiplier le diamètre par le ratio de l'homothétie.
 
-Dans le cas de la forme composée, les transformations sont appliquées successivement pour chacunes des formes élémentaires qui la composent.
+Dans le cas de la forme composée, les transformations sont appliquées successivement pour chacune des formes élémentaires qui la composent.
 
 #### Les classe des formes
 
-Comme dit précedemment, les formes héritent toutes de la classe Shape. Elles sont chacunes composées de caractériques précises. La seule forme de sous-héritage est entre Triangle et Polygon puisque Triangle est aussi un Polygon.
+Comme dit précedemment, les formes héritent toutes de la classe Shape. Elles sont chacune composées de caractériques précises. La seule forme de sous-héritage est entre Triangle et Polygon puisque Triangle est aussi un Polygon.
 
 Toutes disposent d'un opérateur de cast en string, qui vas nous être très utile puisque c'est celui la même qui va nous permettre de communiquer les caractéritiques de nos formes.
 
 #### La classe de forme composée
 
-Les différentes formes la composent sont stockés dans un tableau de forme. Du coup chacune des opérations qui doivent être executées le sont pour chacunes des formes l'une après l'autre.
+Les différentes formes la composent sont stockées dans un tableau de forme. Du coup chacune des opérations qui doivent être executées le sont pour chacune des formes l'une après l'autre.
+
+![UML Formes](UML/uml-shape.png){#id .class width=100% height=100% margin=none}\\
 
 ### Le socket
 
-Nous avons décidé de n'utiliser qu'un seul socket par client. Se socket ne doit donc être créé qu'une seule fois, c'est pourquoi il est implémenté grâce à un singleton.
+Nous avons décidé de n'utiliser qu'un seul socket par client. Ce socket ne doit donc être créé qu'une seule fois, c'est pourquoi il est implémenté grâce à un singleton.
 
-Ce singleton mets à disposition plusieurs méthodes statiques que l'on peut donc appeler pour transmettre les messages au serveur. Le fait que ces méthodes soient statiques permet de les utiliser sans devoir tout le temps passer l'instance en paramètes.
+Ce singleton met à disposition plusieurs méthodes statiques que l'on peut donc appeler pour transmettre les messages au serveur. Le fait que ces méthodes soient statiques permet de les utiliser sans devoir tout le temps passer l'instance en paramètre.
 
-Le socket possède 3 méthodes essentielles. La première permet de connecter le socket au serveur, en y renseignant l'adresse IP et le port de ce dernier. Les deux suivantes permettent d'envoyer et de recevoir, c'est à dire de communiquer avec le serveur. Les deux fonctionnent avec des chaine de caractères.  
+Le socket possède 3 méthodes essentielles. La première permet de connecter le socket au serveur, en y renseignant l'adresse IP et le port de ce dernier. Les deux suivantes permettent d'envoyer et de recevoir, c'est à dire de communiquer avec le serveur. Les deux fonctionnent avec des chaîne de caractères.  
 
 Une dernière fonction permet de fermer la connexion avec le serveur en fin de
 session.
@@ -75,7 +80,7 @@ Les différentes formes simples à tracer sont :
 * Triangle
 * Polygone quelconque fermé (sans auto-intersection)
 
-Le nombre de valeurs à faire passer dans les message varient en fonction des formes puisqu'elle n'ont pas le même nombres de membre. Et dans le cas du polygone il peut y avoir un nombre non défini de segments à tracer, selon la taille du polygone. La chaine de caractère qui va être envoyée au serveur commence donc par la nom de la forme ce qui lui permettra de savoir rapidement ce qu'il devra dessiner.
+Le nombre de valeurs à faire passer dans les message varient en fonction des formes puisqu'elles n'ont pas le même nombres de membre. Et dans le cas du polygone il peut y avoir un nombre non défini de segments à tracer, selon la taille du polygone. La chaine de caractère qui va être envoyée au serveur commence donc par la nom de la forme ce qui lui permettra de savoir rapidement ce qu'il devra dessiner.
 S'en suivent ensuite la couleur sous sa forme rgb, puis en fonction de la forme, ses différentes caractéristiques.
 
 Le protocole se comporte de la façon suivante :
@@ -101,9 +106,9 @@ Le design pattern visitor est utilisé ici pour permettre l'implémentation rapi
 
 Le visiteur de dessin est donc une classe abstraite permettant d'implémenter une méthode de dessin pour chaque type de formes.
 
-Il faut ensuite de créer une classe descendant de cette interface pour implémenter différents modes de dessins, avec une classe par mode de dessin. Nous avons donc implémenté le dessin utilisant un serveur Java. Pour changer de mode de dessin il faudrait simplement ajouter une nouvelle classe héritant elle aussi de cette interface, qui pourrait alors contruire sa propre méthode de dessin, de manière totalement indépendante.
+Il faut ensuite de créer une classe descendant de cette interface pour implémenter différents modes de dessins, avec une classe par mode de dessin. Nous avons donc implémenté le dessin utilisant un serveur Java. Pour changer de mode de dessin il faudrait simplement ajouter une nouvelle classe héritant elle aussi de cette interface, qui pourrait alors construire sa propre méthode de dessin, de manière totalement indépendante.
 
-Dans ce cas, avec le serveur java, l'implémentation de chaque dessin est identique. C'est pourquoi l'interface DrawingVisitor fourni une fonction draw pour chaque type de forme mais également une générale pour un Shape*. Ainsi, si une méthode de dessin fait la même chose quelque soit la forme, il faut choisr d'implémenter la méthode draw prenant en paramètre un Shape*. Toutes les autres méthodes draw appeleront celle qui prend le Shape*. Sinon, si une méthode de dessin a un traitement différent pour chaque forme, on implémentera chaque méthode draw puis on laissera un corps vide pour draw(Shape*).
+Dans ce cas, avec le serveur java, l'implémentation de chaque dessin est identique. C'est pourquoi l'interface DrawingVisitor fourni une fonction draw pour chaque type de forme mais également une générale pour un Shape*. Ainsi, si une méthode de dessin fait la même chose quelque soit la forme, il faut choisir d'implémenter la méthode draw prenant en paramètre un Shape*. Toutes les autres méthodes draw appeleront celle qui prend le Shape*. Sinon, si une méthode de dessin a un traitement différent pour chaque forme, on implémentera chaque méthode draw puis on laissera un corps vide pour draw(Shape*).
 
 La méthode draw(Shape*) est la pour éviter la duplication de code dans chacune des méthodes.
 
@@ -111,9 +116,9 @@ Pour communiquer avec le serveur, la méthode draw utilise le socket ainsi que l
 
 #### Sauvegarde des formes
 
-La sauvegarde utilise un design pattern visitor pour les mêmes raisons que pour le dessin ; une nouvelle façon de sauvergarder peut se faire de mainère indepandante de la notre, et ce, relativement facilement.
+La sauvegarde utilise un design pattern visitor pour les mêmes raisons que pour le dessin ; une nouvelle façon de sauvegarder peut se faire de mainère indépandante de la notre, et ce, relativement facilement.
 
-La manière de sauvegarder les formes est très similaire à celle de les dessiner, puisqu'elle constiste elle aussi à récuperer la chaine de caractère de la forme puis de la traiter ; Ici elle est simplement écrite dans un fichier.
+La manière de sauvegarder les formes est très similaire à celle de les dessiner, puisqu'elle consiste elle aussi à récuperer la chaine de caractère de la forme puis de la traiter ; Ici elle est simplement écrite dans un fichier.
 
 ### Le chargement des formes
 
@@ -127,7 +132,7 @@ l'instanciera.
 
 Ainsi la première chaîne reconnait le format de sauvegarde, traduit
 ce format dans le même format que l'on utilise pour transmettre les
-données au serveurs. On passe ensuite cette string à la chaine qui
+données au serveurs. On passe ensuite cette string à la chaîne qui
 va retourner une instance de la forme qui était sauvegardée.
 
 ### Dessin avec Qt (Fonctionnalité supplémentaire)
@@ -164,8 +169,4 @@ Une chaîne de responsabilité vas se charger quant à elle d'analyser la requê
 
 La méthode draw va alors essayer tout les experts de dessins (cercle, segment...) jusqu'à trouver le bon (ou jeter une exception). Les différents experts split la chaine de caractère pour en extraire le premier mot (le nom de la forme), pour voir s'ils sont capable de la dessiner. Si la forme est reconnue le dessin peut être effectuer grâce a toutes les informations de la chaine de caractere.
 
-Il est interresant de noter qu'il n'y a pas de drawer pour le triangle, puisque celui-ci est reconnu et traité comme un polygone par l'expert de polygone.
-
-### UML Formes
-
-![UML Formes](UML/uml-shape.png)
+Il est intéressant de noter qu'il n'y a pas de drawer pour le triangle, puisque celui-ci est reconnu et traité comme un polygone par l'expert de polygone.
