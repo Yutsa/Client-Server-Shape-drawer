@@ -50,7 +50,33 @@ Dans le cas de la forme composée, les transformations sont appliquées successi
 
 Comme dit précedemment, les formes héritent toutes de la classe Shape. Elles sont chacune composées de caractériques précises. La seule forme de sous-héritage est entre Triangle et Polygon puisque Triangle est aussi un Polygon.
 
-Toutes disposent d'un opérateur de cast en string, qui vas nous être très utile puisque c'est celui la même qui va nous permettre de communiquer les caractéritiques de nos formes.
+Toutes disposent d'un opérateur de cast en string, qui vas nous être très utile puisque c'est celui la même qui va nous permettre de communiquer les caractéristiques de nos formes.
+
+##### Les calculs d'aire
+
+Chaque forme a une fonction de calcul d'aire et donc sa formule de calcul d'aire.
+
+Pour le polygone :
+
+$A = \frac{1}{2} \sum_{i=1}^{n-1} (x_{i}y_{i+1} - x_{i+1}y_{i})$
+
+Ou i est le ieme point du polygone et n le nombre de points.
+
+Pour le triangle (Formule de Heron) :
+
+$A = \sqrt{p(p-a)(p-b)(p-c)} avec p = \frac{a+b+c}{2}$
+
+Ou a, b, c sont les 3 côtés du triangle.
+
+Pour le cercle :
+
+$A = \pi * r^{2}$
+
+Ou r est le rayon du cercle
+
+Pour le segment l'aire est égale à 0.
+
+Pour les formes composée l'aire est égale a la somme de toutes les formes qui la compose.
 
 #### La classe de forme composée
 

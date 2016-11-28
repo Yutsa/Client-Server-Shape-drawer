@@ -11,6 +11,7 @@ RemoteSystemsTempFiles/
 drawing-server/.DS_Store
 drawing-server/src/.DS_Store
 .idea
+.pdf
 *iml
 out
 client/bin/
