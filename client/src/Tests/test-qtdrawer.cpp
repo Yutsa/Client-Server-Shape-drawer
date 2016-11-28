@@ -21,13 +21,21 @@ int main(int argc, char* argv[])
     Circle C(center, 400, Color::getColor("red"));
     C.draw(qtDrawer);
 
-    Polygon P = Polygon(Color::getColor("red"));
     Vector2D P1P = Vector2D(250,250);
-    P.addPoint(P1P);
     Vector2D P2P = Vector2D(300,250);
-    P.addPoint(P2P);
     Vector2D P3P = Vector2D(300,300);
+    Vector2D P4P = Vector2D(250, 300);
+    Triangle T = Triangle(P1P, P2P, P3P, Color::getColor("red"));
+    T.draw(qtDrawer);
+
+    Segment S(P1P, P2P, Color::getColor("red"));
+    S.draw(qtDrawer);
+
+    Polygon P(Color::getColor("red"));
+    P.addPoint(P1P);
+    P.addPoint(P2P);
     P.addPoint(P3P);
+    P.addPoint(P4P);
     P.draw(qtDrawer);
     return 0;
 }

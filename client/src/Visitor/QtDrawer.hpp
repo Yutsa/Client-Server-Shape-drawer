@@ -39,6 +39,8 @@ private:
      */
     QPen* _pen;
 
+    QBrush* _brush;
+
 public:
     QtDrawer();
     virtual ~QtDrawer();
