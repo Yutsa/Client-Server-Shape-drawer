@@ -19,20 +19,29 @@
 class QtDrawer : public DrawingVisitor
 {
 private:
+    /**
+     * The application to run.
+     */
     QApplication* _app;
 
+    /*
+     * The scene where the shapes will be.
+     */
     QGraphicsScene* _scene;
 
+    /**
+     * The view that will contain the scene.
+     */
     QGraphicsView* _vue;
 
+    /**
+     * The QPen that will be used to draw the shapes.
+     */
     QPen* _pen;
 
 public:
     QtDrawer();
     virtual ~QtDrawer();
-
-    // TODO: None of these methods should be const as they modify
-    // The instance.
     
     /**
     * Draws the Circle.

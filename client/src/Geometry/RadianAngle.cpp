@@ -94,6 +94,11 @@ const RadianAngle & RadianAngle::operator-= (const double & a)
     return *this;
 }
 
+const RadianAngle RadianAngle::operator/ (const double & a) const
+{
+    return RadianAngle(fmod(_value / a, 2*M_PI));
+}
+
 double RadianAngle::getValue() const
 {
     return _value;

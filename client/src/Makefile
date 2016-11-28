@@ -4,6 +4,13 @@ LIBS=-lQtCore -lQtGui
 
 all: test-vector2D
 
+main: main.o socket.o networkexception.o circle.o geometryexception.o composedshape.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o 
+	g++ -o ../bin/main ../bin/main.o ../bin/circle.o ../bin/composedshape.o ../bin/polygon.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o  ../bin/socket.o ../bin/networkexception.o $(CFLAGS)
+    
+main.o: Main/main.cpp
+	g++ -o ../bin/main.o -c Main/main.cpp $(CFLAGS)
+
+
 test-vector2D: test-vector2D.o vector2d.o radianangle.o geometryexception.o
 	g++ -o ../bin/test-vector2D ../bin/test-vector2D.o ../bin/vector2d.o ../bin/radianangle.o ../bin/geometryexception.o $(CFLAGS)
 

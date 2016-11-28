@@ -5,7 +5,6 @@
 #include "../Shape/Triangle.hpp"
 #include "../Shape/Segment.hpp"
 
-
 using std::string;
 
 ServerDrawer::ServerDrawer() : DrawingVisitor()

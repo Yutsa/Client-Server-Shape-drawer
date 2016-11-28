@@ -46,7 +46,8 @@ void SaveTextVisitor::save(const Shape* shape,
     {
         strcat(path, "/");
         strcat(path, filename.c_str());
-        file.open(filename);
+	//file.open(path);
+	file.open(filename);
         file << textShape << "\n";
         file.close();
     }

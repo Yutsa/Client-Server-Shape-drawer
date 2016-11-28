@@ -5,12 +5,6 @@
 
 using std::string;
 
-//class Circle;
-//class Segment;
-//class Triangle;
-//class Polygon;
-//class Shape;
-
 /**
 * This class implements a way to save a shape in a simple text format.
 */

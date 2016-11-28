@@ -96,6 +96,13 @@ public:
     
     const RadianAngle & operator-= (const RadianAngle & angle);
     const RadianAngle & operator-= (const double & a);
+    
+    /**
+    * Allows to divide RadianAngle and double
+    * @param a double to divide
+    * @return RadianAngle which is the result of division
+    */
+    const RadianAngle operator/ (const double & a) const;
 };
 
 extern ostream & operator<<(ostream & os, const RadianAngle & angle);
