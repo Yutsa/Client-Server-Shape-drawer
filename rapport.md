@@ -64,7 +64,7 @@ Ou i est le ieme point du polygone et n le nombre de points.
 
 Pour le triangle (Formule de Heron) :
 
-$A = \sqrt{p(p-a)(p-b)(p-c)} avec p = \frac{a+b+c}{2}$
+$A = \sqrt{p(p-a)(p-b)(p-c)}$ avec $p = \frac{a+b+c}{2}$
 
 Ou a, b, c sont les 3 côtés du triangle.
 
@@ -82,7 +82,7 @@ Pour les formes composée l'aire est égale a la somme de toutes les formes qui 
 
 Les différentes formes la composent sont stockées dans un tableau de forme. Du coup chacune des opérations qui doivent être executées le sont pour chacune des formes l'une après l'autre.
 
-![UML Formes](UML/uml-shape.png){#id .class width=100% height=100% margin=none}\\
+![UML Formes](UML/uml-shape.png)\  
 
 ### Le socket
 
@@ -196,4 +196,3 @@ Une chaîne de responsabilité vas se charger quant à elle d'analyser la requê
 La méthode draw va alors essayer tout les experts de dessins (cercle, segment...) jusqu'à trouver le bon (ou jeter une exception). Les différents experts split la chaine de caractère pour en extraire le premier mot (le nom de la forme), pour voir s'ils sont capable de la dessiner. Si la forme est reconnue le dessin peut être effectuer grâce a toutes les informations de la chaine de caractere.
 
 Il est interressant de noter qu'il n'y a pas de drawer pour le triangle, puisque celui-ci est reconnu et traité comme un polygone par l'expert de polygone.
-
