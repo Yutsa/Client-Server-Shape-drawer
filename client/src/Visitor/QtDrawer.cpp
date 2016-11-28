@@ -2,7 +2,6 @@
 
 using std::string;
 
-<<<<<<< Updated upstream
 QtDrawer::QtDrawer() : DrawingVisitor()
 {
     _app = new QApplication(NULL);

@@ -1,3 +1,9 @@
+---
+title:  Rapport Projet de Synthèse
+author: Thibert LETULLIER, Nicolas MARTIN et Édouard WILLISSECK
+geometry: margin=3cm
+---
+
 # Diagramme des classes
 
 ## Le client
@@ -8,7 +14,7 @@
 
 Ils représentent des points ou des vecteurs. Ils sont la base de toutes les formes mais aussi de tous les vecteurs de transformations (translation, homothétie et rotation) qui seront réalisées.
 
-Cette classe est composée de 2 nombres réèls pour chaques coordonnée x et y. Les opérations de bases (+, -, *) y sont implémentées grâce à la surcharge des opérateurs déja présents. Les opérations de transformations sont elles aussi présentent pour pouvoir les effectuer directement sur chaque point.
+Cette classe est composée de 2 nombres réèls pour chaques coordonnée x et y. Les opérations de bases (+, -, \*) y sont implémentées grâce à la surcharge des opérateurs déja présents. Les opérations de transformations sont elles aussi présentent pour pouvoir les effectuer directement sur chaque point.
 
 #### Les Couleurs
 
@@ -20,7 +26,7 @@ Elle dispose également d'une map contenant quelques couleurs de base déjà cr�
 
 Les angles, aussi ont une classe pour eux. Elle est très simple puisqu'elle se comporte comme une encapsulation d'un unique nombre réèl, la valeur en radian de l'angle. Son constructeur et ses méthodes de modifications (surtout des surcharges d'opérateurs) vérifient juste que l'angle est bien compris entre 0 et 2*pi, et l'ajuste (modulo 2*pi) si besoin.
 
-Les nombreuses surcharges d'opérateur permettent d'utiliser les angles très simplement (+, -, *, cos, sin ...).
+Les nombreuses surcharges d'opérateur permettent d'utiliser les angles très simplement (+, -, \*, cos, sin ...).
 
 ### Les formes
 
@@ -107,7 +113,7 @@ pour un triangle bleu avec (30;40), (50;60) et (70;80) en coordonées.
 
 Dans le cas de la forme composée, la nom commencera par le mot `composedshape` puis les différentes formes y seront listées entre des '|'. Ce qui nous donne avec un exemple :
 
-`composedshape|triangle,r,g,b,1,2,3,4,5,6|segment,r,g,b,1,2,3,4
+`composedshape|triangle,r,g,b,1,2,3,4,5,6|segment,r,g,b,1,2,3,4`
 
 Chacunes des formes sera ainsi traitée une après l'autre.
 
@@ -185,3 +191,9 @@ Une chaîne de responsabilité vas se charger quant à elle d'analyser la requê
 La méthode draw va alors essayer tout les experts de dessins (cercle, segment...) jusqu'à trouver le bon (ou jeter une exception). Les différents experts split la chaine de caractère pour en extraire le premier mot (le nom de la forme), pour voir s'ils sont capable de la dessiner. Si la forme est reconnue le dessin peut être effectuer grâce a toutes les informations de la chaine de caractere.
 
 Il est interresant de noter qu'il n'y a pas de drawer pour le triangle, puisque celui-ci est reconnu et traité comme un polygone par l'expert de polygone.
+
+
+### UML Formes
+
+![UML Formes](UML/uml-shape.png)
+>>>>>>> 806b62dc73dc752e6309a325b2c07bb843f81e92
