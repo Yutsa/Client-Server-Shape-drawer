@@ -12,7 +12,7 @@ QtDrawer::QtDrawer() : DrawingVisitor()
 
 QtDrawer::~QtDrawer()
 {
-
+  
 }
 
 void QtDrawer::draw(const Circle* circle)

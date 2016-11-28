@@ -239,7 +239,7 @@ package Geometry {
 Shape *-- "1" Color : _color
 Shape <|-- Cercle
 Shape <|-- Segment
-Shape <|-- Triangle
+Polygone <|-- Triangle
 Shape <|-- Polygone
 ComposedShape o-- "1, N" Shape
 Shape <|-- ComposedShape
