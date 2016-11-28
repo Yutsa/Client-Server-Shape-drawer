@@ -1,7 +1,7 @@
 #ifndef RADIAN_ANGLE_H
 #define RADIAN_ANGLE_H
 
-#include <iostream>
+#include <iosfwd>
 #include <cmath>
 #include "GeometryException.hpp"
 

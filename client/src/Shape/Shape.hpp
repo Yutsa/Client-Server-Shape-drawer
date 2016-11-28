@@ -4,6 +4,8 @@
 #include "../Utils/Color.hpp"
 #include "../Geometry/Vector2D.hpp"
 
+#include <iosfwd>
+
 class SaveVisitor;
 class DrawingVisitor;
 

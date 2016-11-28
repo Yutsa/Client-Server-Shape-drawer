@@ -1,4 +1,5 @@
 #include "GeometryException.hpp"
+#include <iostream>
 
 GeometryException::GeometryException(const string & message)
 {

@@ -1,4 +1,5 @@
 #include "Segment.hpp"
+#include <iostream>
 #include <sstream>
 
 using std::ostringstream;

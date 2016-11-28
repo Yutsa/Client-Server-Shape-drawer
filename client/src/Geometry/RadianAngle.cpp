@@ -1,7 +1,7 @@
 #include "RadianAngle.hpp"
 
 #include <sstream>
-
+#include <iostream>
 #include <math.h>
 
 using std::ostringstream;

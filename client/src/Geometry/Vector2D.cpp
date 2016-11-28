@@ -1,5 +1,6 @@
 #include "Vector2D.hpp"
 #include <sstream>
+#include <iostream>
 
 using std::ostringstream;
 

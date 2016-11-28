@@ -1,13 +1,8 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
-#include <iostream>
-//#include "Shape.hpp"
 #include "Polygon.hpp"
 #include <cmath>
-
-//#include "../Visitor/SaveVisitor.hpp"
-//#include "../Visitor/ServerDrawer.hpp"
 
 using std::string;
 
@@ -18,18 +13,8 @@ using std::string;
 class Triangle : public Polygon 
 {
 private:
-//    /**
-//    * The first point of the Triangle
-//    */
-//    Vector2D _firstPoint;
-//    /**
-//    * The second point of the Triangle
-//    */
-//    Vector2D _secondPoint;
-//    /**
-//    * The third point of the Triangle
-//    */
-//    Vector2D _thirdPoint;
+    //The vector of point inherit of Polygon
+    
 public:
     /**
     * Triangle constructor

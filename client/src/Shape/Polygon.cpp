@@ -1,8 +1,7 @@
 #include "Polygon.hpp"
 #include <sstream>
+#include <iostream>
 
-//#include "../Visitor/SaveVisitor.hpp"
-//#include "../Visitor/ServerDrawer.hpp"
 #include "../Visitor/DrawingVisitor.hpp"
 #include "../Visitor/SaveTextVisitor.hpp"
 

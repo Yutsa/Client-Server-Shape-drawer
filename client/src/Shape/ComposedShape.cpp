@@ -1,5 +1,6 @@
 #include "ComposedShape.hpp"
 #include <sstream>
+#include <iostream>
 
 #include "../Visitor/DrawingVisitor.hpp"
 #include "../Visitor/SaveTextVisitor.hpp"

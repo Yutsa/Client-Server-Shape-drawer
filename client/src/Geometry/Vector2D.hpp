@@ -1,7 +1,7 @@
 #ifndef VECTOR2D_H
 #define VECTOR2D_H
 
-#include <iostream>
+#include <iosfwd>
 
 #include "RadianAngle.hpp"
 

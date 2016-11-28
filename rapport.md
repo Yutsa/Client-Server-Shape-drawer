@@ -28,10 +28,10 @@ Les nombreuses surcharges d'opérateur permettent d'utiliser les angles très si
 
 La classe shape est la classe mère de toute les formes. Autrement dit, toutes les formes héritent de cette dernière. Le seul membre commun à toutes les formes est la couleur, qui est ainsi déclaré ici. Sans ce membre la classe pourrait se résumer à une interface. Et les méthodes sont nombreuses
 1. Les méthodes de transformation géométrique et de calcul d'aire
-2. Celles de dessin et de sauvergarde
+2. Celles de dessin et de sauvegarde
 3. Et les opérateurs << et (string) 
 
-Mis à part l'opérateur << et les getters/setters, toutes les méthodes sont des virtuelles pures. Nous reviendrons sur l'implémentation de ces dernières.
+Mis à part l'opérateur << et les getter/setter de la couleur, toutes les méthodes sont des virtuelles pures. Nous reviendrons sur l'implémentation de ces dernières.
 
 Chaque forme étant composée d'au moins un Vector2D, lorsque l'on applique une transformation sur une forme on effectue simplement cette transformation sur chacun de ses points, c'est à dire chaque Vector2D qui la compose. En effet l'opération est la même pour toutes les formes : pour appliquer un rotation à une forme, il faut appliquer une rotation à tous les points de la formes. Un seul cas particulier est à gérer, lors d'une homothétie avec un cercle ; il n'est pas possible d'appliquer une homothétie sur tous les points du cercle mais il suffit de l'appliquer sur le centre et de multiplier le diamètre par le ratio de l'homothétie.
 
@@ -81,7 +81,7 @@ pour un triangle bleu avec (30;40), (50;60) et (70;80) en coordonées.
 
 Dans le cas de la forme composée, la nom commencera par le mot `composedshape` puis les différentes formes y seront listées entre des '|'. Ce qui nous donne avec un exemple :
 
-`composedshape|triangle,r,g,b,1,2,3,4,5,6|segment,r,g,b,1,2,3,4
+`composedshape|triangle,r,g,b,1,2,3,4,5,6|segment,r,g,b,1,2,3,4`
 
 Chacunes des formes sera ainsi traitée une après l'autre.
 
@@ -158,7 +158,7 @@ Une chaîne de responsabilité vas se charger quant à elle d'analyser la requê
 
 La méthode draw va alors essayer tout les experts de dessins (cercle, segment...) jusqu'à trouver le bon (ou jeter une exception). Les différents experts split la chaine de caractère pour en extraire le premier mot (le nom de la forme), pour voir s'ils sont capable de la dessiner. Si la forme est reconnue le dessin peut être effectuer grâce a toutes les informations de la chaine de caractere.
 
-Il est interresant de noter qu'il n'y a pas de drawer pour le triangle, puisque celui-ci est reconnu et traité comme un polygone par l'expert de polygone.
+Il est interressant de noter qu'il n'y a pas de drawer pour le triangle, puisque celui-ci est reconnu et traité comme un polygone par l'expert de polygone.
 
 
 

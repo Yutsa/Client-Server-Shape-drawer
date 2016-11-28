@@ -1,13 +1,9 @@
 #ifndef COMPOSEDSHAPE_H
 #define COMPOSEDSHAPE_H
 
-#include <iostream>
 #include "Shape.hpp"
 #include <vector>
 #include <cmath>
-
-//#include "../Visitor/SaveVisitor.hpp"
-//#include "../Visitor/ServerDrawer.hpp"
 
 using std::string;
 

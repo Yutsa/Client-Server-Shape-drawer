@@ -1,11 +1,7 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
-#include <iostream>
 #include "Shape.hpp"
-
-//#include "../Visitor/SaveVisitor.hpp"
-//#include "../Visitor/ServerDrawer.hpp"
 
 using std::string;
 

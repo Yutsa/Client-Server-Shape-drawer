@@ -1,4 +1,5 @@
 #include "Shape.hpp"
+#include <iostream>
 
 Shape::Shape(const Color & color) : _color(color)
 {
