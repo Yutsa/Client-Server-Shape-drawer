@@ -64,7 +64,7 @@ Ou i est le ieme point du polygone et n le nombre de points.
 
 Pour le triangle (Formule de Heron) :
 
-$A = \sqrt{p(p-a)(p-b)(p-c)}$ avec $p = \frac{a+b+c}{2}$
+$A = \sqrt{p(p-a)(p-b)(p-c)} avec p = \frac{a+b+c}{2}$
 
 Ou a, b, c sont les 3 côtés du triangle.
 
@@ -76,13 +76,13 @@ Ou r est le rayon du cercle
 
 Pour le segment l'aire est égale à 0.
 
-Pour les formes composée l'aire est égale à la somme de toutes les formes qui la compose.
+Pour les formes composée l'aire est égale a la somme de toutes les formes qui la compose.
 
 #### La classe de forme composée
 
 Les différentes formes la composent sont stockées dans un tableau de forme. Du coup chacune des opérations qui doivent être executées le sont pour chacune des formes l'une après l'autre.
 
-![UML Formes](UML/uml-shape.png)\  
+![UML Formes](UML/uml-shape.png)\   
 
 ### Le socket
 
@@ -134,9 +134,9 @@ Le visiteur de dessin est donc une classe abstraite permettant d'implémenter un
 
 Il faut ensuite de créer une classe descendant de cette interface pour implémenter différents modes de dessins, avec une classe par mode de dessin. Nous avons donc implémenté le dessin utilisant un serveur Java. Pour changer de mode de dessin il faudrait simplement ajouter une nouvelle classe héritant elle aussi de cette interface, qui pourrait alors construire sa propre méthode de dessin, de manière totalement indépendante.
 
-Dans ce cas, avec le serveur java, l'implémentation de chaque dessin est identique. C'est pourquoi l'interface DrawingVisitor fourni une fonction draw pour chaque type de forme mais également une générale pour un Shape*. Ainsi, si une méthode de dessin fait la même chose quelque soit la forme, il faut choisir d'implémenter la méthode draw prenant en paramètre un Shape*. Toutes les autres méthodes draw appeleront celle qui prend le Shape*. Sinon, si une méthode de dessin a un traitement différent pour chaque forme, on implémentera chaque méthode draw puis on laissera un corps vide pour draw(Shape*).
+Dans ce cas, avec le serveur java, l'implémentation de chaque dessin est identique. C'est pourquoi l'interface DrawingVisitor fourni une fonction draw pour chaque type de forme mais également une générale pour un Shape\*. Ainsi, si une méthode de dessin fait la même chose quelque soit la forme, il faut choisir d'implémenter la méthode draw prenant en paramètre un Shape\*. Toutes les autres méthodes draw appeleront celle qui prend le Shape\*. Sinon, si une méthode de dessin a un traitement différent pour chaque forme, on implémentera chaque méthode draw puis on laissera un corps vide pour draw(Shape\*).
 
-La méthode draw(Shape*) est la pour éviter la duplication de code dans chacune des méthodes.
+La méthode draw(Shape\*) est la pour éviter la duplication de code dans chacune des méthodes.
 
 Pour communiquer avec le serveur, la méthode draw utilise le socket ainsi que le protocole décrit auparavant.
 
@@ -193,6 +193,6 @@ Ensuite une autre "boucle infinie" attend inlassablement les différentes requê
 
 Une chaîne de responsabilité vas se charger quant à elle d'analyser la requête de l'utilisateur pour pouvoir dessiner la forme correspondante.
 
-La méthode draw va alors essayer tout les experts de dessins (cercle, segment...) jusqu'à trouver le bon (ou jeter une exception). Les différents experts split la chaine de caractère pour en extraire le premier mot (le nom de la forme), pour voir s'ils sont capable de la dessiner. Si la forme est reconnue le dessin peut être effectuer grâce à toutes les informations de la chaine de caractere.
+La méthode draw va alors essayer tout les experts de dessins (cercle, segment...) jusqu'à trouver le bon (ou jeter une exception). Les différents experts split la chaine de caractère pour en extraire le premier mot (le nom de la forme), pour voir s'ils sont capable de la dessiner. Si la forme est reconnue le dessin peut être effectuer grâce a toutes les informations de la chaine de caractere.
 
-Il est intéressant de noter qu'il n'y a pas de drawer pour le triangle, puisque celui-ci est reconnu et traité comme un polygone par l'expert de polygone.
+Il est interressant de noter qu'il n'y a pas de drawer pour le triangle, puisque celui-ci est reconnu et traité comme un polygone par l'expert de polygone.

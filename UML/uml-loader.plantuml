@@ -1,0 +1,51 @@
+@startuml
+package Loader {
+    abstract class ShapeLoader {
+        +ShapeLoader(const ShapeCreator* shapeCreator)
+        +{abstract} load()
+    }
+
+    class ShapeLoaderLink {
+        +ShapeLoaderLink(ShapeLoaderCOR* next, const ShapeCreator* shapeCreator)
+        +load()
+        +{abstract}loadShape()
+    }
+
+    class ShapeLoaderText {
+        +ShapeLoaderText(ShapeLoaderLink* next, const ShapeCreator* shapeCreator)
+        +loadShape()
+    }
+
+    abstract class ShapeCreator {
+        +{abstract} const Shape* createShape(const string & shapeString) const
+    }
+
+    class ShapeCreatorLink {
+        +ShapeCreatorLink(const ShapeCreatorLink* next)
+        +const Shape* createShape(const string & shapeString) const
+        +{abstract} const Shape* createShapeSpe(const string & shapeString) const
+    }
+
+    class SegmentCreator {
+        +const Shape* createShapeSpe(const string & shapeString) const
+    }
+
+    class CircleCreator {
+        +const Shape* createShapeSpe(const string & shapeString) const
+    }
+
+    class PolygonCreator {
+        +const Shape* createShapeSpe(const string & shapeString) const
+    }
+
+    ShapeLoader <|-- ShapeLoaderLink
+    ShapeLoader o-- "1" ShapeCreator
+    ShapeLoaderLink o-- "1" ShapeLoaderLink : next
+    ShapeLoaderLink <|-- ShapeLoaderText
+    ShapeCreator <|-- ShapeCreatorLink
+    ShapeCreatorLink <|-- SegmentCreator
+    ShapeCreatorLink <|-- CircleCreator
+    ShapeCreatorLink <|-- PolygonCreator
+    ShapeCreatorLink o-- "1" ShapeCreatorLink  : next
+}
+@enduml

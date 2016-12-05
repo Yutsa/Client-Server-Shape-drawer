@@ -93,7 +93,7 @@ int ComposedShape::getShapeNumber() const
     return _shapes.size();
 }
 
-Shape* ComposedShape::getShape(unsigned int i) const
+const Shape* ComposedShape::getShape(unsigned int i) const
 {
     if (i > _shapes.size())
     {

@@ -94,7 +94,7 @@ public:
      * @return The i-th shape in this ComposedShape
      * @throws ShapeException if the index is wrong.
      */
-    Shape* getShape(unsigned int i) const;
+    const Shape* getShape(unsigned int i) const;
 
     //TODO: operator[] to get the i-th shape.
 
