@@ -206,9 +206,6 @@ int main(int argc, char* argv[])
         CC->draw(serverDrawer);
 
         //=============== Draw Compsed Shape ===============//
-
-        cout << "Press Enter to do draw the composed shape" << endl;
-        getchar();
         Vector2D centerQT(50, 50);
         Vector2D beginSegQT(25, 25), endSegQT(25, 75);
         Vector2D point1QT(25, 25), point2QT(0, 75), point3QT(50, 75);
