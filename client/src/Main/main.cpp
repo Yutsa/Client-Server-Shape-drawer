@@ -223,6 +223,8 @@ int main(int argc, char* argv[])
         PQT->addPoint(point7QT);
 
 
+	Socket::closeSocket();
+	
         QtDrawer *qtDrawer = new QtDrawer();
 
         cout << "Press Enter to do draw the Segment in QT" << endl;

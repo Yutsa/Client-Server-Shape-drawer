@@ -14,7 +14,7 @@ using std::string;
 int main(int argc, char* argv[])
 {
   //    ServerDrawer *serverDrawer = new ServerDrawer();
-    QtDrawer *qtDrawer = new QtDrawer(argc, argv);
+    QtDrawer *qtDrawer = new QtDrawer();
     Color red(Color::getColor("red"));
     Color blue(Color::getColor("blue"));
     Color white(Color::getColor("white"));

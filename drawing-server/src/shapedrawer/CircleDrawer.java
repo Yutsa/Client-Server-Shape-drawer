@@ -51,7 +51,7 @@ public class CircleDrawer extends ShapeDrawerLink
         /* Draw the circle */
         System.out.println("Drawing : " + request);
         graphics.setColor(color);
-        graphics.fillOval(coordX, coordY, diametre, diametre);
+        graphics.fillOval(coordX - (diametre / 2), coordY - (diametre / 2), diametre, diametre);
         bufferStrategy.show();
     }
 }
