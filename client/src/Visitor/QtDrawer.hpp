@@ -44,7 +44,7 @@ private:
 public:
     QtDrawer();
     virtual ~QtDrawer();
-    
+
     /**
     * Draws the Circle.
     * @param circle The Circle to draw.
@@ -109,7 +109,7 @@ public:
      * Sets the scene to the view and display it.
      */
     void displayWindow();
-    
+
 };
 
 #endif

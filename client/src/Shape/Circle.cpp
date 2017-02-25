@@ -5,11 +5,16 @@
 
 #include "../Visitor/DrawingVisitor.hpp"
 #include "../Visitor/SaveTextVisitor.hpp"
+#include "../Utils/UtilsException.hpp"
 
 using std::ostringstream;
 
 Circle::Circle(const Vector2D & center, const double & diameter, const Color & color) : Shape(color)
 {
+    if (diameter <= 0)
+    {
+	throw UtilsException("Circle::Circle(...) diamètre invalide.");
+    }
     _center.setX(center.getX());
     _center.setY(center.getY());
     _diameter=diameter;

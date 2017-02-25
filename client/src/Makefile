@@ -1,11 +1,12 @@
 CFLAGS = -Wall -ansi -g
-INCDIRS=-I/usr/include/qt4 -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtCore
+INCDIRS=-I/usr/include/qt4 -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtCore -I.
 LIBS=-lQtCore -lQtGui
+OPTIONS=$(CFLAGS) $(INCDIRS)
+OBJ=
+all: main
 
-all: test-vector2D
-
-main: main.o socket.o networkexception.o circle.o qtdrawer.o geometryexception.o composedshape.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o
-	g++ -o ../bin/main ../bin/main.o ../bin/circle.o ../bin/composedshape.o ../bin/polygon.o ../bin/qtdrawer.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o  ../bin/socket.o ../bin/networkexception.o $(LIBS) $(CFLAGS)
+main: main.o socket.o networkexception.o circle.o qtdrawer.o geometryexception.o composedshape.o radianangle.o color.o utilsexception.o shape.o serverdrawer.o socket.o networkexception.o polygon.o triangle.o segment.o shapeloadertext.o shapeloaderexception.o composedshapecreator.o circlecreator.o polygoncreator.o trianglecreator.o segmentcreator.o savetextvisitor.o shapecreatorlink.o shapeloaderlink.o
+	g++ -o ../bin/main ../bin/main.o ../bin/circle.o ../bin/composedshape.o ../bin/polygon.o ../bin/qtdrawer.o ../bin/triangle.o ../bin/segment.o ../bin/vector2d.o ../bin/geometryexception.o ../bin/radianangle.o ../bin/color.o ../bin/utilsexception.o ../bin/shape.o ../bin/serverdrawer.o  ../bin/socket.o ../bin/networkexception.o ../bin/shapeloadertext.o ../bin/shapeloaderexception.o ../bin/composedshapecreator.o ../bin/circlecreator.o ../bin/polygoncreator.o ../bin/trianglecreator.o ../bin/segmentcreator.o ../bin/savetextvisitor.o ../bin/shapecreatorlink.o ../bin/shapeloaderlink.o $(LIBS) $(CFLAGS)
 
 main.o: Main/main.cpp
 	g++ -o ../bin/main.o $(INCDIRS) -c Main/main.cpp $(CFLAGS)
@@ -25,7 +26,7 @@ test-color: test-color.o color.o utilsexception.o
 
 test-saving: test-saving.o circle.o color.o savetextvisitor.o vector2d.o shape.o radianangle.o utilsexception.o geometryexception.o
 	g++ -o ../bin/test-saving ../bin/test-saving.o ../bin/circle.o ../bin/color.o ../bin/vector2d.o ../bin/savetextvisitor.o ../bin/shape.o ../bin/radianangle.o ../bin/utilsexception.o ../bin/geometryexception.o $(CFLAGS)
-
+v
 test-saving.o: Tests/test-saving.cpp Shape/Circle.hpp Utils/Color.hpp Visitor/SaveTextVisitor.hpp
 	g++ -o ../bin/test-saving.o -c Tests/test-saving.cpp $(CFLAGS)
 

@@ -16,7 +16,7 @@ using std::string;
 int main(int argc, char* argv[])
 {
     QtDrawer *qtDrawer = new QtDrawer();
-    
+
     Vector2D center(10, 50);
     Circle C(center, 400, Color::getColor("red"));
     C.draw(qtDrawer);

@@ -40,8 +40,10 @@ void Segment::save(const SaveVisitor* saveVisitor, const string & filename) cons
 Shape* Segment::translation(const Vector2D & translationVector) const
 {
     Segment *newSegment = new Segment(*this);
-    newSegment->_firstPoint.translation(translationVector);
-    newSegment->_secondPoint.translation(translationVector);
+    /*    newSegment->_firstPoint.translation(translationVector);
+	  newSegment->_secondPoint.translation(translationVector);*/
+    newSegment->_firstPoint += translationVector;
+    newSegment->_secondPoint += translationVector;
     return newSegment;
 }
 

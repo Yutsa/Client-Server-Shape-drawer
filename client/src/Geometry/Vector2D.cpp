@@ -82,13 +82,10 @@ void Vector2D::homothety(const Vector2D & invariantPoint,
     /* Creation of the homothety Vector */
     Vector2D homothetyVector;
     homothetyVector = *this - invariantPoint;
-//    homothetyVector = Vector2D(_x-invariantPoint.getX(),
-//        _y-invariantPoint.getY());
 
     /* Homothety application */
     *this += homothetyVector*homothetyRatio;
-//    _x += homothetyVector.getX()*homothetyRatio;
-//    _y += homothetyVector.getY()*homothetyRatio;
+
 }
 
 void Vector2D::rotation(const Vector2D & rotationCenter,
@@ -108,6 +105,29 @@ void Vector2D::rotation(const Vector2D & rotationCenter,
     /* Translation for set rotation in function of center */
     _x = x + rotationCenter.getX();
     _y = y + rotationCenter.getY();
+}
+
+const Vector2D Vector2D::rotation(
+    const RadianAngle & rotationAngle)
+{
+    //TODO
+//A'.x = A.x * cos(θ) - A.y * sin(θ)
+//
+//A'.y = A.x * sin(θ) + A.y * cos(θ)
+    
+    /* Makes rotation of vector2D */
+    sinR = sin(rotationAngle);
+    cosR = cos(rotationAngle);
+    double x = _x * cosR - _y  * sinR;
+    double y = _x  * sinR + _y  * cosR;
+
+    return Vector2D(x, y);
+}
+
+const Vector2D Vector2D::rotation(const Vector2D & rotationCenter,
+    const RadianAngle & rotationAngle)
+{
+    return rotationCenter + (*this - rotationCenter).rotation(rotationAngle);
 }
 
 void Vector2D::translation(const Vector2D & translationVector)

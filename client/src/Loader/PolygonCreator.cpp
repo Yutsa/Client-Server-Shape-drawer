@@ -38,7 +38,7 @@ Shape* PolygonCreator::createShapeSpe(const string & shapeString) const
         
         vector<Vector2D> points;
         
-        for (int i = 0; i < coor.size()/2; i++)
+        for (int i = 0; i < coor.size(); i += 2)
         {
             points.push_back(Vector2D(coor[i], coor[i+1]));
         }

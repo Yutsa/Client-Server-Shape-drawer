@@ -32,7 +32,7 @@ Shape* CircleCreator::createShapeSpe(const string & shapeString) const
         
         double px1 = atof(shapeStrings[4].c_str()),
                 py1 = atof(shapeStrings[5].c_str()),
-                diameter = atof(shapeStrings[7].c_str());
+                diameter = atof(shapeStrings[6].c_str());
         
         Vector2D point1(px1, py1);
         
