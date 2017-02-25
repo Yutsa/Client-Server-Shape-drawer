@@ -1,0 +1,251 @@
+@startuml
+
+package Utils {
+    class Color {
+        -unsigned char _red
+        -unsigned char _green
+        -unsigned char _blue
+        +Color(unsigned char red, unsigned char green, unsigned char blue)
+        +Color(const Color & color);
+        +{static} void initColorMap();
+        +{static} Color getColor(const string & color);
+        +unsigned char getRed() const
+        +unsigned char getGreen() const
+        +unsigned char getBlue() const
+    }
+
+    class UtilsException
+}
+
+package Shape {
+    abstract class Shape {
+        +Shape(const Color & color = Color::getColor("black"))
+        +{abstract} draw(const DrawingVisitor* visitor)
+        +{abstract} operator string()
+        +{abstract} save(const SaveVisitor* saveVisitor, const string & filename)
+        +{abstract} Shape *translation(Vector2D translationVector) : Shape*
+        +{abstract} Shape* homothétie(const Vector2D & invariantPoint, const double & homothetyRatio) : Shape*
+        +{abstract} Shape* rotation(const Vector2D & rotationCenter,
+        const RadianAngle & rotationAngle)
+        +{abstract} double getArea()
+        +setColor(const Color & color)
+        +Color getColor()
+    }
+
+    abstract class ComposedShape {
+        +draw(DrawingVisitor* visitor)
+        +toString() : String
+        +save(SaveVisitor* saveVisitor, const string & filename)
+        +translation(Vector2D translationVector)
+        +homothétie(const Vector2D & invariantPoint,
+        const double & homothetyRatio)
+        +rotation(const Vector2D & rotationCenter,
+        const RadianAngle & rotationAngle)
+        +getArea()
+    }
+
+    class Cercle {
+        -double _diameter
+        +Circle(const Vector2D & center, const double & diameter,
+         const Color & color = Color::getColor("black"));
+        +void draw(const DrawingVisitor* visitor) const;
+        +void save(const SaveVisitor* saveVisitor, const string & filename) const;
+        +Shape* translation(const Vector2D & translationVector) const;
+        +Shape* homothety(const Vector2D & invariantPoint,
+        const double & homothetyRatio) const;
+        +Shape* rotation(const Vector2D & rotationCenter,
+        const RadianAngle & rotationAngle) const;
+        +double getArea() const;
+    }
+
+    class Segment {
+        +Segment(const Vector2D & firstPoint, const Vector2D & secondPoint,
+        const Color & color = Color::getColor("black"));
+        +void draw(const DrawingVisitor* visitor) const;
+        +void save(const SaveVisitor* saveVisitor, const string & filename) const;
+        +Shape* translation(const Vector2D & translationVector) const;
+        +Shape* homothety(const Vector2D & invariantPoint,
+        const double & homothetyRatio) const;
+        +Shape* rotation(const Vector2D & rotationCenter,
+        const RadianAngle & rotationAngle) const;
+        +double getArea() const;
+    }
+
+    class Triangle {
+        +Triangle(const Vector2D & firstPoint, const Vector2D & secondPoint,
+        const Vector2D & thirdPoint, const Color & color = Color::getColor("black"));
+        +void draw(const DrawingVisitor* visitor) const;
+        +void save(const SaveVisitor* saveVisitor, const string & filename) const;
+        +Shape* translation(const Vector2D & translationVector) const;
+        +Shape* homothety(const Vector2D & invariantPoint,
+        const double & homothetyRatio) const;
+        +Shape* rotation(const Vector2D & rotationCenter,
+        const RadianAngle & rotationAngle) const;
+        +double getArea() const;
+    }
+
+    class Polygone {
+        +Polygon(const Color & color = Color::getColor("black"));
+        +void addPoint(const Vector2D & point);
+        +void draw(const DrawingVisitor* visitor) const;
+        +void save(const SaveVisitor* saveVisitor, const string & filename) const;
+        +Shape* translation(const Vector2D & translationVector) const;
+        +Shape* homothety(const Vector2D & invariantPoint,
+        const double & homothetyRatio) const;
+        +Shape* rotation(const Vector2D & rotationCenter,
+        const RadianAngle & rotationAngle) const;
+        +double getArea() const;
+    }
+
+
+}
+
+package Network {
+    class Socket << Singleton >> {
+        -{static} Socket* _instance: Socket
+        -{static} string _serverAddress
+        -{static} int _serverPort
+        -{static} int _sock
+        -{static} sockaddr_in _socketAddress
+        -Socket()
+        +{static} const Socket* getInstance()
+        +{static} void createConnexion()
+        +{static} void sendRequest(const string & request)
+        +{static} string receiveData()
+        +{static} closeSocket()
+    }
+
+    class NetworkException
+
+    Socket *-- "1" Socket
+}
+
+package Visitor {
+    abstract class DrawingVisitor {
+        +{abstract} draw(Cercle *s)
+        +{abstract} draw(Segment *s)
+        +{abstract} draw(Triangle *s)
+        +{abstract} draw(Polygone *s)
+        +{abstract} draw(Shape *s)
+    }
+
+    abstract class SaveVisitor {
+        +{abstract} save(const Cercle *s, const string & filename)
+        +{abstract} save(const Segment *s, const string & filename)
+        +{abstract} save(const Triangle *s, const string & filename)
+        +{abstract} save(const Polygone *s, const string & filename)
+        +{abstract} save(const Shape *s, const string & filename)
+    }
+
+    class ServerDrawer {
+        +ServerDrawer()
+        +draw(Cercle *s)
+        +draw(Segment *s)
+        +draw(Triangle *s)
+        +draw(Polygone *s)
+        +draw(Shape *s)
+    }
+
+    class SaveTextVisitor {
+        +save(const Cercle *s, const string & filename)
+        +save(const Segment *s, const string & filename)
+        +save(const Triangle *s, const string & filename)
+        +save(const Polygone *s, const string & filename)
+        +save(const Shape *s, const string & filename)
+    }
+
+    SaveVisitor <|-- SaveTextVisitor
+    DrawingVisitor <|-- ServerDrawer
+}
+
+package Loader {
+    abstract class ShapeLoader {
+        +ShapeLoader(const ShapeCreator* shapeCreator)
+        +{abstract} load()
+    }
+
+    class ShapeLoaderLink {
+        +ShapeLoaderLink(ShapeLoaderCOR* next, const ShapeCreator* shapeCreator)
+        +load()
+        +{abstract}loadShape()
+    }
+
+    class ShapeLoaderText {
+        +ShapeLoaderText(ShapeLoaderLink* next, const ShapeCreator* shapeCreator)
+        +loadShape()
+    }
+
+    abstract class ShapeCreator {
+        +{abstract} const Shape* createShape(const string & shapeString) const
+    }
+
+    class ShapeCreatorLink {
+        +ShapeCreatorLink(const ShapeCreatorLink* next)
+        +const Shape* createShape(const string & shapeString) const
+        +{abstract} const Shape* createShapeSpe(const string & shapeString) const
+    }
+
+    class SegmentCreator {
+        +const Shape* createShapeSpe(const string & shapeString) const
+    }
+
+    class CircleCreator {
+        +const Shape* createShapeSpe(const string & shapeString) const
+    }
+
+    class PolygonCreator {
+        +const Shape* createShapeSpe(const string & shapeString) const
+    }
+
+    ShapeLoader <|-- ShapeLoaderLink
+    ShapeLoader o-- "1" ShapeCreator
+    ShapeLoaderLink o-- "1" ShapeLoaderLink : next
+    ShapeLoaderLink <|-- ShapeLoaderText
+    ShapeCreator <|-- ShapeCreatorLink
+    ShapeCreatorLink <|-- SegmentCreator
+    ShapeCreatorLink <|-- CircleCreator
+    ShapeCreatorLink <|-- PolygonCreator
+    ShapeCreatorLink o-- "1" ShapeCreatorLink  : next
+}
+
+package Geometry {
+    class Vector2D {
+        -double _x
+        -double _y
+        +const Vector2D operator+()
+        +const Vector2D operator*()
+        +const Vector2D operator-()
+        +const Vector2D operator+=()
+        +const Vector2D operator*=()
+        +const Vector2D operator-=()
+        +string()
+        +void translation(const Vector2D & translationVector)
+        +void homothety(const Vector2D & invariantPoint,
+                    const double & homothetyRatio)
+        +void rotation(const Vector2D & rotationCenter,
+                    const RadianAngle & rotationAngle);
+    }
+
+    class RadianAngle {
+        -double _value
+        +RadianAngle(const double & value);
+        +void setValue(const double & value);
+        +double getValue() const;
+    }
+
+    class GeometryException
+}
+
+Shape *-- "1" Color : _color
+Shape <|-- Cercle
+Shape <|-- Segment
+Polygone <|-- Triangle
+Shape <|-- Polygone
+ComposedShape o-- "1, N" Shape
+Shape <|-- ComposedShape
+Cercle o--> "1" Vector2D
+Segment o--> "2" Vector2D
+Triangle o--> "3" Vector2D
+Polygone o--> "3, N" Vector2D
+
+@enduml

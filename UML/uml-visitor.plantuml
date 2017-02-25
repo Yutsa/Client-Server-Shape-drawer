@@ -1,0 +1,39 @@
+@startuml
+package Visitor {
+    abstract class DrawingVisitor {
+        +{abstract} draw(Cercle *s)
+        +{abstract} draw(Segment *s)
+        +{abstract} draw(Triangle *s)
+        +{abstract} draw(Polygone *s)
+        +{abstract} draw(Shape *s)
+    }
+
+    abstract class SaveVisitor {
+        +{abstract} save(const Cercle *s, const string & filename)
+        +{abstract} save(const Segment *s, const string & filename)
+        +{abstract} save(const Triangle *s, const string & filename)
+        +{abstract} save(const Polygone *s, const string & filename)
+        +{abstract} save(const Shape *s, const string & filename)
+    }
+
+    class ServerDrawer {
+        +ServerDrawer()
+        +draw(Cercle *s)
+        +draw(Segment *s)
+        +draw(Triangle *s)
+        +draw(Polygone *s)
+        +draw(Shape *s)
+    }
+
+    class SaveTextVisitor {
+        +save(const Cercle *s, const string & filename)
+        +save(const Segment *s, const string & filename)
+        +save(const Triangle *s, const string & filename)
+        +save(const Polygone *s, const string & filename)
+        +save(const Shape *s, const string & filename)
+    }
+
+    SaveVisitor <|-- SaveTextVisitor
+    DrawingVisitor <|-- ServerDrawer
+}
+@enduml

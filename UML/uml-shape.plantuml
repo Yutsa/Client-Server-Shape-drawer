@@ -1,0 +1,65 @@
+@startuml
+package Shape {
+    abstract class Shape {
+        +Shape(const Color & color = Color::getColor("black"))
+        +{abstract} draw(const DrawingVisitor* visitor)
+        +{abstract} operator string()
+        +{abstract} save(const SaveVisitor* saveVisitor, const string & filename)
+        +{abstract} Shape *translation(Vector2D translationVector) : Shape*
+        +{abstract} Shape* homothétie(const Vector2D & invariantPoint, const double & homothetyRatio) : Shape*
+        +{abstract} Shape* rotation(const Vector2D & rotationCenter,
+        const RadianAngle & rotationAngle)
+        +{abstract} double getArea()
+        +setColor(const Color & color)
+        +Color getColor()
+    }
+
+    abstract class ComposedShape {
+
+    }
+
+    class Cercle {
+
+    }
+
+    class Segment {
+
+    }
+
+    class Triangle {
+
+    }
+
+    class Polygone {
+    }
+}
+
+package Utils {
+    class Color {
+    }
+
+    class UtilsException
+}
+
+package Geometry {
+    class Vector2D {
+    }
+
+    class RadianAngle {
+    }
+
+    class GeometryException
+}
+
+Shape *-- "1" Color : _color
+Shape <|-- Cercle
+Shape <|-- Segment
+Polygone <|-- Triangle
+Shape <|-- Polygone
+ComposedShape o-- "1, N" Shape
+Shape <|-- ComposedShape
+Cercle o--> "1" Vector2D
+Segment o--> "2" Vector2D
+Triangle o--> "3" Vector2D
+Polygone o--> "3, N" Vector2D
+@enduml

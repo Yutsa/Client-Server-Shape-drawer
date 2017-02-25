@@ -1,0 +1,21 @@
+@startuml
+package Network {
+    class Socket << Singleton >> {
+        -{static} Socket* _instance: Socket
+        -{static} string _serverAddress
+        -{static} int _serverPort
+        -{static} int _sock
+        -{static} sockaddr_in _socketAddress
+        -Socket()
+        +{static} const Socket* getInstance()
+        +{static} void createConnexion()
+        +{static} void sendRequest(const string & request)
+        +{static} string receiveData()
+        +{static} closeSocket()
+    }
+
+    class NetworkException
+
+    Socket *-- "1" Socket
+}
+@enduml

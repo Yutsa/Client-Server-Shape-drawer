@@ -1,0 +1,52 @@
+@startuml
+class Thread
+
+package DrawingServer {
+    class DrawingServer {
+        +main()
+    }
+    class DrawingThread {
+        +run()
+    }
+}
+
+package ShapeDrawer {
+    interface ShapeDrawer {
+        +{abstract}draw(String request)
+    }
+
+    class ShapeDrawerLink {
+        +ShapeDrawerLink(ShapeDrawerLink next)
+        +{abstract} drawShape(String request, Frame frame)
+        +draw(String request)
+        +getGraphics(Frame frame)
+    }
+
+    class SegmentDrawer {
+        +SegmentDrawer(ShapeDrawerLink next)
+        +drawShape(String request, Frame frame)
+    }
+
+    class CircleDrawer {
+        +CircleDrawer(ShapeDrawerLink next)
+        +drawShape(String request, Frame frame)
+    }
+
+    class PolygoneDrawer {
+        +PolygoneDrawer(ShapeDrawerLink next)
+        +drawShape(String request, Frame frame)
+    }
+
+    class ShapeNotRecognizedException
+}
+
+ShapeDrawer <|-- ShapeDrawerLink
+ShapeDrawerLink o-- "0, 1" ShapeDrawerLink
+ShapeDrawerLink <|-- SegmentDrawer
+ShapeDrawerLink <|-- CircleDrawer
+ShapeDrawerLink <|-- PolygoneDrawer
+DrawingThread *-- "1" ShapeDrawer
+ShapeDrawer .. ShapeNotRecognizedException : << Throws >>
+Thread <|-- DrawingThread
+
+@enduml
